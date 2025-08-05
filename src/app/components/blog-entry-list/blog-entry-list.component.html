@@ -1,0 +1,39 @@
+<div class="container1">
+  <div class="div1">
+
+      <div *ngIf="entry_count === 0; else div_show_blog_list">
+
+          <p>There are no Blog Entries</p>
+
+      </div>
+
+      <ng-template #div_show_blog_list>
+
+        <p>Entry Count ist {{ entry_count }}</p>
+
+        <p>Blog Entries</p>
+
+         <app-button
+         *ngIf="isUserLoggedIn()"
+           color="green"
+           text="Add Blog Entry"
+           (btnClick)="addBlogEntry()"
+         ></app-button>
+
+
+        <app-blog-detail-short
+
+          *ngFor="let blog_var of blog_vektor"
+          [blog_entry]="blog_var"
+
+        >
+        </app-blog-detail-short>
+
+      </ng-template>
+
+  </div>
+  <div class="div2">
+          <router-outlet></router-outlet>
+
+  </div>
+</div>

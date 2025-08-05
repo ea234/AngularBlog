@@ -1,0 +1,23 @@
+.container1 {
+  display: flex;
+  width: 100%;
+}
+
+/* Erster Div, 40% der Breite */
+.div1 {
+    width: 30%;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+  }
+
+/* Zweiter Div, 60% der Breite */
+.div2 {
+    width: 70%;
+    background-color: #cccecc; /* optional, für bessere Sichtbarkeit */
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}

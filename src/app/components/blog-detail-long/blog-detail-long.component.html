@@ -1,0 +1,18 @@
+<div *ngIf="blog_entry; else alternative">
+
+  <div class="css-blog-entry-container">
+    <div class="blog-title"   >{{ blog_entry.m_entry_header}}</div>
+    <div class="blog-content" >{{ blog_entry.m_entry_text }}</div>
+
+    <div class="blog-footer-div">
+      <div class="blog-footer-date">{{ blog_entry.m_entry_date_string}} {{ blog_entry.m_user_name}}</div>
+    </div>
+  </div>
+
+</div>
+
+<ng-template #alternative>
+   Something went wrong. Nothing to show.
+</ng-template>
+
+

@@ -1,0 +1,27 @@
+/* Stil für die Überschrift */
+.blog-title {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px; /* Abstand nach der Überschrift */
+}
+
+/* Stil für den Text im Blogeintrag */
+.blog-content {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.5; /* Für bessere Lesbarkeit */
+  margin-bottom: 20px; /* Abstand zur Fußzeile */
+}
+
+
+.css-blog-entry-container {
+
+  margin-top: 10 px;
+  margin-bottom: 10px;
+  margin-left: 5 px;
+  margin-right: 5 px;
+
+  border: 1px, #8f8f68;
+
+}
