@@ -1,0 +1,6 @@
+insgesamt 16
+drwxrwxr-x 3 ea234 ea234 4096 Aug  5 13:51 .
+drwxrwxr-x 3 ea234 ea234 4096 Aug  5 13:51 ..
+drwxrwxr-x 8 ea234 ea234 4096 Aug  5 13:51 .git
+-rw-rw-r-- 1 ea234 ea234   30 Aug  5 13:51 README.md
+-rw-rw-r-- 1 ea234 ea234    0 Aug  5 13:51 test.txt
