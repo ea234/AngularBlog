@@ -376,7 +376,7 @@ The Amiga 500 was sold in the same retail outlets as the Commodore 64, as oppose
    else if ( nr === 4 )
    {
     text_header = "Commodore PET"
-    text_entry = `he Commodore PET is a line of personal computers produced starting in 1977 by Commodore International.[3] A single all-in-one case combines a MOS Technology 6502 microprocessor, Commodore BASIC in read-only memory, keyboard, monochrome monitor, and, in early models, a cassette deck.
+    text_entry = `The Commodore PET is a line of personal computers produced starting in 1977 by Commodore International.[3] A single all-in-one case combines a MOS Technology 6502 microprocessor, Commodore BASIC in read-only memory, keyboard, monochrome monitor, and, in early models, a cassette deck.
 
 Development of the system began in 1976, and it was demonstrated and sold as the first personal computer for the masses at the January 1977 Consumer Electronics Show.[1] The name "PET" was suggested by Andre Souson after he saw the Pet Rock in Los Gatos, and stated they were going to make the "pet computer".[5] It was backronymed to Personal Electronic Transactor. In a 1995 retrospective, Byte magazine—and subsequently many others—referred to the PET, Apple II and TRS-80 collectively as the "1977 trinity" of pioneering personal computers. [6]
 

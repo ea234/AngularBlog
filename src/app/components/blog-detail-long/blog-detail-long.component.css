@@ -1,5 +1,38 @@
+.css-blog-entry-container {
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  margin-top: 10 px;
+  margin-bottom: 10px;
+  margin-left: 5 px;
+  margin-right: 5 px;
+
+  border: 10px, #30302f;
+}
+
+.css-blog-title {
+
+  font-family: inherit;
+
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Stil für den Text im Blogeintrag */
+.css-blog-content {
+  font-family: inherit;
+
+  font-size: 14px;
+
+  line-height: 1.5; /* Für bessere Lesbarkeit */
+  margin-bottom: 20px; /* Abstand zur Fußzeile */
+
+  white-space: pre-wrap;
+}
+
 /* Stil für die Fußzeile */
-.blog-footer-div {
+.css-blog-footer-div {
   display: flex;
   justify-content: space-between;
   font-family: Arial, sans-serif;
@@ -10,8 +43,8 @@
 }
 
 /* Spezifische Klassen für Datum und Autor */
-.blog-footer-date {
+.css-blog-footer-date {
 }
 
-.blog-footer-author {
+.css-blog-footer-author {
 }

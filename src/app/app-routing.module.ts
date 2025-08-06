@@ -11,7 +11,6 @@ import { LogOutComponent } from './components/log-out/log-out.component';
 
 const appRoutes: Routes = [
 
-  { path: 'home',  component: HomeComponent },
   { path: 'blog',  component: BlogComponent,
     children: [
 
@@ -26,8 +25,8 @@ const appRoutes: Routes = [
   },
   { path: 'login',  component: LogInComponent },
   { path: 'logout',  component: LogOutComponent },
-  { path: '**', redirectTo: '/home', pathMatch: 'full' },
-  { path: '',      component: HomeComponent }
+  { path: '**', redirectTo: '/blog', pathMatch: 'full' },
+  { path: '',      component: BlogComponent }
 ];
 
 @NgModule({
