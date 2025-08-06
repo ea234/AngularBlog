@@ -1,5 +1,6 @@
-<div class="container1">
-  <div class="div1">
+<div class="css-blog-view-seperator-container">
+
+  <div class="css-blog-view-seperator-div-col1">
 
       <div *ngIf="entry_count === 0; else div_show_blog_list">
 
@@ -9,9 +10,7 @@
 
       <ng-template #div_show_blog_list>
 
-        <p>Entry Count ist {{ entry_count }}</p>
-
-        <p>Blog Entries</p>
+        <p>Number of Blog Entries {{ entry_count }}</p>
 
          <app-button
           *ngIf="isUserLoggedIn()"
@@ -32,7 +31,7 @@
       </ng-template>
 
   </div>
-  <div class="div2">
+  <div class="css-blog-view-seperator-div-col2">
           <router-outlet></router-outlet>
 
   </div>

@@ -1,11 +1,11 @@
-.container1 {
+.css-blog-view-seperator-container {
   display: flex;
   width: 100%;
 }
 
 /* Erster Div, 40% der Breite */
-.div1 {
-    width: 30%;
+.css-blog-view-seperator-div-col1 {
+    width: 20%;
     padding-left: 5px;
     padding-right: 5px;
     padding-top: 5px;
@@ -13,11 +13,23 @@
   }
 
 /* Zweiter Div, 60% der Breite */
-.div2 {
-    width: 70%;
+.css-blog-view-seperator-div-col2 {
+    width: 80%;
     background-color: #cccecc; /* optional, für bessere Sichtbarkeit */
     padding-left: 5px;
     padding-right: 5px;
     padding-top: 5px;
     padding-bottom: 10px;
+}
+
+.css-blog-view-entry-container {
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  margin-top: 10 px;
+  margin-bottom: 10px;
+  margin-left: 5 px;
+  margin-right: 5 px;
+
+  border: 10px, #30302f;
 }
