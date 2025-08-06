@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { BlogDetailEmptyComponent } from './components/blog-detail-empty/blog-detail-empty.component';
@@ -35,4 +34,4 @@ const appRoutes: Routes = [
 })
 export class AppRoutingModule {
 
- }
+}

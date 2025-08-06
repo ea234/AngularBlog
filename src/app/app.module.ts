@@ -3,7 +3,6 @@ import { BrowserModule, provideClientHydration, withEventReplay } from '@angular
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -19,7 +18,6 @@ import { LogOutComponent } from './components/log-out/log-out.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     AboutComponent,
     BlogComponent,
     HeaderComponent,
