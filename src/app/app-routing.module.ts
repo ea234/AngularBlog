@@ -7,16 +7,20 @@ import { BlogDetailLongComponent } from './components/blog-detail-long/blog-deta
 import { authGuard } from './guards/auth/auth.guard';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { LogOutComponent } from './components/log-out/log-out.component';
+import { BlogAddNewComponent } from './components/blog-add-new/blog-add-new.component';
 
 const appRoutes: Routes = [
 
   { path: 'blog',  component: BlogComponent,
     children: [
 
+    { path: 'add',  component: BlogAddNewComponent },
+
     { path: ':blog_entry_id',  component: BlogDetailLongComponent  },
     { path: '',                component: BlogDetailEmptyComponent }
 
   ] },
+
   { path: 'showblog:blog_entry_id',  component: BlogDetailLongComponent },
   { path: 'about', component: AboutComponent ,
 

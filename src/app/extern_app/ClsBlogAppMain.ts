@@ -415,7 +415,7 @@ Part of the Commodore 64's success was its sale in regular retail stores instead
 
   private getMockUpBlockEntry( nr: number, user_id : number, user_name : string, entry_header : string, entry_text : string  ) : ClsBlogEntry
   {
-    const date = this.addDateMonate( undefined, nr, 0 );
+    const date = this.addDateMonate( undefined, nr * (-1), 0 );
 
     const year = date.getFullYear();
     const month = (date.getMonth() + 1).toString().padStart(2, '0');

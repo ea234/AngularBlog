@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { BlogEntryService } from '../../services/blog-entry.service';
 import { BlogEntry } from '../../ClsBlogEntry';
 import { BlogUserService } from '../../services/blog-user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-blog-entry-list',
@@ -18,7 +19,7 @@ export class BlogEntryListComponent implements OnInit, OnDestroy {
 
     observable_entry_count ? : Observable<number>;
 
-    constructor( private m_blog_entry_service : BlogEntryService, private m_user_service : BlogUserService ) {
+    constructor( private m_blog_entry_service : BlogEntryService, private m_user_service : BlogUserService, private m_router: Router ) {
 
       this.observable_entry_count = this.m_blog_entry_service.getEntryCount();
 
@@ -35,15 +36,27 @@ export class BlogEntryListComponent implements OnInit, OnDestroy {
       //this.observable_entry_count?.unsubscribe();
     }
 
-    addBlogEntry() {
+    showViewAddBlogEntry()
+    {
+      console.log( `Click showViewAddBlogEntry ${ this.m_router.url }` );
 
+      let url_neu = this.m_router.url + "/add";
+
+      this.m_router.navigate( [ url_neu ] );
+
+      // this.m_router.navigate( [ 'add' ] ); // somehow not working
     }
-
 
     public isUserLoggedIn() : boolean
     {
       return this.m_user_service.isUserLoggedIn();
     }
+
+    hasRoute( route_to_check: string ) : boolean
+    {
+      return this.m_router.url === route_to_check;
+    }
+
 
 
 }

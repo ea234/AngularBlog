@@ -14,6 +14,7 @@ import { BlogDetailLongComponent } from './components/blog-detail-long/blog-deta
 import { ButtonComponent } from './components/button/button.component';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { LogOutComponent } from './components/log-out/log-out.component';
+import { BlogAddNewComponent } from './components/blog-add-new/blog-add-new.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { LogOutComponent } from './components/log-out/log-out.component';
     BlogDetailLongComponent,
     ButtonComponent,
     LogInComponent,
-    LogOutComponent
+    LogOutComponent,
+    BlogAddNewComponent
   ],
   imports: [
     BrowserModule,
