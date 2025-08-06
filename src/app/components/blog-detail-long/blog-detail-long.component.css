@@ -28,6 +28,12 @@
   line-height: 1.5; /* Für bessere Lesbarkeit */
   margin-bottom: 20px; /* Abstand zur Fußzeile */
 
+  /*
+   * https://stackoverflow.com/questions/50327396/replace-n-with-br-tag-angular-6
+   *
+   * You don't need a library. Simply set the white-space property of your tag to pre-wrap
+   * (or use a <pre> tag that should have this style by default)
+   */
   white-space: pre-wrap;
 }
 

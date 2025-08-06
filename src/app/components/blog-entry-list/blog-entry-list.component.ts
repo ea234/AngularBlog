@@ -17,6 +17,8 @@ export class BlogEntryListComponent implements OnInit, OnDestroy {
 
     entry_count : number = 0;
 
+    my_route_start : string = "/blog";
+
     observable_entry_count ? : Observable<number>;
 
     constructor( private m_blog_entry_service : BlogEntryService, private m_user_service : BlogUserService, private m_router: Router ) {
@@ -29,6 +31,8 @@ export class BlogEntryListComponent implements OnInit, OnDestroy {
     ngOnInit()
     {
       this.m_blog_entry_service.getArrayBlogEntry().subscribe( ( entries ) => this.blog_vektor = entries );
+
+      this.my_route_start = this.m_router.url;
     }
 
     ngOnDestroy(): void {
@@ -38,13 +42,21 @@ export class BlogEntryListComponent implements OnInit, OnDestroy {
 
     showViewAddBlogEntry()
     {
-      console.log( `Click showViewAddBlogEntry ${ this.m_router.url }` );
+      //console.log( `Click showViewAddBlogEntry ${ this.m_router.url }` );
+      //console.log( `this.my_route_start        ${ this.my_route_start }` );
 
-      let url_neu = this.m_router.url + "/add";
+      //let url_neu1 = this.m_router.url + "/add";
+      let url_neu2 = this.my_route_start + "/add";
 
-      this.m_router.navigate( [ url_neu ] );
+      this.m_router.navigate( [ url_neu2 ] );
 
-      // this.m_router.navigate( [ 'add' ] ); // somehow not working
+      /*
+       * Not working, when showing a blog detail.
+       *
+       * Click showViewAddBlogEntry /blog/0
+       * this.my_route_start        /blog
+       */
+      //this.m_router.navigate( [ 'add' ] ); // somehow not working
     }
 
     public isUserLoggedIn() : boolean
