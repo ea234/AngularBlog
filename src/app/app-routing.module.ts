@@ -8,6 +8,7 @@ import { authGuard } from './guards/auth/auth.guard';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { LogOutComponent } from './components/log-out/log-out.component';
 import { BlogAddNewComponent } from './components/blog-add-new/blog-add-new.component';
+import { confirmationGuard } from './guards/confirmation/confirmation.guard';
 
 const appRoutes: Routes = [
 
@@ -24,7 +25,8 @@ const appRoutes: Routes = [
   { path: 'showblog:blog_entry_id',  component: BlogDetailLongComponent },
   { path: 'about', component: AboutComponent ,
 
-    canActivate : [ authGuard ]
+    canActivate : [ authGuard ],
+    canDeactivate : [ confirmationGuard ]
   },
   { path: 'login',  component: LogInComponent },
   { path: 'logout',  component: LogOutComponent },
@@ -33,6 +35,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
+
   imports: [RouterModule.forRoot( appRoutes )],
   exports: [RouterModule]
 })
