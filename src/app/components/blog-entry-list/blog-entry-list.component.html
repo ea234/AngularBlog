@@ -12,21 +12,25 @@
 
         <p>Number of Blog Entries {{ entry_count }}</p>
 
-         <app-button
-          *ngIf="isUserLoggedIn()"
-           color="green"
-           text="Add Blog Entry"
-           (btnClick)="showViewAddBlogEntry()"
-         ></app-button>
+          <app-button
+            *ngIf="isUserLoggedIn()"
+            color="green"
+            text="Add Blog Entry"
+            (btnClick)="showViewAddBlogEntry()"
+          ></app-button>
 
 
-        <app-blog-detail-short
+        <div class="css-view-list-limiter">
 
-          *ngFor="let blog_var of blog_vektor"
-          [blog_entry]="blog_var"
+          <app-blog-detail-short
 
-        >
-        </app-blog-detail-short>
+            *ngFor="let blog_var of blog_vektor"
+            [blog_entry]="blog_var"
+
+          >
+          </app-blog-detail-short>
+
+        </div>
 
       </ng-template>
 
