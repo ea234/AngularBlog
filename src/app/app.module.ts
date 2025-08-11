@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration, withEventReplay } from '@angular/platform-browser';
-
+import { FormsModule  } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './components/about/about.component';
@@ -15,6 +15,7 @@ import { ButtonComponent } from './components/button/button.component';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { LogOutComponent } from './components/log-out/log-out.component';
 import { BlogAddNewComponent } from './components/blog-add-new/blog-add-new.component';
+import { AddBlogTemplateComponent } from './components/add-blog-template/add-blog-template.component';
 
 @NgModule({
   declarations: [
@@ -29,11 +30,13 @@ import { BlogAddNewComponent } from './components/blog-add-new/blog-add-new.comp
     ButtonComponent,
     LogInComponent,
     LogOutComponent,
-    BlogAddNewComponent
+    BlogAddNewComponent,
+    AddBlogTemplateComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     NgbModule
   ],
   providers: [

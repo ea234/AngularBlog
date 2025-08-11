@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AddBlogTemplateComponent } from '../add-blog-template/add-blog-template.component';
 
 @Component({
   selector: 'app-blog-add-new',
