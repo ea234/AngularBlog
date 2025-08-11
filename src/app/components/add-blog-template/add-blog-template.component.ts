@@ -16,4 +16,15 @@ export class AddBlogTemplateComponent {
 
   }
 
+  cancelAdd() {
+
+    console.log( 'cancelAdd' );
+
+
+
+  }
+
+  /*
+  [disabled]="myUserForm.invalid"
+  */
 }

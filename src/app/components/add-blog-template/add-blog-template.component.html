@@ -6,12 +6,33 @@
     <div class="form-group"><label for="blog_id">ID          </label><input type="text" name="blog_id" class="form-control" ngModel ></div>
     <div class="form-group"><label for="blog_user">User      </label><input type="text" name="blog_user" class="form-control" ngModel ></div>
     <div class="form-group"><label for="blog_date">Date      </label><input type="text" name="blog_date" class="form-control" ngModel ></div>
-    <div class="form-group"><label for="blog_subject">Subject</label><input required type="text" name="blog_subject" class="form-control" ngModel></div>
-    <div class="form-group"><label for="blog_text">Text      </label><input required type="text" name="blog_text" class="form-control" ngModel></div>
+
+    <div class="form-group"><label for="blog_header">Header</label>
+
+      <input #myVarBlogHeader="ngModel" required minlength="5" maxlength="150" type="text" name="blog_header" class="form-control" ngModel>
+
+      <div *ngIf="myVarBlogHeader.touched && myVarBlogHeader.invalid" class="alert alert-danger">
+        <p *ngIf="myVarBlogHeader.errors && myVarBlogHeader.errors['required']" >Header is required</p>
+        <p *ngIf="myVarBlogHeader.errors && myVarBlogHeader.errors['minLength']" >minlength</p>
+        <p *ngIf="myVarBlogHeader.errors && myVarBlogHeader.errors['maxLength']" >maxlength is required</p>
+        <p *ngIf="myVarBlogHeader.errors" >{{ myVarBlogHeader.errors['minLength'] }}</p>
+
+
+      </div>
+
+    </div>
+
+    <div class="form-group"><label for="blog_text">Text      </label>
+
+      <input required  minlength="5" type="text" name="blog_text" class="form-control" ngModel>
+
+    </div>
 
     <hr>
 
-    <button class="btn btn-primary" type="submit" [disabled]="myUserForm.invalid" >Submit</button>
+    <button class="btn btn-primary" type="submit" >Submit</button>&nbsp;&nbsp;
+    <button class="btn btn-primary" (click)="cancelAdd()" >Cancel</button>
+
   </form>
 
 </div>
