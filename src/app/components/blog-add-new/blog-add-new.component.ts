@@ -9,4 +9,6 @@ import { AddBlogTemplateComponent } from '../add-blog-template/add-blog-template
 })
 export class BlogAddNewComponent {
 
+
+
 }

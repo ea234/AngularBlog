@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-add-blog-template',
@@ -7,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrl: './add-blog-template.component.css'
 })
 export class AddBlogTemplateComponent {
+
+
+  ngSubmitMyForm( userForm : NgForm ) {
+
+    console.log( 'ngSubmitMyForm' , userForm );
+
+  }
 
 }

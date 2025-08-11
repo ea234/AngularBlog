@@ -2,16 +2,16 @@
 
   <h3>New Blog Template Form</h3>
 
-  <form>
-    <div class="form-control"><label for="blog_id">ID          </label><input type="text" name="blog_id" class="form-control"></div>
-    <div class="form-control"><label for="blog_user">User      </label><input type="text" name="blog_user" class="form-control"></div>
-    <div class="form-control"><label for="blog_date">Date      </label><input type="text" name="blog_date" class="form-control"></div>
-    <div class="form-control"><label for="blog_subject">Subject</label><input type="text" name="blog_subject" class="form-control"></div>
-    <div class="form-control"><label for="blog_text">Text      </label><input type="text" name="blog_text" class="form-control"></div>
+  <form #myUserForm="ngForm" (ngSubmit)="ngSubmitMyForm( myUserForm )">
+    <div class="form-group"><label for="blog_id">ID          </label><input type="text" name="blog_id" class="form-control" ngModel ></div>
+    <div class="form-group"><label for="blog_user">User      </label><input type="text" name="blog_user" class="form-control" ngModel ></div>
+    <div class="form-group"><label for="blog_date">Date      </label><input type="text" name="blog_date" class="form-control" ngModel ></div>
+    <div class="form-group"><label for="blog_subject">Subject</label><input required type="text" name="blog_subject" class="form-control" ngModel></div>
+    <div class="form-group"><label for="blog_text">Text      </label><input required type="text" name="blog_text" class="form-control" ngModel></div>
 
     <hr>
 
-    <button class="btn"></button>
+    <button class="btn btn-primary" type="submit" [disabled]="myUserForm.invalid" >Submit</button>
   </form>
 
 </div>
