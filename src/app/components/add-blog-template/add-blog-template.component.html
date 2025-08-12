@@ -3,18 +3,21 @@
   <h3>New Blog Template Form</h3>
 
   <form #myUserForm="ngForm" (ngSubmit)="ngSubmitMyForm( myUserForm )">
+
     <div class="form-group"><label for="blog_id">ID          </label><input type="text" name="blog_id" class="form-control" ngModel ></div>
+
     <div class="form-group"><label for="blog_user">User      </label><input type="text" name="blog_user" class="form-control" ngModel ></div>
-    <div class="form-group"><label for="blog_date">Date      </label><input type="text" name="blog_date" class="form-control" ngModel ></div>
+
+    <div class="form-group"><label for="blog_date">Date      </label><input type="text" name="blog_date" class="form-control" [(ngModel)]="new_blog_entry.m_entry_date_string" ></div>
 
     <div class="form-group"><label for="blog_header">Header</label>
 
-      <input #myVarBlogHeader="ngModel" required minlength="5" maxlength="150" type="text" name="blog_header" class="form-control" ngModel>
+      <input #myVarBlogHeader="ngModel" required minlength="5" maxlength="150" type="text" name="blog_header" class="form-control" [(ngModel)]="new_blog_entry.m_entry_header">
 
       <div *ngIf="myVarBlogHeader.touched && myVarBlogHeader.invalid" class="alert alert-danger">
         <p *ngIf="myVarBlogHeader.errors && myVarBlogHeader.errors['required']" >Header is required</p>
         <p *ngIf="myVarBlogHeader.errors && myVarBlogHeader.errors['minLength']" >minlength</p>
-        <p *ngIf="myVarBlogHeader.errors && myVarBlogHeader.errors['maxLength']" >maxlength is required</p>
+        <p *ngIf="myVarBlogHeader.errors && myVarBlogHeader.errors['maxLength']" >maxlength</p>
         <p *ngIf="myVarBlogHeader.errors" >{{ myVarBlogHeader.errors['minLength'] }}</p>
 
 
@@ -24,7 +27,19 @@
 
     <div class="form-group"><label for="blog_text">Text      </label>
 
-      <input required  minlength="5" type="text" name="blog_text" class="form-control" ngModel>
+      <textarea required minlength="5" maxlength="32000" name="blog_text" class="form-control" ngModel
+      rows="10" cols="40" placeholder="Gib hier deinen Text ein..."></textarea>
+
+
+      <div *ngIf="myVarBlogHeader.touched && myVarBlogHeader.invalid" class="alert alert-danger">
+        <p *ngIf="myVarBlogHeader.errors && myVarBlogHeader.errors['required']" >Text is required</p>
+        <p *ngIf="myVarBlogHeader.errors && myVarBlogHeader.errors['minLength']" >minlength</p>
+        <p *ngIf="myVarBlogHeader.errors && myVarBlogHeader.errors['maxLength']" >maxlength</p>
+        <p *ngIf="myVarBlogHeader.errors" >{{ myVarBlogHeader.errors['minLength'] }}</p>
+
+
+      </div>
+
 
     </div>
 
