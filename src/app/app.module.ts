@@ -16,6 +16,7 @@ import { LogInComponent } from './components/log-in/log-in.component';
 import { LogOutComponent } from './components/log-out/log-out.component';
 import { BlogAddNewComponent } from './components/blog-add-new/blog-add-new.component';
 import { AddBlogTemplateComponent } from './components/add-blog-template/add-blog-template.component';
+import { BlogEditFormComponent } from './components/blog-edit-form/blog-edit-form.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AddBlogTemplateComponent } from './components/add-blog-template/add-blo
     LogInComponent,
     LogOutComponent,
     BlogAddNewComponent,
-    AddBlogTemplateComponent
+    AddBlogTemplateComponent,
+    BlogEditFormComponent
   ],
   imports: [
     BrowserModule,

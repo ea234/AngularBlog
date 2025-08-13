@@ -27,9 +27,9 @@ export class BlogAppMain {
   {
     for (let i = 0; i < 20; i++)
     {
-      let blog_entry =  this.getBlogEntry1( i , 1, "Admin Workflow" );
+      let blog_entry =  this.getBlogEntry1( i , i % 2 === 0 ? 1 : 2, "Admin Workflow" );
 
-      console.log(`Element Nummer ${i} ${ blog_entry.m_entry_header }`);
+      console.log(`Element Nummer ${i} ${ blog_entry.m_user_id }  ${ blog_entry.m_entry_header }`);
 
       this.addBlogEntry( blog_entry );
 

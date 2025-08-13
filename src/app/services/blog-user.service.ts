@@ -27,6 +27,11 @@ export class BlogUserService {
     return this.m_blog_user.m_is_logged_in === false; // preferred way
   }
 
+  public getUserID() : number
+  {
+    return this.m_blog_user.m_user_id;
+  }
+
   userLogOut() : boolean {
 
     this.m_blog_user.m_is_logged_in = false;

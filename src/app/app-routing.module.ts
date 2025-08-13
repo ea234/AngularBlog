@@ -28,7 +28,7 @@ const appRoutes: Routes = [
   { path: 'showblog:blog_entry_id', component: BlogDetailLongComponent },
   { path: 'about',                  component: AboutComponent ,
 
-    canActivate   : [ authGuard ],
+    canActivate   : [ authGuard         ],
     canDeactivate : [ confirmationGuard ]
   },
   { path: 'login',   component: LogInComponent },
@@ -39,8 +39,8 @@ const appRoutes: Routes = [
 
 @NgModule({
 
-  imports: [RouterModule.forRoot( appRoutes )],
-  exports: [RouterModule]
+  imports: [ RouterModule.forRoot( appRoutes ) ],
+  exports: [ RouterModule                      ]
 })
 export class AppRoutingModule {
 
