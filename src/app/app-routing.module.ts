@@ -15,23 +15,26 @@ const appRoutes: Routes = [
   { path: 'blog',  component: BlogComponent,
     children: [
 
-    { path: 'add',  component: BlogAddNewComponent },
+    {
+      path: 'add',  component: BlogAddNewComponent,
+
+      canDeactivate : [ confirmationGuard ]
+    },
 
     { path: ':blog_entry_id',  component: BlogDetailLongComponent  },
     { path: '',                component: BlogDetailEmptyComponent }
 
   ] },
+  { path: 'showblog:blog_entry_id', component: BlogDetailLongComponent },
+  { path: 'about',                  component: AboutComponent ,
 
-  { path: 'showblog:blog_entry_id',  component: BlogDetailLongComponent },
-  { path: 'about', component: AboutComponent ,
-
-    canActivate : [ authGuard ],
+    canActivate   : [ authGuard ],
     canDeactivate : [ confirmationGuard ]
   },
-  { path: 'login',  component: LogInComponent },
+  { path: 'login',   component: LogInComponent },
   { path: 'logout',  component: LogOutComponent },
   { path: '**', redirectTo: '/blog', pathMatch: 'full' },
-  { path: '',      component: BlogComponent }
+  { path: '',        component: BlogComponent }
 ];
 
 @NgModule({
