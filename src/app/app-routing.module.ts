@@ -9,6 +9,7 @@ import { LogInComponent } from './components/log-in/log-in.component';
 import { LogOutComponent } from './components/log-out/log-out.component';
 import { BlogAddNewComponent } from './components/blog-add-new/blog-add-new.component';
 import { confirmationGuard } from './guards/confirmation/confirmation.guard';
+import { BlogEditFormComponent } from './components/blog-edit-form/blog-edit-form.component';
 
 const appRoutes: Routes = [
 
@@ -21,6 +22,7 @@ const appRoutes: Routes = [
       canDeactivate : [ confirmationGuard ]
     },
 
+
     { path: ':blog_entry_id',  component: BlogDetailLongComponent  },
     { path: '',                component: BlogDetailEmptyComponent }
 
@@ -31,6 +33,10 @@ const appRoutes: Routes = [
     canActivate   : [ authGuard         ],
     canDeactivate : [ confirmationGuard ]
   },
+  {
+    path: 'edit/:blog_entry_id',  component: BlogEditFormComponent
+  },
+
   { path: 'login',   component: LogInComponent },
   { path: 'logout',  component: LogOutComponent },
   { path: '**', redirectTo: '/blog', pathMatch: 'full' },
