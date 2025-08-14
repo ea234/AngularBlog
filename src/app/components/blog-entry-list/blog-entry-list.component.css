@@ -41,3 +41,6 @@
   padding: 10px; /* Innenabstand */
   box-sizing: border-box; /* Damit Padding in die Breite/Höhe einbezogen wird */
 }
+
+.odd { background: #e8c6c6; }
+.even { background: #ffffff; }

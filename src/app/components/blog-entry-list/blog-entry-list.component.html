@@ -24,9 +24,11 @@
 
           <app-blog-detail-short
 
-            *ngFor="let blog_var of blog_vektor"
+            *ngFor="let blog_var of blog_vektor; let i = index"
             [blog_entry]="blog_var"
 
+            [class.odd]="i % 2 === 0"
+            [class.even]="i % 2 !== 0"
           >
           </app-blog-detail-short>
 
