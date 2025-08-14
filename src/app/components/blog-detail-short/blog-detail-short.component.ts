@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { BlogEntry } from '../../ClsBlogEntry';
 import { BlogUserService } from '../../services/blog-user.service';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-blog-detail-short',
@@ -8,7 +9,9 @@ import { BlogUserService } from '../../services/blog-user.service';
   templateUrl: './blog-detail-short.component.html',
   styleUrl: './blog-detail-short.component.css'
 })
-export class BlogDetailShortComponent {
+export class BlogDetailShortComponent
+{
+  public fa_icon_edit = faEdit;
 
   @Input() blog_entry ! : BlogEntry;
 
@@ -33,8 +36,6 @@ export class BlogDetailShortComponent {
         return true;
       }
     }
-
-
 
     return false;
   }

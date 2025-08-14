@@ -17,6 +17,7 @@ import { LogOutComponent } from './components/log-out/log-out.component';
 import { BlogAddNewComponent } from './components/blog-add-new/blog-add-new.component';
 import { AddBlogTemplateComponent } from './components/add-blog-template/add-blog-template.component';
 import { BlogEditFormComponent } from './components/blog-edit-form/blog-edit-form.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { BlogEditFormComponent } from './components/blog-edit-form/blog-edit-for
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    FontAwesomeModule
   ],
   providers: [
     provideClientHydration(withEventReplay())
