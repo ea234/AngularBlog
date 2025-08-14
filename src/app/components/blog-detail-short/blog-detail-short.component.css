@@ -16,3 +16,6 @@
   text-overflow: ellipsis;
   cursor: pointer;
 }
+
+.edit-area        { display: inline-block; }
+.edit-placeholder { display: inline-block; width: 20px; height: 20px; }

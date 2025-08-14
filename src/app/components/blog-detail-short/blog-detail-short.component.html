@@ -1,7 +1,6 @@
 <div class="css-blog-entry-container action-row" >
 
-  <div routerLink="./edit/{{ blog_entry.m_entry_id }}" class="edit-link" *ngIf="canUserEditBlogEntry()"  >Edit</div>
-  <a routerLink="/edit/{{ blog_entry.m_entry_id }}" class="edit-link" *ngIf="canUserEditBlogEntry()"  >Edit2</a>
-  <div routerLink="./{{ blog_entry.m_entry_id }}"      class="view-link" >{{ blog_entry.m_entry_header }} </div>
+  <div routerLink="/edit/{{ blog_entry.m_entry_id }}" class="edit-link" *ngIf="canUserEditBlogEntry()"  >Edit</div>
+  <div routerLink="./{{ blog_entry.m_entry_id }}"     class="view-link" >{{ blog_entry.m_entry_header }} </div>
 
 </div>
