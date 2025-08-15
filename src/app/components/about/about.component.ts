@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { CanComponentDeactivate } from '../../guards/confirmation/confirmation.guard';
 
 @Component({
   selector: 'app-about',
@@ -7,9 +6,6 @@ import { CanComponentDeactivate } from '../../guards/confirmation/confirmation.g
   templateUrl: './about.component.html',
   styleUrl: './about.component.css'
 })
-export class AboutComponent implements CanComponentDeactivate {
+export class AboutComponent {
 
-  confirm(): boolean {
-      return confirm( "Seite verlassen?" );
-  }
 }

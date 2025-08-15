@@ -177,6 +177,25 @@ export class BlogAppMain {
     return undefined;
   }
 
+  public hasBlogEntryId( blog_entry_id : number ) : boolean
+  {
+    let ergebnis_obj : any;
+
+    /*
+     * Pruefung: Vektor noch nicht erstellt ?
+     */
+    if ( this.m_vector_blog_entries != undefined )
+    {
+      ergebnis_obj = this.m_vector_blog_entries.filter( blog_entry_p =>  blog_entry_p.m_entry_id ===  blog_entry_id )
+
+      if ( ergebnis_obj !== undefined )
+      {
+        return ( ergebnis_obj[0] !== undefined );
+      }
+    }
+
+    return false;
+  }
 
 
   private addDateMonate ( pDatum : Date | undefined, pAnzahlMonate : number, pKnzTag : number ) : Date

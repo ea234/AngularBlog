@@ -38,4 +38,10 @@ export class BlogEntryService {
     return this.cls_blog_app.getBlogEntry( blog_entry_id );
   }
 
+  public hasBlogEntryId( blog_entry_id : number ) : boolean
+  {
+    return this.cls_blog_app.hasBlogEntryId( blog_entry_id );
+  }
+
+
 }

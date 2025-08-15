@@ -29,12 +29,12 @@ const appRoutes: Routes = [
   ] },
   { path: 'showblog:blog_entry_id', component: BlogDetailLongComponent },
   { path: 'about',                  component: AboutComponent ,
+  },
+  {
+    path: 'edit/:blog_entry_id',  component: BlogEditFormComponent,
 
     canActivate   : [ authGuard         ],
     canDeactivate : [ confirmationGuard ]
-  },
-  {
-    path: 'edit/:blog_entry_id',  component: BlogEditFormComponent
   },
 
   { path: 'login',   component: LogInComponent },
