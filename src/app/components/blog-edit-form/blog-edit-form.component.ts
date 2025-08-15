@@ -24,8 +24,14 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
                private m_activated_route    : ActivatedRoute,
                private m_router             : Router )
   {
-    this.new_blog_entry.m_entry_header = "New Blog Entry";
-    this.new_blog_entry.m_entry_text = "New Blog Text";
+    this.new_blog_entry.m_user_id = this.m_user_service.getUserID();
+    this.new_blog_entry.m_user_name = this.m_user_service.getUserName();
+
+    this.new_blog_entry.m_entry_date_string = getDateString();
+    this.new_blog_entry.m_entry_date_number = getDateNumber();
+
+    this.new_blog_entry.m_entry_header = "";
+    this.new_blog_entry.m_entry_text = "";
   }
 
 
@@ -78,7 +84,7 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
     console.log( 'ngSubmitMyForm blog_date   =>', my_form.blog_date );
     console.log( 'ngSubmitMyForm blog_header =>', my_form.blog_header );
     console.log( 'ngSubmitMyForm blog_id     =>', my_form.blog_id );
-    console.log( 'ngSubmitMyForm blog_text   =>', my_form.blog_text );
+    //console.log( 'ngSubmitMyForm blog_text   =>', my_form.blog_text );
     console.log( 'ngSubmitMyForm blog_user   =>', my_form.blog_user );
 
   }
