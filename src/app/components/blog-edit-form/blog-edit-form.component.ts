@@ -103,6 +103,8 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
     //console.log( 'ngSubmitMyForm blog_text   =>', my_form.blog_text );
     console.log( 'ngSubmitMyForm blog_user   =>', my_form.blog_user );
 
+    this.m_blog_entry_service.saveBlogEntry( this.blog_entry_copy );
+
     this.m_show_confirm_dialog = false;
 
     this.m_router.navigate( ['/blog'], { replaceUrl: true, skipLocationChange: false })

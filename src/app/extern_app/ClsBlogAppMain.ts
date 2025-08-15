@@ -177,6 +177,33 @@ export class BlogAppMain {
     return undefined;
   }
 
+
+  public saveBlogEntry( blog_entry_new : ClsBlogEntry ) : boolean
+  {
+    if ( blog_entry_new.m_entry_id >= 0 )
+    {
+      if ( this.hasBlogEntryId( blog_entry_new.m_entry_id ) )
+      {
+        let existing_blog_entry : ClsBlogEntry;
+
+        existing_blog_entry = <ClsBlogEntry> this.getBlogEntry( blog_entry_new.m_entry_id );
+
+        if ( existing_blog_entry !== undefined )
+        {
+          existing_blog_entry.m_entry_header = blog_entry_new.m_entry_header;
+          existing_blog_entry.m_entry_text   = blog_entry_new.m_entry_text;
+        }
+      }
+    }
+    else
+    {
+      this.addBlogEntry( blog_entry_new );
+    }
+
+    return true;
+  }
+
+
   public hasBlogEntryId( blog_entry_id : number ) : boolean
   {
     let ergebnis_obj : any;

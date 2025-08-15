@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BlogAppMain } from '../extern_app/ClsBlogAppMain';
 import { Observable, of } from 'rxjs';
-import { BlogEntry } from '../ClsBlogEntry';
+import { BlogEntry, ClsBlogEntry } from '../ClsBlogEntry';
 
 @Injectable({
   providedIn: 'root'
@@ -43,5 +43,9 @@ export class BlogEntryService {
     return this.cls_blog_app.hasBlogEntryId( blog_entry_id );
   }
 
+  public saveBlogEntry( blog_entry_new : ClsBlogEntry ) : boolean
+  {
+    return this.cls_blog_app.saveBlogEntry( blog_entry_new );
+  }
 
 }
