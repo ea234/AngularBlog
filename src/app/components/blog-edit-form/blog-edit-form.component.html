@@ -4,11 +4,11 @@
 
   <form #myUserForm="ngForm" (ngSubmit)="ngSubmitMyForm( myUserForm )">
 
-    <div class="form-group"><label for="blog_id">ID          </label><input type="text" name="blog_id" class="form-control" [(ngModel)]="new_blog_entry.m_entry_id" ></div>
+    <div class="form-group"><label for="blog_id">ID          </label><input type="text" name="blog_id" class="form-control" [(ngModel)]="blog_entry_copy.m_entry_id" ></div>
 
-    <div class="form-group"><label for="blog_user">User      </label><input type="text" name="blog_user" class="form-control" [(ngModel)]="new_blog_entry.m_user_name"  ></div>
+    <div class="form-group"><label for="blog_user">User      </label><input type="text" name="blog_user" class="form-control" [(ngModel)]="blog_entry_copy.m_user_name"  ></div>
 
-    <div class="form-group"><label for="blog_date">Date      </label><input type="text" name="blog_date" class="form-control" [(ngModel)]="new_blog_entry.m_entry_date_string" ></div>
+    <div class="form-group"><label for="blog_date">Date      </label><input type="text" name="blog_date" class="form-control" [(ngModel)]="blog_entry_copy.m_entry_date_string" ></div>
 
     <div class="form-group"><label for="blog_header">Header</label>
 
@@ -18,7 +18,7 @@
              type="text"
              name="blog_header"
              class="form-control"
-             [(ngModel)]="new_blog_entry.m_entry_header"
+             [(ngModel)]="blog_entry_copy.m_entry_header"
              placeholder="Header Text">
 
       <div *ngIf="myVarBlogHeader.touched && myVarBlogHeader.invalid" class="alert alert-danger">
@@ -38,7 +38,7 @@
                 maxlength="32000"
                 name="blog_text"
                 class="form-control"
-                [(ngModel)]="new_blog_entry.m_entry_text"
+                [(ngModel)]="blog_entry_copy.m_entry_text"
                 rows="10"
                 cols="40"
                 placeholder="Blog Text"></textarea>
