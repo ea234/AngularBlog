@@ -81,8 +81,8 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
   }
 
 
-  ngSubmitMyForm( userForm : NgForm ) {
-
+  ngSubmitMyForm( userForm : NgForm )
+  {
     let my_form = userForm.form.value;
 
     //console.log( 'ngSubmitMyForm my_form ' , my_form );
@@ -107,6 +107,7 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
       return confirm( "Leave Page?" );
     }
 
-    return false;
+    return true;
   }
+
 }
