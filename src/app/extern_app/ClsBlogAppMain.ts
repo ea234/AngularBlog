@@ -156,6 +156,22 @@ export class BlogAppMain
   }
 
 
+  public deleteBlogEntry( blog_entry_id_to_delete : number ) : boolean
+  {
+    if ( blog_entry_id_to_delete >= 0 )
+    {
+      const index_blog_entry = this.getIndexBlogEntryId( blog_entry_id_to_delete );
+
+      if ( ( this.m_vector_blog_entries !== undefined ) && ( index_blog_entry >= 0 ) )
+      {
+        this.m_vector_blog_entries.splice( index_blog_entry, 1);
+      }
+    }
+
+    return true;
+  }
+
+
   public hasBlogEntryId( blog_entry_id : number ) : boolean
   {
     /*
@@ -183,6 +199,35 @@ export class BlogAppMain
 
     return false;
   }
+
+
+  public getIndexBlogEntryId( blog_entry_id : number ) : number
+  {
+    /*
+     * ID kann nicht negativ sein
+     */
+    if ( blog_entry_id < 0 )
+    {
+      return -1;
+    }
+
+    /*
+     * Pruefung: Vektor noch nicht erstellt ?
+     */
+    if ( this.m_vector_blog_entries != undefined )
+    {
+      const index_blog_entry = this.m_vector_blog_entries.findIndex( blog_entry_find => blog_entry_find.m_entry_id === blog_entry_id )
+
+      if ( index_blog_entry >= 0 )
+      {
+        return index_blog_entry;
+      }
+    }
+
+    return -1;
+  }
+
+
 
 
   private addDateMonate ( pDatum : Date | undefined, pAnzahlMonate : number, pKnzTag : number ) : Date

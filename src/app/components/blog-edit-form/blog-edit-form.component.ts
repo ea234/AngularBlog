@@ -129,6 +129,25 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
     this.m_router.navigate( ['/blog'], { replaceUrl: true, skipLocationChange: false } )
   }
 
+  public deleteBlogEntry() : boolean
+  {
+    let fkt_return_value : boolean = false;
+
+    if ( confirm( `Delete Blog Entry ${ this.blog_entry_copy.m_entry_header }` ) )
+    {
+      console.log( "Confirm yes" );
+
+      this.m_blog_entry_service.deleteBlogEntry( this.blog_entry_copy.m_entry_id );
+
+      fkt_return_value = true;
+    }
+    else
+    {
+      console.log( "Confirm no" );
+    }
+
+    return fkt_return_value;
+  }
 
   public confirm(): boolean
   {
@@ -139,5 +158,4 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
     return true;
   }
-
 }

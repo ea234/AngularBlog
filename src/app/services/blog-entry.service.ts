@@ -50,4 +50,10 @@ export class BlogEntryService
   {
     return this.cls_blog_app.saveBlogEntry( blog_entry_new );
   }
+
+
+  public deleteBlogEntry( blog_entry_id : number ) : boolean
+  {
+    return this.cls_blog_app.deleteBlogEntry( blog_entry_id );
+  }
 }
