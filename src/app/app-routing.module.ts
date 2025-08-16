@@ -37,6 +37,13 @@ const appRoutes: Routes = [
     canDeactivate : [ confirmationGuard ]
   },
 
+  {
+    path: 'addnew',  component: BlogEditFormComponent,
+
+    canActivate   : [ authGuard         ],
+    canDeactivate : [ confirmationGuard ]
+  },
+
   { path: 'login',   component: LogInComponent },
   { path: 'logout',  component: LogOutComponent },
   { path: '**', redirectTo: '/blog', pathMatch: 'full' },

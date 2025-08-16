@@ -206,6 +206,14 @@ export class BlogAppMain {
 
   public hasBlogEntryId( blog_entry_id : number ) : boolean
   {
+    /*
+     * ID kann nicht negativ sein
+     */
+    if ( blog_entry_id < 0 )
+    {
+      return false;
+    }
+
     let ergebnis_obj : any;
 
     /*
@@ -213,7 +221,7 @@ export class BlogAppMain {
      */
     if ( this.m_vector_blog_entries != undefined )
     {
-      ergebnis_obj = this.m_vector_blog_entries.filter( blog_entry_p =>  blog_entry_p.m_entry_id ===  blog_entry_id )
+      ergebnis_obj = this.m_vector_blog_entries.filter( blog_entry_filter =>  blog_entry_filter.m_entry_id ===  blog_entry_id )
 
       if ( ergebnis_obj !== undefined )
       {

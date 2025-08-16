@@ -40,7 +40,7 @@ export class BlogEntryListComponent implements OnInit, OnDestroy {
       //this.observable_entry_count?.unsubscribe();
     }
 
-    showViewAddBlogEntry()
+    showViewAddBlogEntry1()
     {
       //console.log( `Click showViewAddBlogEntry ${ this.m_router.url }` );
       //console.log( `this.my_route_start        ${ this.my_route_start }` );
@@ -58,6 +58,14 @@ export class BlogEntryListComponent implements OnInit, OnDestroy {
        */
       //this.m_router.navigate( [ 'add' ] ); // somehow not working
     }
+
+    showViewAddBlogEntry2()
+    {
+      let url_neu2 = "/addnew";
+
+      this.m_router.navigate( [ url_neu2 ] );
+    }
+
 
     public isUserLoggedIn() : boolean
     {

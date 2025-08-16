@@ -18,6 +18,8 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 {
   private m_show_confirm_dialog : boolean = true;
 
+  private m_blog_is_add_new     : boolean = false;
+
   @Input() blog_entry_copy      : ClsBlogEntry = new ClsBlogEntry;
 
   constructor( private m_blog_entry_service : BlogEntryService,
@@ -34,43 +36,71 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
     this.blog_entry_copy.m_entry_header      = "";
     this.blog_entry_copy.m_entry_text        = "";
+
+    this.m_blog_is_add_new = true;
   }
 
 
   ngOnInit()
   {
-    let m_blog_id_not_valid : boolean = true;
+    let blog_id_not_valid : boolean = true;
 
-    const blog_entry_id_string = this.m_activated_route.snapshot.paramMap.get( 'blog_entry_id' );
+    const url = this.m_router.url; // z.B. '/blog/addNewBlog'
 
-    const blog_entry_id_number = blog_entry_id_string !== null ? Number( blog_entry_id_string ) : -1;
+    const url_contains_add_new_blog = url.includes('addnew'); // nutze containsAddNewBlog entsprechend
 
-    if ( blog_entry_id_number >= 0 )
+    let blog_entry_id_string = this.m_activated_route.snapshot.paramMap.get( 'blog_entry_id' );
+
+    if ( url_contains_add_new_blog )
     {
-      if ( this.m_blog_entry_service.hasBlogEntryId( blog_entry_id_number ) )
+      blog_entry_id_string = "-1";
+    }
+    else
+    {
+      blog_entry_id_string = this.m_activated_route.snapshot.paramMap.get( 'blog_entry_id' );
+    }
+
+    if (blog_entry_id_string !== null)
+    {
+      const blog_entry_id_number = Number( blog_entry_id_string );
+
+      if ( ( Number.isInteger( blog_entry_id_number ) ) )
       {
-        m_blog_id_not_valid = false;
-
-        let existing_blog_entry : ClsBlogEntry;
-
-        existing_blog_entry = <ClsBlogEntry> this.m_blog_entry_service.getBlogEntry( blog_entry_id_number );
-
-        if ( existing_blog_entry !== undefined )
+        if ( blog_entry_id_number === -1 )
         {
-          this.blog_entry_copy.m_user_id           =      existing_blog_entry.m_user_id;
-          this.blog_entry_copy.m_user_name         = "" + existing_blog_entry.m_user_name;
+          blog_id_not_valid = false; // new Blog Entry with ID -1
+        }
 
-          this.blog_entry_copy.m_entry_id          =      existing_blog_entry.m_entry_id;
-          this.blog_entry_copy.m_entry_date_string =      existing_blog_entry.m_entry_date_string;
-          this.blog_entry_copy.m_entry_date_number =      existing_blog_entry.m_entry_date_number;
+        if ( blog_entry_id_number >= 0 )
+        {
+          if ( this.m_blog_entry_service.hasBlogEntryId( blog_entry_id_number ) )
+          {
+            blog_id_not_valid = false; // Existing Blog Entry
 
-          this.blog_entry_copy.m_entry_header      = "" + existing_blog_entry.m_entry_header;
-          this.blog_entry_copy.m_entry_text        = "" + existing_blog_entry.m_entry_text;
+            let existing_blog_entry : ClsBlogEntry;
+
+            existing_blog_entry = <ClsBlogEntry> this.m_blog_entry_service.getBlogEntry( blog_entry_id_number );
+
+            if ( existing_blog_entry !== undefined )
+            {
+              this.blog_entry_copy.m_user_id           =      existing_blog_entry.m_user_id;
+              this.blog_entry_copy.m_user_name         = "" + existing_blog_entry.m_user_name;
+
+              this.blog_entry_copy.m_entry_id          =      existing_blog_entry.m_entry_id;
+              this.blog_entry_copy.m_entry_date_string =      existing_blog_entry.m_entry_date_string;
+              this.blog_entry_copy.m_entry_date_number =      existing_blog_entry.m_entry_date_number;
+
+              this.blog_entry_copy.m_entry_header      = "" + existing_blog_entry.m_entry_header;
+              this.blog_entry_copy.m_entry_text        = "" + existing_blog_entry.m_entry_text;
+
+              this.m_blog_is_add_new = false;
+            }
+          }
         }
       }
     }
 
-    if ( m_blog_id_not_valid )
+    if ( blog_id_not_valid )
     {
       this.m_show_confirm_dialog = false;
 
