@@ -10,6 +10,7 @@
   border       : 10px, #30302f;
 }
 
+
 .css-blog-title
 {
   font-family  : inherit;
@@ -17,6 +18,7 @@
   font-size    : 16px;
   margin-bottom: 10px;
 }
+
 
 .css-blog-content
 {
@@ -34,6 +36,7 @@
   white-space: pre-wrap;
 }
 
+
 .css-blog-footer-div
 {
   display        : flex;
@@ -45,10 +48,13 @@
   margin-right   : 5px;
 }
 
+
 .css-blog-footer-date
 {
+  padding-left: 1px;
 }
 
 .css-blog-footer-author
 {
+  padding-left: 1px;
 }

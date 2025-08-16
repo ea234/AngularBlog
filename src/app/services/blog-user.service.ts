@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable  } from '@angular/core';
 import { ClsBlogUser } from '../ClsBlogUser';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BlogUserService {
-
+export class BlogUserService
+{
   m_blog_user : ClsBlogUser = new ClsBlogUser();
 
   constructor()
@@ -66,4 +66,5 @@ export class BlogUserService {
 
     return true;
   }
+
 }
