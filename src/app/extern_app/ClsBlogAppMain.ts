@@ -128,6 +128,23 @@ export class BlogAppMain
   }
 
 
+  private getUniqueID() : number
+  {
+    return Math.floor( Math.random() * Date.now() )
+  }
+
+  private getNewBlogId () : number
+  {
+    let unique_id = this.getUniqueID();
+
+    /*
+     * @todo: Check unique id
+     */
+
+    return unique_id;
+  }
+
+
   public saveBlogEntry( blog_entry_to_save : ClsBlogEntry ) : boolean
   {
     if ( blog_entry_to_save.m_entry_id >= 0 )
@@ -147,7 +164,7 @@ export class BlogAppMain
     }
     else
     {
-      blog_entry_to_save.m_entry_id = this.getArrayLength() + 1;
+      blog_entry_to_save.m_entry_id = this.getNewBlogId();
 
       this.addBlogEntry( blog_entry_to_save );
     }

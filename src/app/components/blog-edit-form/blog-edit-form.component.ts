@@ -158,4 +158,10 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
     return true;
   }
+
+
+  public isEditExistingBlogEntry() : boolean
+  {
+    return !this.m_blog_is_add_new;
+  }
 }
