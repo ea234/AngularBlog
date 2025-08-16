@@ -111,10 +111,22 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
   }
 
 
-  ngSubmitMyForm( userForm : NgForm )
+  ngSubmitMyForm( userForm : NgForm ) : boolean
   {
     let my_form = userForm.form.value;
+/*
+    if ( userForm.form.dirty == false )
+    {
+      return true; // no changes -> leave Form
+    }
 
+    if ( userForm.form.errors !== undefined )
+    {
+      return true; // no changes -> leave Form
+    }
+
+
+*/
     //console.log( 'ngSubmitMyForm my_form ' , my_form );
 
     //console.log( 'ngSubmitMyForm blog_date   =>', my_form.blog_date   );
@@ -127,13 +139,15 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
     this.m_show_confirm_dialog = false;
 
     this.m_router.navigate( ['/blog'], { replaceUrl: true, skipLocationChange: false } )
+
+    return true;
   }
 
   public deleteBlogEntry() : boolean
   {
     let fkt_return_value : boolean = false;
 
-    if ( confirm( `Delete Blog Entry ${ this.blog_entry_copy.m_entry_header }` ) )
+    if ( confirm( `Delete Blog Entry '${ this.blog_entry_copy.m_entry_header }'` ) )
     {
       console.log( "Confirm yes" );
 
@@ -148,6 +162,26 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
     return fkt_return_value;
   }
+
+
+  public doCancelEdit() : boolean
+  {
+    let fkt_return_value : boolean = false;
+
+    if ( confirm( `Cancel Edit Blog Entry '${ this.blog_entry_copy.m_entry_header }'` ) )
+    {
+      console.log( "Confirm yes" );
+
+      fkt_return_value = true;
+    }
+    else
+    {
+      console.log( "Confirm no" );
+    }
+
+    return fkt_return_value;
+  }
+
 
   public confirm(): boolean
   {

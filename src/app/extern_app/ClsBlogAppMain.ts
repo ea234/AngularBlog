@@ -133,13 +133,22 @@ export class BlogAppMain
     return Math.floor( Math.random() * Date.now() )
   }
 
+
+  private async waitSeconds ( seconds_to_wait : number )
+  {
+    await new Promise( resolve => { setTimeout(resolve, seconds_to_wait * 1000 ); }
+                        ).then( x => console.log("qqwwq" ) );
+  }
+
+
+
   private getNewBlogId () : number
   {
     let unique_id = this.getUniqueID();
 
-    /*
-     * @todo: Check unique id
-     */
+    this.waitSeconds( 2 );
+
+    // TODO: Check unique id
 
     return unique_id;
   }
@@ -537,7 +546,7 @@ The BBC Micro had multiple display modes, including a Teletext-based Mode 7 that
 
     blog_entry.m_entry_header      = entry_header;
 
-    blog_entry.m_entry_id          = nr;
+    blog_entry.m_entry_id          = this.getNewBlogId();
 
     blog_entry.m_entry_text        = entry_text
 

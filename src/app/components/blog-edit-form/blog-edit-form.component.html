@@ -57,9 +57,9 @@
 
     <button class="btn btn-primary" type="submit" >Submit</button>&nbsp;&nbsp;
 
-    <button class="btn btn-primary" routerLink="/blog" >Cancel</button>&nbsp;&nbsp;&nbsp;&nbsp;
+    <button class="btn btn-primary" (click)="doCancelEdit()" >Cancel</button>&nbsp;&nbsp;&nbsp;&nbsp;
 
-    <button *ngIf="this.isEditExistingBlogEntry()" class="btn btn-danger " (click)="deleteBlogEntry()" >Delete</button>
+    <button class="btn btn-danger"  (click)="deleteBlogEntry()"  *ngIf="this.isEditExistingBlogEntry()" >Delete</button>
 
   </form>
 
