@@ -2,7 +2,6 @@ import { NgModule                 } from '@angular/core';
 import { RouterModule, Routes     } from '@angular/router';
 
 import { AboutComponent           } from './components/about/about.component';
-import { BlogAddNewComponent      } from './components/blog-add-new/blog-add-new.component';
 import { BlogDetailEmptyComponent } from './components/blog-detail-empty/blog-detail-empty.component';
 import { BlogDetailLongComponent  } from './components/blog-detail-long/blog-detail-long.component';
 import { BlogEditFormComponent    } from './components/blog-edit-form/blog-edit-form.component';
@@ -18,14 +17,8 @@ const appRoutes: Routes = [
   {
     path: 'blog',  component: BlogComponent,
 
-    children: [
-
-      {
-        path: 'add',  component: BlogAddNewComponent,
-
-        canDeactivate : [ confirmationGuard ]
-      },
-
+    children:
+    [
       { path: ':blog_entry_id',  component: BlogDetailLongComponent  },
       { path: '',                component: BlogDetailEmptyComponent }
     ]
