@@ -1,32 +1,29 @@
-.css-blog-entry-container {
+.css-blog-entry-container
+{
+  font-family  : Arial, Helvetica, sans-serif;
 
-  font-family: Arial, Helvetica, sans-serif;
-
-  margin-top: 10 px;
+  margin-top   : 10 px;
   margin-bottom: 10px;
-  margin-left: 5 px;
-  margin-right: 5 px;
+  margin-left  : 5 px;
+  margin-right : 5 px;
 
-  border: 10px, #30302f;
+  border       : 10px, #30302f;
 }
 
-.css-blog-title {
-
-  font-family: inherit;
-
-  font-size: 16px;
-  font-weight: bold;
+.css-blog-title
+{
+  font-family  : inherit;
+  font-weight  : bold;
+  font-size    : 16px;
   margin-bottom: 10px;
 }
 
-/* Stil für den Text im Blogeintrag */
-.css-blog-content {
-  font-family: inherit;
-
-  font-size: 14px;
-
-  line-height: 1.5; /* Für bessere Lesbarkeit */
-  margin-bottom: 20px; /* Abstand zur Fußzeile */
+.css-blog-content
+{
+  font-family  : inherit;
+  font-size    : 14px;
+  line-height  : 1.5;
+  margin-bottom: 20px;
 
   /*
    * https://stackoverflow.com/questions/50327396/replace-n-with-br-tag-angular-6
@@ -37,20 +34,21 @@
   white-space: pre-wrap;
 }
 
-/* Stil für die Fußzeile */
-.css-blog-footer-div {
-  display: flex;
+.css-blog-footer-div
+{
+  display        : flex;
   justify-content: space-between;
-  font-family: Arial, sans-serif;
-  font-size: 12px;
-  margin-top: 3cm;
-  margin-left: 5px;
-  margin-right: 5px;
+  font-family    : Arial, sans-serif;
+  font-size      : 12px;
+  margin-top     : 3cm;
+  margin-left    : 5px;
+  margin-right   : 5px;
 }
 
-/* Spezifische Klassen für Datum und Autor */
-.css-blog-footer-date {
+.css-blog-footer-date
+{
 }
 
-.css-blog-footer-author {
+.css-blog-footer-author
+{
 }

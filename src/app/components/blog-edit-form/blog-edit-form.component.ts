@@ -45,9 +45,9 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
   {
     let blog_id_not_valid : boolean = true;
 
-    const url = this.m_router.url; // z.B. '/blog/addNewBlog'
+    const url = this.m_router.url;
 
-    const url_contains_add_new_blog = url.includes('addnew'); // nutze containsAddNewBlog entsprechend
+    const url_contains_add_new_blog = url.includes('addnew');
 
     let blog_entry_id_string = this.m_activated_route.snapshot.paramMap.get( 'blog_entry_id' );
 

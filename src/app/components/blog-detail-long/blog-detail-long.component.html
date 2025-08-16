@@ -1,7 +1,9 @@
 <div *ngIf="blog_entry; else alternative">
 
   <div class="css-blog-entry-container">
+
     <div class="css-blog-title"   >{{ blog_entry.m_entry_header}}</div>
+
     <div class="css-blog-content" >{{ blog_entry.m_entry_text }}</div>
 
     <div class="css-blog-footer-div">
@@ -12,7 +14,7 @@
 </div>
 
 <ng-template #alternative>
-   Something went wrong. Nothing to show.
+   No Blog Entries. Nothing to show.
 </ng-template>
 
 

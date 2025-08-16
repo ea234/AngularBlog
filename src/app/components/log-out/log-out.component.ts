@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BlogUserService } from '../../services/blog-user.service';
-import { Router } from '@angular/router';
+import { BlogUserService   } from '../../services/blog-user.service';
+import { Router            } from '@angular/router';
 
 @Component({
   selector: 'app-log-out',
@@ -8,11 +8,13 @@ import { Router } from '@angular/router';
   templateUrl: './log-out.component.html',
   styleUrl: './log-out.component.css'
 })
-export class LogOutComponent implements OnInit {
-
-    constructor( private m_user_service : BlogUserService, private m_router: Router ) {
-
+export class LogOutComponent implements OnInit
+{
+    constructor( private m_user_service : BlogUserService,
+                 private m_router       : Router           )
+    {
     }
+
 
     ngOnInit(): void
     {
@@ -20,5 +22,4 @@ export class LogOutComponent implements OnInit {
 
       this.m_router.navigate(['/blog']);
     }
-
 }

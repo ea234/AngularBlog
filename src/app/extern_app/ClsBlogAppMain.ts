@@ -1,67 +1,18 @@
 import { BlogEntry, ClsBlogEntry } from "../ClsBlogEntry";
 
-
-export class BlogAppMain {
-
+export class BlogAppMain
+{
   private m_vector_blog_entries? : Array<BlogEntry>;
 
-  constructor() {
-
-
-  }
-
-
-  public addMockUpBlogEntry()
+  constructor()
   {
-    let i = this.getArrayLength();
-
-      let blog_entry =  this.getBlogEntry1( i , 1, "Admin Workflow" );
-
-      console.log(`Element Nummer ${i} ${ blog_entry.m_entry_header }`);
-
-      this.addBlogEntry( blog_entry );
   }
 
-
-  public generateMockUpBlogEntries()
-  {
-    for (let i = 0; i < 20; i++)
-    {
-      let blog_entry =  this.getBlogEntry1( i , i % 2 === 0 ? 1 : 2, "Admin Workflow" );
-
-      console.log(`Element Nummer ${i} ${ blog_entry.m_user_id }  ${ blog_entry.m_entry_header }`);
-
-      this.addBlogEntry( blog_entry );
-
-    }
-  }
-
-
-
-
-
-
-
-    /**
+  /**
    * Loescht alle Elemente im Vektor und stellt die Vektorinstanz auf undefined.
    */
-  public clear ()
+  public clear () : void
   {
-    /*
-     * Pruefung: Variable "m_calc_zahlung_vector" ungleich undefined?
-     *
-     * Ist der Vektor nicht vorhanden, sind auch keine Elemente zum loeschen vorhanden
-     */
-    if ( this.m_vector_blog_entries != undefined )
-    {
-      var aktueller_index = 0;
-
-      var BlogEntry_vector_anzahl = this.getArrayLength();
-    }
-
-    /*
-      * Am Funktionsende wird die Vektorinstanz auf undefined gestellt.
-      */
     this.m_vector_blog_entries = undefined;
   }
 
@@ -122,7 +73,7 @@ export class BlogAppMain {
        * Instanz der Klasse Array erstellt und dem
        * Vektor zugewiesen.
        */
-      this.m_vector_blog_entries = new Array();
+      this.m_vector_blog_entries = new Array<BlogEntry>();
     }
 
     return this.m_vector_blog_entries;
@@ -153,7 +104,6 @@ export class BlogAppMain {
   }
 
 
-
   /**
    * @return die Vektorinstanz. Ist diese noch nicht vorhanden, wird diese erstellt.
    */
@@ -178,26 +128,28 @@ export class BlogAppMain {
   }
 
 
-  public saveBlogEntry( blog_entry_new : ClsBlogEntry ) : boolean
+  public saveBlogEntry( blog_entry_to_save : ClsBlogEntry ) : boolean
   {
-    if ( blog_entry_new.m_entry_id >= 0 )
+    if ( blog_entry_to_save.m_entry_id >= 0 )
     {
-      if ( this.hasBlogEntryId( blog_entry_new.m_entry_id ) )
+      if ( this.hasBlogEntryId( blog_entry_to_save.m_entry_id ) )
       {
         let existing_blog_entry : ClsBlogEntry;
 
-        existing_blog_entry = <ClsBlogEntry> this.getBlogEntry( blog_entry_new.m_entry_id );
+        existing_blog_entry = <ClsBlogEntry> this.getBlogEntry( blog_entry_to_save.m_entry_id );
 
         if ( existing_blog_entry !== undefined )
         {
-          existing_blog_entry.m_entry_header = blog_entry_new.m_entry_header;
-          existing_blog_entry.m_entry_text   = blog_entry_new.m_entry_text;
+          existing_blog_entry.m_entry_header = blog_entry_to_save.m_entry_header;
+          existing_blog_entry.m_entry_text   = blog_entry_to_save.m_entry_text;
         }
       }
     }
     else
     {
-      this.addBlogEntry( blog_entry_new );
+      blog_entry_to_save.m_entry_id = this.getArrayLength() + 1;
+
+      this.addBlogEntry( blog_entry_to_save );
     }
 
     return true;
@@ -376,29 +328,26 @@ export class BlogAppMain {
   }
 
 
-   private getBlogEntry1( nr: number, user_id : number, user_name : string  ) : BlogEntry
-   {
-
+  private getMockBlogEntryInstance( nr: number, user_id : number, user_name : string  ) : BlogEntry
+  {
     let text_header : string = "";
 
     let text_entry : string = "";
 
+    if ( nr === 0 )
+    {
+      text_header = "History of personal computers";
 
-   if ( nr === 0 )
-   {
-    text_header = "History of personal computers";
-
-    text_entry = `The history of the personal computer as a mass-market consumer electronic device began with the microcomputer revolution of the 1970s. A personal computer is one intended for interactive individual use, as opposed to a mainframe computer where the end user's requests are filtered through operating staff, or a time-sharing system in which one large processor is shared by many individuals. After the development of the microprocessor, individual personal computers were low enough in cost that they eventually became affordable consumer goods. Early personal computers – generally called microcomputers – were sold often in electronic kit form and in limited numbers, and were of interest mostly to hobbyists and technicians.
+      text_entry = `The history of the personal computer as a mass-market consumer electronic device began with the microcomputer revolution of the 1970s. A personal computer is one intended for interactive individual use, as opposed to a mainframe computer where the end user's requests are filtered through operating staff, or a time-sharing system in which one large processor is shared by many individuals. After the development of the microprocessor, individual personal computers were low enough in cost that they eventually became affordable consumer goods. Early personal computers – generally called microcomputers – were sold often in electronic kit form and in limited numbers, and were of interest mostly to hobbyists and technicians.
 
     The history of the personal computer as mass-market consumer electronic devices effectively began in 1977 with the introduction of microcomputers, although some mainframe and minicomputers had been applied as single-user systems much earlier. A personal computer is one intended for interactive individual use, as opposed to a mainframe computer where the end user's requests are filtered through operating staff, or a time sharing system in which one large processor is shared by many individuals. After the development of the microprocessor, individual personal computers were low enough in cost that they eventually became affordable consumer goods. Early personal computers – generally called microcomputers – were sold often in electronic kit form and in limited numbers, and were of interest mostly to hobbyists and technicians.
 
     `;
-
-   }
-   else if ( nr === 1 )
-   {
-    text_header = "ZX Spectrum"
-    text_entry = `The ZX Spectrum (UK: /zɛd ɛks/) is an 8-bit home computer developed and marketed by Sinclair Research. The Spectrum played a pivotal role in the history of personal computers and video games, especially in the United Kingdom. It was one of the all-time bestselling British computers with over five million units sold. It was released in the UK on 23 April 1982, the United States in 1983, and Europe in 1984.
+    }
+    else if ( nr === 1 )
+    {
+      text_header = "ZX Spectrum"
+      text_entry = `The ZX Spectrum (UK: /zɛd ɛks/) is an 8-bit home computer developed and marketed by Sinclair Research. The Spectrum played a pivotal role in the history of personal computers and video games, especially in the United Kingdom. It was one of the all-time bestselling British computers with over five million units sold. It was released in the UK on 23 April 1982, the United States in 1983, and Europe in 1984.
 
 The machine was designed by the English entrepreneur and inventor Sir Clive Sinclair and his small team in Cambridge, and was manufactured in Dundee, Scotland by Timex Corporation.[5] It was made to be small, simple, and most importantly inexpensive, with as few components as possible. The addendum "Spectrum" was chosen to highlight the machine's colour display, which differed from the black-and-white display of its predecessor, the ZX81. Rick Dickinson designed its distinctive case, rainbow motif, and rubber keyboard. Video output is transmitted to a television set rather than a dedicated monitor, while application software is loaded and saved onto compact audio cassettes.
 
@@ -500,12 +449,11 @@ The BBC Micro had multiple display modes, including a Teletext-based Mode 7 that
    else
    {
     text_header = `Blog Nr ${ nr }`
-    text_entry = `Text Nr ${ nr }`
+    text_entry  = `Text Nr ${ nr }`
    }
-
 
     return this.getMockUpBlockEntry( nr, user_id, user_name, text_header, text_entry );
-   }
+  }
 
 
   private getMockUpBlockEntry( nr: number, user_id : number, user_name : string, entry_header : string, entry_text : string  ) : ClsBlogEntry
@@ -516,20 +464,20 @@ The BBC Micro had multiple display modes, including a Teletext-based Mode 7 that
     const month = (date.getMonth() + 1).toString().padStart(2, '0');
     const day = date.getDate().toString().padStart(2, '0');
 
-    const date_format_long = `${year}${month}${day}`;
+    const date_format_long   = `${year}${month}${day}`;
     const date_format_string = `${day}.${month}.${year}`;
 
     let blog_entry = new ClsBlogEntry();
 
-    blog_entry.m_user_id = user_id;
+    blog_entry.m_user_id           = user_id;
 
-    blog_entry.m_user_name = user_name;
+    blog_entry.m_user_name         = user_name;
 
-    blog_entry.m_entry_header = entry_header;
+    blog_entry.m_entry_header      = entry_header;
 
-    blog_entry.m_entry_id = nr;
+    blog_entry.m_entry_id          = nr;
 
-    blog_entry.m_entry_text = entry_text
+    blog_entry.m_entry_text        = entry_text
 
     blog_entry.m_entry_date_number = Number( date_format_long );
 
@@ -539,5 +487,27 @@ The BBC Micro had multiple display modes, including a Teletext-based Mode 7 that
   }
 
 
+  public addMockUpBlogEntry()
+  {
+    let array_length = this.getArrayLength();
 
+    let blog_entry =  this.getMockBlogEntryInstance( array_length , 1, "Admin Workflow" );
+
+    console.log(`Element Nummer ${ array_length } ${ blog_entry.m_entry_header }`);
+
+    this.addBlogEntry( blog_entry );
+  }
+
+
+  public generateMockUpBlogEntries()
+  {
+    for (let blog_id_nr = 0; blog_id_nr < 20; blog_id_nr++)
+    {
+      let blog_entry =  this.getMockBlogEntryInstance( blog_id_nr, blog_id_nr % 2 === 0 ? 1 : 2, "Admin Workflow" );
+
+      console.log( `Element Nummer ${ blog_id_nr }  ${ blog_entry.m_user_id }  ${ blog_entry.m_entry_header }` );
+
+      this.addBlogEntry( blog_entry );
+    }
+  }
 }

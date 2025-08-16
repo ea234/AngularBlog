@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { BlogEntry } from '../../ClsBlogEntry';
+import { faEdit          } from '@fortawesome/free-solid-svg-icons';
+
+import { BlogEntry       } from '../../ClsBlogEntry';
 import { BlogUserService } from '../../services/blog-user.service';
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-blog-detail-short',
@@ -31,7 +32,7 @@ export class BlogDetailShortComponent
 
     if ( this.isUserLoggedIn() )
     {
-      if ( this.blog_entry.m_user_id == this.m_user_service.getUserID() )
+      if ( this.blog_entry.m_user_id === this.m_user_service.getUserID() )
       {
         return true;
       }

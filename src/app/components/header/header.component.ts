@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component       } from '@angular/core';
 import { BlogUserService } from '../../services/blog-user.service';
 
 @Component({
@@ -7,10 +7,10 @@ import { BlogUserService } from '../../services/blog-user.service';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent {
-
-  constructor( private m_user_service : BlogUserService ) {
-
+export class HeaderComponent
+{
+  constructor( private m_user_service : BlogUserService )
+  {
   }
 
   public isUserLoggedIn() : boolean
@@ -22,5 +22,4 @@ export class HeaderComponent {
   {
     return this.m_user_service.isUserNotLoggedIn();
   }
-
 }

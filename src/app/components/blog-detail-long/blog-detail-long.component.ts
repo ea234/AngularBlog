@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { BlogEntryService } from '../../services/blog-entry.service';
-import { BlogEntry } from '../../ClsBlogEntry';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute    } from '@angular/router';
+import { BlogEntryService  } from '../../services/blog-entry.service';
+import { BlogEntry         } from '../../ClsBlogEntry';
 
 @Component({
   selector: 'app-blog-detail-long',
@@ -9,20 +9,19 @@ import { BlogEntry } from '../../ClsBlogEntry';
   templateUrl: './blog-detail-long.component.html',
   styleUrl: './blog-detail-long.component.css'
 })
-export class BlogDetailLongComponent implements OnInit {
-
+export class BlogDetailLongComponent implements OnInit, OnDestroy
+{
   blog_entry : BlogEntry | undefined;
 
-
-
-  constructor( private activated_route : ActivatedRoute, private blog_entry_service : BlogEntryService ) {
-
+  constructor( private activated_route    : ActivatedRoute,
+               private blog_entry_service : BlogEntryService )
+  {
     this.blog_entry = undefined;
   }
 
   ngOnInit() {
 
-    this.activated_route.params.subscribe(( params ) =>{
+    this.activated_route.params.subscribe( ( params ) => {
 
       console.log( params );
 
@@ -40,14 +39,11 @@ export class BlogDetailLongComponent implements OnInit {
       {
         console.log( "detail-lon Eintrag wurde nicht gefunden");
       }
-
     })
+  }
 
-
-    /*
-        <div class="blog-title">blog-detail-short {{ blog_entry.m_entry_header}}</div>
-  <div>{{ blog_entry.m_entry_text.substring(0, 100 )}}</div>
-
-    */
+  ngOnDestroy(): void
+  {
+    // Unsubscribe
   }
 }
