@@ -7,6 +7,7 @@ import { BlogEntryService             } from '../../services/blog-entry.service'
 import { BlogUserService              } from '../../services/blog-user.service';
 import { CanComponentDeactivate       } from '../../guards/confirmation/confirmation.guard';
 import { getDateString, getDateNumber } from '../../FkDate';
+import { BlogFirebaseService } from '../../services/blog-firebase.service';
 
 @Component({
   selector    : 'app-blog-edit-form',
@@ -22,10 +23,11 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
   @Input() blog_entry_copy      : ClsBlogEntry = new ClsBlogEntry;
 
-  constructor( private m_blog_entry_service : BlogEntryService,
-               private m_user_service       : BlogUserService,
-               private m_activated_route    : ActivatedRoute,
-               private m_router             : Router )
+  constructor( private m_blog_entry_service    : BlogEntryService,
+               private m_blog_firebase_service : BlogFirebaseService,
+               private m_user_service          : BlogUserService,
+               private m_activated_route       : ActivatedRoute,
+               private m_router                : Router )
   {
     this.blog_entry_copy.m_user_id           = this.m_user_service.getUserID();
     this.blog_entry_copy.m_user_name         = this.m_user_service.getUserName();
@@ -143,6 +145,8 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
     return true;
   }
 
+
+
   public deleteBlogEntry() : boolean
   {
     let fkt_return_value : boolean = false;
@@ -198,4 +202,57 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
   {
     return !this.m_blog_is_add_new;
   }
+
+  //public submitToFirebase( userForm : NgForm ) : boolean
+  public submitToFirebase() : boolean
+  {
+    console.log( 'submitToFirebase my_form ' );
+
+    //let my_form = userForm.form.value;
+
+    //console.log( 'ngSubmitMyForm my_form ' , my_form );
+
+    //console.log( 'ngSubmitMyForm blog_date   =>', my_form.blog_date   );
+    //console.log( 'ngSubmitMyForm blog_header =>', my_form.blog_header );
+    //console.log( 'ngSubmitMyForm blog_id     =>', my_form.blog_id     );
+    //console.log( 'ngSubmitMyForm blog_user   =>', my_form.blog_user   );
+
+    //this.m_blog_firebase_service.createNewData( this.blog_entry_copy );
+
+    this.m_show_confirm_dialog = false;
+
+    return false;
+  }
+
+  firebaseDelete() : boolean
+  {
+    console.log( 'firebaseDelete' );
+
+    this.m_blog_firebase_service.deleteItem( "" + this.blog_entry_copy.m_entry_id );
+
+    return false;
+  }
+
+  firebaseAdd() : boolean
+  {
+    console.log( 'firebaseAdd' );
+
+    this.m_blog_firebase_service.addBlogEntry( this.blog_entry_copy );
+
+    return false;
+  }
+
+
+  firebaseUpdate() : boolean
+  {
+    console.log( 'firebaseUpdate' );
+
+    this.m_blog_firebase_service.updateBlogEntry( this.blog_entry_copy );
+
+    return false;
+  }
+
+
+
+
 }

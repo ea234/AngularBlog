@@ -53,6 +53,6 @@ import { getDatabase, provideDatabase } from '@angular/fire/database';
     provideFirestore(() => getFirestore()),
     provideDatabase(() => getDatabase())
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
