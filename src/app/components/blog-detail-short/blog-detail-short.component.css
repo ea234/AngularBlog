@@ -1,0 +1,33 @@
+.css-blog-entry-container.action-row
+{
+  display         : flex;
+  align-items     : center;
+  gap             : 8px;
+  width           : 100%;
+  overflow        : hidden;
+  white-space     : nowrap;
+  text-overflow   : ellipsis;
+  background-color:inherit;
+}
+
+.css-blog-entry-container.action-row .view-link
+{
+  flex            : 1 1 auto;
+  min-width       : 0;         /* wichtig, damit ellipsis funktioniert */
+  overflow        : hidden;
+  white-space     : nowrap;
+  text-overflow   : ellipsis;
+  cursor          : pointer;
+}
+
+.edit-area
+{
+  display         : inline-block;
+}
+
+.edit-placeholder
+{
+  display         : inline-block;
+  width           : 20px;
+  height          : 20px;
+}

@@ -1,0 +1,55 @@
+.css-blog-view-seperator-container {
+  display         : flex;
+  width           : 100%;
+}
+
+.css-blog-view-seperator-div-col1
+{
+  width           : 20%;
+  padding-left    : 5px;
+  padding-right   : 5px;
+  padding-top     : 5px;
+  padding-bottom  : 10px;
+}
+
+.css-blog-view-seperator-div-col2
+{
+  width           : 80%;
+  background-color: #cccecc; /* optional, für bessere Sichtbarkeit */
+  padding-left    : 5px;
+  padding-right   : 5px;
+  padding-top     : 5px;
+  padding-bottom  : 10px;
+}
+
+.css-blog-view-entry-container
+{
+  font-family     : Arial, Helvetica, sans-serif;
+
+  margin-top      : 10 px;
+  margin-bottom   : 10px;
+  margin-left     : 5 px;
+  margin-right    : 5 px;
+
+  border          : 10px, #30302f;
+}
+
+.css-view-list-limiter
+{
+  width           : 300px; /* Breite des Containers, kannst du anpassen */
+  height          : 300px; /* Höhe, um nur 15 Einträge sichtbar zu machen */
+  overflow-x      : hidden;
+  overflow-y      : auto; /* Vertikaler Scrollbalken bei Überschreitung */
+  padding         : 10px; /* Innenabstand */
+  box-sizing      : border-box; /* Damit Padding in die Breite/Höhe einbezogen wird */
+}
+
+.odd
+{
+  background-color: #adacac;
+}
+
+.even
+{
+  background-color: #ffffff;
+}

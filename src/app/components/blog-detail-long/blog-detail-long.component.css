@@ -1,0 +1,60 @@
+.css-blog-entry-container
+{
+  font-family  : Arial, Helvetica, sans-serif;
+
+  margin-top   : 10 px;
+  margin-bottom: 10px;
+  margin-left  : 5 px;
+  margin-right : 5 px;
+
+  border       : 10px, #30302f;
+}
+
+
+.css-blog-title
+{
+  font-family  : inherit;
+  font-weight  : bold;
+  font-size    : 16px;
+  margin-bottom: 10px;
+}
+
+
+.css-blog-content
+{
+  font-family  : inherit;
+  font-size    : 14px;
+  line-height  : 1.5;
+  margin-bottom: 20px;
+
+  /*
+   * https://stackoverflow.com/questions/50327396/replace-n-with-br-tag-angular-6
+   *
+   * You don't need a library. Simply set the white-space property of your tag to pre-wrap
+   * (or use a <pre> tag that should have this style by default)
+   */
+  white-space: pre-wrap;
+}
+
+
+.css-blog-footer-div
+{
+  display        : flex;
+  justify-content: space-between;
+  font-family    : Arial, sans-serif;
+  font-size      : 12px;
+  margin-top     : 3cm;
+  margin-left    : 5px;
+  margin-right   : 5px;
+}
+
+
+.css-blog-footer-date
+{
+  padding-left: 1px;
+}
+
+.css-blog-footer-author
+{
+  padding-left: 1px;
+}

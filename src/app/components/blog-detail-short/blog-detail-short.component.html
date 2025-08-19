@@ -1,0 +1,25 @@
+<div class="css-blog-entry-container action-row" >
+
+  <div *ngIf="isUserLoggedIn()" >
+
+    <div class="edit-area" *ngIf="canUserEditBlogEntry(); else placeholder">
+
+      <a routerLink="/edit/{{ blog_entry.m_entry_id }}" class="edit-link" aria-label="Edit Blog Entry">
+
+        <fa-icon [ngStyle]="{'color':'black'}" [icon]="fa_icon_edit" />
+
+      </a>
+
+    </div>
+
+    <ng-template #placeholder="">
+
+      <span class="edit-placeholder" aria-hidden="true"></span>
+
+    </ng-template>
+
+  </div>
+
+  <div routerLink="./{{ blog_entry.m_entry_id }}" class="view-link" >{{ blog_entry.m_entry_header }} </div>
+
+</div>
