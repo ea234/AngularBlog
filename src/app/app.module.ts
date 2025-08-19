@@ -21,6 +21,9 @@ import { ButtonComponent                                        } from './compon
 import { HeaderComponent                                        } from './components/header/header.component';
 import { LogInComponent                                         } from './components/log-in/log-in.component';
 import { LogOutComponent                                        } from './components/log-out/log-out.component';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getDatabase, provideDatabase } from '@angular/fire/database';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,10 @@ import { LogOutComponent                                        } from './compon
     FormsModule
   ],
   providers: [
-    provideClientHydration( withEventReplay() )
+    provideClientHydration( withEventReplay() ),
+    provideFirebaseApp(() => initializeApp({ projectId: "angular2-9fbc0", appId: "1:664394979912:web:3929bfd16e99e42ba1567d", storageBucket: "angular2-9fbc0.firebasestorage.app", apiKey: "AIzaSyCfV-CxZTzrVPmftXrrRfHEwt0NWCq6mjA", authDomain: "angular2-9fbc0.firebaseapp.com", messagingSenderId: "664394979912" })),
+    provideFirestore(() => getFirestore()),
+    provideDatabase(() => getDatabase())
   ],
   bootstrap: [AppComponent]
 })
