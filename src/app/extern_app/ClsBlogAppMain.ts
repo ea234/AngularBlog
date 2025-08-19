@@ -146,7 +146,7 @@ export class BlogAppMain
   {
     let unique_id = this.getUniqueID();
 
-    this.waitSeconds( 2 );
+    //this.waitSeconds( 2 );
 
     // TODO: Check unique id
 
