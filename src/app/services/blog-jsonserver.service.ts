@@ -1,0 +1,52 @@
+import { Injectable              } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable              } from 'rxjs';
+import { ClsBlogEntry, BlogEntry } from '../ClsBlogEntry';
+
+const http_options = {
+  headers: new HttpHeaders(
+    {
+      'Content-Type': 'application/json',
+    }
+  ),
+};
+
+@Injectable({
+  providedIn: 'root'
+})
+export class BlogJsonserverService
+{
+  private api_url : string = 'http://localhost:5000/blog';
+
+  constructor( private m_http_client: HttpClient )
+  {
+  }
+
+
+  getBlogList(): Observable<BlogEntry[]>
+  {
+    return this.m_http_client.get<BlogEntry[]>( this.api_url );
+  }
+
+
+  deleteBlogEntry( blog_entry : BlogEntry): Observable<BlogEntry>
+  {
+    const url = `${this.api_url}/${blog_entry.m_entry_id}`;
+
+    return this.m_http_client.delete<BlogEntry>(url);
+  }
+
+
+  updateBlogEntry( blog_entry : BlogEntry): Observable<BlogEntry>
+  {
+    const url = `${this.api_url}/${ blog_entry.m_entry_id }`;
+
+    return this.m_http_client.put<BlogEntry>(url, blog_entry, http_options);
+  }
+
+
+  addBlogEntry( blog_entry : BlogEntry): Observable<BlogEntry>
+  {
+    return this.m_http_client.post<BlogEntry>(this.api_url, blog_entry, http_options);
+  }
+}
