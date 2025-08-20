@@ -261,11 +261,7 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
     this.m_blog_jsonserver_service.addBlogEntry( this.blog_entry_copy )
     .subscribe( {
-                  next:  (res) => { console.log('Eintrag gespeichert:', res );
-
-                                    this.blog_entry_copy.m_entry_id = res.id;//["id"];
-
-                                  },
+                  next:  (res) => { console.log('Eintrag gespeichert ' );                             },
                   error: (err) => { console.error('Fehler beim Hinzufügen des Blog-Eintrags:', err ); }
                 }
               );
@@ -278,7 +274,12 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
   {
     console.log( 'jsonServerUpdate' );
 
-    this.m_blog_jsonserver_service.updateBlogEntry( this.blog_entry_copy );
+    this.m_blog_jsonserver_service.updateBlogEntry( this.blog_entry_copy )
+    .subscribe( {
+                  next:  (res) => { console.log('Eintrag geaendert ' );                               },
+                  error: (err) => { console.error('Fehler beim Hinzufügen des Blog-Eintrags:', err ); }
+                }
+              );
 
     return false;
   }
@@ -288,7 +289,13 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
   {
     console.log( 'jsonServerDelete' );
 
-    this.m_blog_jsonserver_service.deleteBlogEntry( this.blog_entry_copy );
+    this.m_blog_jsonserver_service.deleteBlogEntry( this.blog_entry_copy )
+    .subscribe( {
+                  next:  (res) => { console.log('Eintrag geloescht' );                                },
+                  error: (err) => { console.error('Fehler beim Hinzufügen des Blog-Eintrags:', err ); }
+                }
+              );
+
 
     return false;
   }
