@@ -107,16 +107,18 @@ export class BlogAppMain
   /**
    * @return die Vektorinstanz. Ist diese noch nicht vorhanden, wird diese erstellt.
    */
-  public getBlogEntry( blog_entry_id : number ) : BlogEntry | undefined
+  public getBlogEntry( blog_entry_id : string ) : BlogEntry | undefined
   {
     let ergebnis_obj : any;
+
+    let blog_entry_id_str : string = "" + blog_entry_id;
 
     /*
      * Pruefung: Vektor noch nicht erstellt ?
      */
     if ( this.m_vector_blog_entries != undefined )
     {
-      ergebnis_obj = this.m_vector_blog_entries.filter( blog_entry_p =>  blog_entry_p.m_entry_id ===  blog_entry_id )
+      ergebnis_obj = this.m_vector_blog_entries.filter( blog_entry_p =>  blog_entry_p.m_entry_id === blog_entry_id_str )
 
       if ( ergebnis_obj !== undefined )
       {
@@ -142,7 +144,7 @@ export class BlogAppMain
 
 
 
-  private getNewBlogId () : number
+  private getNewBlogId () : string
   {
     let unique_id = this.getUniqueID();
 
@@ -150,13 +152,13 @@ export class BlogAppMain
 
     // TODO: Check unique id
 
-    return unique_id;
+    return "" + unique_id;
   }
 
 
   public saveBlogEntry( blog_entry_to_save : ClsBlogEntry ) : boolean
   {
-    if ( blog_entry_to_save.m_entry_id >= 0 )
+    if ( blog_entry_to_save.m_entry_id !== "" )
     {
       if ( this.hasBlogEntryId( blog_entry_to_save.m_entry_id ) )
       {
@@ -182,9 +184,9 @@ export class BlogAppMain
   }
 
 
-  public deleteBlogEntry( blog_entry_id_to_delete : number ) : boolean
+  public deleteBlogEntry( blog_entry_id_to_delete : string ) : boolean
   {
-    if ( blog_entry_id_to_delete >= 0 )
+    if ( blog_entry_id_to_delete !== "" )
     {
       const index_blog_entry = this.getIndexBlogEntryId( blog_entry_id_to_delete );
 
@@ -198,12 +200,12 @@ export class BlogAppMain
   }
 
 
-  public hasBlogEntryId( blog_entry_id : number ) : boolean
+  public hasBlogEntryId( blog_entry_id : string ) : boolean
   {
     /*
      * ID kann nicht negativ sein
      */
-    if ( blog_entry_id < 0 )
+    if ( blog_entry_id === "" )
     {
       return false;
     }
@@ -227,12 +229,12 @@ export class BlogAppMain
   }
 
 
-  public getIndexBlogEntryId( blog_entry_id : number ) : number
+  public getIndexBlogEntryId( blog_entry_id : string ) : number
   {
     /*
      * ID kann nicht negativ sein
      */
-    if ( blog_entry_id < 0 )
+    if ( blog_entry_id === "" )
     {
       return -1;
     }

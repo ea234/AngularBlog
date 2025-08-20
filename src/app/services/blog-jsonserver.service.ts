@@ -31,6 +31,8 @@ export class BlogJsonserverService
 
   deleteBlogEntry( blog_entry : BlogEntry): Observable<BlogEntry>
   {
+    blog_entry.id = blog_entry.m_entry_id;
+
     const url = `${this.api_url}/${blog_entry.m_entry_id}`;
 
     return this.m_http_client.delete<BlogEntry>(url);
@@ -39,6 +41,8 @@ export class BlogJsonserverService
 
   updateBlogEntry( blog_entry : BlogEntry): Observable<BlogEntry>
   {
+    blog_entry.id = blog_entry.m_entry_id;
+
     const url = `${this.api_url}/${ blog_entry.m_entry_id }`;
 
     return this.m_http_client.put<BlogEntry>(url, blog_entry, http_options);
@@ -47,6 +51,8 @@ export class BlogJsonserverService
 
   addBlogEntry( blog_entry : BlogEntry): Observable<BlogEntry>
   {
+    blog_entry.id = blog_entry.m_entry_id;
+
     return this.m_http_client.post<BlogEntry>(this.api_url, blog_entry, http_options);
   }
 }

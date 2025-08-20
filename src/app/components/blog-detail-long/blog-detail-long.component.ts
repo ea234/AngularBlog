@@ -29,7 +29,7 @@ export class BlogDetailLongComponent implements OnInit, OnDestroy
 
       console.log( `param_blog_entry_id  ${ param_blog_entry_id }`);
 
-      this.blog_entry = this.blog_entry_service.getBlogEntry( +param_blog_entry_id );
+      this.blog_entry = this.blog_entry_service.getBlogEntry( param_blog_entry_id );
 
       if ( this.blog_entry !== null )
       {

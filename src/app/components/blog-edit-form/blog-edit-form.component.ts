@@ -8,6 +8,7 @@ import { BlogUserService              } from '../../services/blog-user.service';
 import { CanComponentDeactivate       } from '../../guards/confirmation/confirmation.guard';
 import { getDateString, getDateNumber } from '../../FkDate';
 import { BlogFirebaseService } from '../../services/blog-firebase.service';
+import { BlogJsonserverService } from '../../services/blog-jsonserver.service';
 
 @Component({
   selector    : 'app-blog-edit-form',
@@ -25,6 +26,7 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
   constructor( private m_blog_entry_service    : BlogEntryService,
                private m_blog_firebase_service : BlogFirebaseService,
+               private m_blog_jsonserver_service : BlogJsonserverService,
                private m_user_service          : BlogUserService,
                private m_activated_route       : ActivatedRoute,
                private m_router                : Router )
@@ -32,7 +34,7 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
     this.blog_entry_copy.m_user_id           = this.m_user_service.getUserID();
     this.blog_entry_copy.m_user_name         = this.m_user_service.getUserName();
 
-    this.blog_entry_copy.m_entry_id          = -1;
+    this.blog_entry_copy.m_entry_id          = "-1";
     this.blog_entry_copy.m_entry_date_string = getDateString();
     this.blog_entry_copy.m_entry_date_number = getDateNumber();
 
@@ -66,22 +68,22 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
     {
       const blog_entry_id_number = Number( blog_entry_id_string );
 
-      if ( ( Number.isInteger( blog_entry_id_number ) ) )
+      //if ( ( Number.isInteger( blog_entry_id_number ) ) )
       {
-        if ( blog_entry_id_number === -1 )
+        if ( Number.isInteger( blog_entry_id_number )  && ( blog_entry_id_number === -1 ) )
         {
           blog_id_not_valid = false; // new Blog Entry with ID -1
         }
 
         if ( blog_entry_id_number >= 0 )
         {
-          if ( this.m_blog_entry_service.hasBlogEntryId( blog_entry_id_number ) )
+          if ( this.m_blog_entry_service.hasBlogEntryId( blog_entry_id_string ) )
           {
             blog_id_not_valid = false; // Existing Blog Entry
 
             let existing_blog_entry : ClsBlogEntry;
 
-            existing_blog_entry = <ClsBlogEntry> this.m_blog_entry_service.getBlogEntry( blog_entry_id_number );
+            existing_blog_entry = <ClsBlogEntry> this.m_blog_entry_service.getBlogEntry( blog_entry_id_string );
 
             if ( existing_blog_entry !== undefined )
             {
@@ -253,6 +255,43 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
   }
 
 
+  jsonServerAdd()
+  {
+    console.log( 'jsonServerAdd' );
+
+    this.m_blog_jsonserver_service.addBlogEntry( this.blog_entry_copy )
+    .subscribe( {
+                  next:  (res) => { console.log('Eintrag gespeichert:', res );
+
+                                    this.blog_entry_copy.m_entry_id = res.id;//["id"];
+
+                                  },
+                  error: (err) => { console.error('Fehler beim Hinzufügen des Blog-Eintrags:', err ); }
+                }
+              );
+
+    return false;
+  }
+
+
+  jsonServerUpdate()
+  {
+    console.log( 'jsonServerUpdate' );
+
+    this.m_blog_jsonserver_service.updateBlogEntry( this.blog_entry_copy );
+
+    return false;
+  }
+
+
+  jsonServerDelete()
+  {
+    console.log( 'jsonServerDelete' );
+
+    this.m_blog_jsonserver_service.deleteBlogEntry( this.blog_entry_copy );
+
+    return false;
+  }
 
 
 }

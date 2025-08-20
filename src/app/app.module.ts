@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration, withEventReplay } from '@angular/platform-browser';
-
+import { HttpClientModule   } from '@angular/common/http';
 
 import { FormsModule                                            } from '@angular/forms';
 
@@ -41,6 +41,7 @@ import { getDatabase, provideDatabase } from '@angular/fire/database';
     BlogEditFormComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     NgbModule,

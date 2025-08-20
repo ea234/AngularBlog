@@ -1,24 +1,14 @@
 {
-  "tasks": [
-    {
-      "id": 1,
-      "text": "Doctors Appointment",
-      "day": "May 5th at 2:30pm",
-      "reminder": true
-    },
-    {
-      "id": 2,
-      "text": "Meeting at School",
-      "day": "May 6th at 2:30pm",
-      "reminder": true
-    },
-    {
-      "id": 3,
-      "text": "Food Shopping",
-      "day": "May 7th at 12:30pm",
-      "reminder": false
-    }
-  ],
   "blog": [
+    {
+      "id": "1299792625892",
+      "m_user_id": 1,
+      "m_user_name": "Admin Workflow",
+      "m_entry_id": "1299792625892",
+      "m_entry_header": "Apple II (original)",
+      "m_entry_text": "The Apple II (stylized as apple ][) is a personal computer released by Apple Inc. in June 1977. It was one of the first successful mass-produced microcomputer products and is widely regarded as one of the most important personal computers of all time due to its role in popularizing home computing and influencing later software development.[3][4][5][6][7]\n\nThe Apple II was designed primarily by Steve Wozniak. The system is based around the 8-bit MOS Technology 6502 microprocessor. Jerry Manock designed the foam-molded plastic case,[8] Rod Holt developed the switching power supply,[9] while Steve Jobs was not involved in the design of the computer.[10] It was introduced by Jobs and Wozniak at the 1977 West Coast Computer Faire, and marks Apple's first launch of a computer aimed at a consumer market—branded toward American households rather than businessmen or computer hobbyists.[11]\nThe three computers that Byte magazine referred to as the \"1977 Trinity\" of home computing: Commodore PET 2001, Apple II, and TRS-80 Model I\n\nByte magazine referred to the Apple II, Commodore PET 2001, and TRS-80 as the \"1977 Trinity\".[12] As the Apple II had the defining feature of being able to display color graphics, the Apple logo was redesigned to have a spectrum of colors.[13][14]\n\nThe Apple II was the first in a series of computers collectively referred to by the Apple II name. It was followed by the Apple II+, Apple IIe, Apple IIc, Apple IIc Plus, and the 16-bit Apple IIGS—all of which remained compatible. Production of the last available model, the Apple IIe, ceased in November 1993.",
+      "m_entry_date_number": 20250620,
+      "m_entry_date_string": "20.06.2025"
+    }
   ]
 }

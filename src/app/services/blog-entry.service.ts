@@ -34,13 +34,13 @@ export class BlogEntryService
   }
 
 
-  public getBlogEntry( blog_entry_id : number ) : BlogEntry | undefined
+  public getBlogEntry( blog_entry_id : string ) : BlogEntry | undefined
   {
     return this.cls_blog_app.getBlogEntry( blog_entry_id );
   }
 
 
-  public hasBlogEntryId( blog_entry_id : number ) : boolean
+  public hasBlogEntryId( blog_entry_id : string ) : boolean
   {
     return this.cls_blog_app.hasBlogEntryId( blog_entry_id );
   }
@@ -52,7 +52,7 @@ export class BlogEntryService
   }
 
 
-  public deleteBlogEntry( blog_entry_id : number ) : boolean
+  public deleteBlogEntry( blog_entry_id : string ) : boolean
   {
     return this.cls_blog_app.deleteBlogEntry( blog_entry_id );
   }
