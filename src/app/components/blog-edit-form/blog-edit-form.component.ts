@@ -7,8 +7,7 @@ import { BlogEntryService             } from '../../services/blog-entry.service'
 import { BlogUserService              } from '../../services/blog-user.service';
 import { CanComponentDeactivate       } from '../../guards/confirmation/confirmation.guard';
 import { getDateString, getDateNumber } from '../../FkDate';
-import { BlogFirebaseService } from '../../services/blog-firebase.service';
-import { BlogJsonserverService } from '../../services/blog-jsonserver.service';
+import { BlogJsonserverService        } from '../../services/blog-jsonserver.service';
 
 @Component({
   selector    : 'app-blog-edit-form',
@@ -25,7 +24,6 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
   @Input() blog_entry_copy      : ClsBlogEntry = new ClsBlogEntry;
 
   constructor( private m_blog_entry_service    : BlogEntryService,
-               private m_blog_firebase_service : BlogFirebaseService,
                private m_blog_jsonserver_service : BlogJsonserverService,
                private m_user_service          : BlogUserService,
                private m_activated_route       : ActivatedRoute,
@@ -68,37 +66,36 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
     {
       const blog_entry_id_number = Number( blog_entry_id_string );
 
-      //if ( ( Number.isInteger( blog_entry_id_number ) ) )
+      if ( Number.isInteger( blog_entry_id_number )  && ( blog_entry_id_number === -1 ) )
       {
-        if ( Number.isInteger( blog_entry_id_number )  && ( blog_entry_id_number === -1 ) )
-        {
-          blog_id_not_valid = false; // new Blog Entry with ID -1
-        }
+        blog_id_not_valid = false; // new Blog Entry with ID -1
+      }
 
-        if ( blog_entry_id_number >= 0 )
+      if ( blog_entry_id_number >= 0 )
+      {
+        if ( this.m_blog_entry_service.hasBlogEntryId( blog_entry_id_string ) )
         {
-          if ( this.m_blog_entry_service.hasBlogEntryId( blog_entry_id_string ) )
+          blog_id_not_valid = false; // Existing Blog Entry
+
+          let existing_blog_entry : ClsBlogEntry;
+
+          existing_blog_entry = <ClsBlogEntry> this.m_blog_entry_service.getBlogEntry( blog_entry_id_string );
+
+          if ( existing_blog_entry !== undefined )
           {
-            blog_id_not_valid = false; // Existing Blog Entry
+            this.blog_entry_copy.id                  =      existing_blog_entry.m_entry_id; /* Only for Json-Server */
 
-            let existing_blog_entry : ClsBlogEntry;
+            this.blog_entry_copy.m_user_id           =      existing_blog_entry.m_user_id;
+            this.blog_entry_copy.m_user_name         = "" + existing_blog_entry.m_user_name;
 
-            existing_blog_entry = <ClsBlogEntry> this.m_blog_entry_service.getBlogEntry( blog_entry_id_string );
+            this.blog_entry_copy.m_entry_id          =      existing_blog_entry.m_entry_id;
+            this.blog_entry_copy.m_entry_date_string =      existing_blog_entry.m_entry_date_string;
+            this.blog_entry_copy.m_entry_date_number =      existing_blog_entry.m_entry_date_number;
 
-            if ( existing_blog_entry !== undefined )
-            {
-              this.blog_entry_copy.m_user_id           =      existing_blog_entry.m_user_id;
-              this.blog_entry_copy.m_user_name         = "" + existing_blog_entry.m_user_name;
+            this.blog_entry_copy.m_entry_header      = "" + existing_blog_entry.m_entry_header;
+            this.blog_entry_copy.m_entry_text        = "" + existing_blog_entry.m_entry_text;
 
-              this.blog_entry_copy.m_entry_id          =      existing_blog_entry.m_entry_id;
-              this.blog_entry_copy.m_entry_date_string =      existing_blog_entry.m_entry_date_string;
-              this.blog_entry_copy.m_entry_date_number =      existing_blog_entry.m_entry_date_number;
-
-              this.blog_entry_copy.m_entry_header      = "" + existing_blog_entry.m_entry_header;
-              this.blog_entry_copy.m_entry_text        = "" + existing_blog_entry.m_entry_text;
-
-              this.m_blog_is_add_new = false;
-            }
+            this.m_blog_is_add_new = false;
           }
         }
       }
@@ -109,8 +106,6 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
       this.m_show_confirm_dialog = false;
 
       this.m_router.navigate( ['/blog'], { replaceUrl: true, skipLocationChange: false })
-      //this.m_router.navigate(['/blog'], { replaceUrl: true });
-      //this.m_router.navigate( ['/blog'] );
     }
   }
 
@@ -146,7 +141,6 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
     return true;
   }
-
 
 
   public deleteBlogEntry() : boolean
@@ -226,34 +220,6 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
     return false;
   }
 
-  firebaseDelete() : boolean
-  {
-    console.log( 'firebaseDelete' );
-
-    this.m_blog_firebase_service.deleteItem( "" + this.blog_entry_copy.m_entry_id );
-
-    return false;
-  }
-
-  firebaseAdd() : boolean
-  {
-    console.log( 'firebaseAdd' );
-
-    this.m_blog_firebase_service.addBlogEntry( this.blog_entry_copy );
-
-    return false;
-  }
-
-
-  firebaseUpdate() : boolean
-  {
-    console.log( 'firebaseUpdate' );
-
-    this.m_blog_firebase_service.updateBlogEntry( this.blog_entry_copy );
-
-    return false;
-  }
-
 
   jsonServerAdd()
   {
@@ -299,6 +265,4 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
     return false;
   }
-
-
 }
