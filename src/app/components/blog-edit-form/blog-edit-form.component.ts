@@ -21,9 +21,11 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
   private m_blog_is_add_new     : boolean = false;
 
+  private m_blog_flag : boolean = false;
+
   @Input() blog_entry_copy      : ClsBlogEntry = new ClsBlogEntry;
 
-  constructor( private m_blog_entry_service    : BlogEntryService,
+  constructor( private m_blog_entry_service_alt : BlogEntryService,
                private m_blog_jsonserver_service : BlogJsonserverService,
                private m_user_service          : BlogUserService,
                private m_activated_route       : ActivatedRoute,
@@ -71,42 +73,43 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
         blog_id_not_valid = false; // new Blog Entry with ID -1
       }
 
-      if ( blog_entry_id_number >= 0 )
+      if ( ( blog_entry_id_string !== "" ) && ( blog_entry_id_string !== "-1" ))
       {
-        if ( this.m_blog_entry_service.hasBlogEntryId( blog_entry_id_string ) )
-        {
-          blog_id_not_valid = false; // Existing Blog Entry
+        this.m_blog_jsonserver_service.getBlogEntry( blog_entry_id_string )
+        .subscribe( {
+                  next:  ( existing_blog_entry ) =>
+                    {
+                       console.log('Eintrag gefunden Newu' );
 
-          let existing_blog_entry : ClsBlogEntry;
+                      this.blog_entry_copy.id                  =      existing_blog_entry.m_entry_id; /* Only for Json-Server */
 
-          existing_blog_entry = <ClsBlogEntry> this.m_blog_entry_service.getBlogEntry( blog_entry_id_string );
+                      this.blog_entry_copy.m_user_id           =      existing_blog_entry.m_user_id;
+                      this.blog_entry_copy.m_user_name         = "" + existing_blog_entry.m_user_name;
 
-          if ( existing_blog_entry !== undefined )
-          {
-            this.blog_entry_copy.id                  =      existing_blog_entry.m_entry_id; /* Only for Json-Server */
+                      this.blog_entry_copy.m_entry_id          =      existing_blog_entry.m_entry_id;
+                      this.blog_entry_copy.m_entry_date_string =      existing_blog_entry.m_entry_date_string;
+                      this.blog_entry_copy.m_entry_date_number =      existing_blog_entry.m_entry_date_number;
 
-            this.blog_entry_copy.m_user_id           =      existing_blog_entry.m_user_id;
-            this.blog_entry_copy.m_user_name         = "" + existing_blog_entry.m_user_name;
+                      this.blog_entry_copy.m_entry_header      = "" + existing_blog_entry.m_entry_header;
+                      this.blog_entry_copy.m_entry_text        = "" + existing_blog_entry.m_entry_text;
 
-            this.blog_entry_copy.m_entry_id          =      existing_blog_entry.m_entry_id;
-            this.blog_entry_copy.m_entry_date_string =      existing_blog_entry.m_entry_date_string;
-            this.blog_entry_copy.m_entry_date_number =      existing_blog_entry.m_entry_date_number;
+                      this.m_blog_is_add_new = false;
 
-            this.blog_entry_copy.m_entry_header      = "" + existing_blog_entry.m_entry_header;
-            this.blog_entry_copy.m_entry_text        = "" + existing_blog_entry.m_entry_text;
+                      blog_id_not_valid = false;
+                    },
 
-            this.m_blog_is_add_new = false;
-          }
-        }
+                  error: (err) => { console.error('Fehler beim holen des Blog-Eintrags:', err );
+
+                        this.m_show_confirm_dialog = false;
+
+                        this.m_router.navigate( ['/blog'], { replaceUrl: true, skipLocationChange: false })
+
+                  }
+                }
+              );
       }
     }
 
-    if ( blog_id_not_valid )
-    {
-      this.m_show_confirm_dialog = false;
-
-      this.m_router.navigate( ['/blog'], { replaceUrl: true, skipLocationChange: false })
-    }
   }
 
 
@@ -123,21 +126,26 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
     {
       return true; // no changes -> leave Form
     }
-
-
 */
     //console.log( 'ngSubmitMyForm my_form ' , my_form );
 
-    //console.log( 'ngSubmitMyForm blog_date   =>', my_form.blog_date   );
-    //console.log( 'ngSubmitMyForm blog_header =>', my_form.blog_header );
-    //console.log( 'ngSubmitMyForm blog_id     =>', my_form.blog_id     );
-    //console.log( 'ngSubmitMyForm blog_user   =>', my_form.blog_user   );
+    this.m_blog_jsonserver_service.saveBlogEntry( this.blog_entry_copy )
 
-    this.m_blog_entry_service.saveBlogEntry( this.blog_entry_copy );
+    .subscribe( {
+                next:  (res) => { console.log('Eintrag gespeichert ' );
 
-    this.m_show_confirm_dialog = false;
+                    this.m_show_confirm_dialog = false;
 
-    this.m_router.navigate( ['/blog'], { replaceUrl: true, skipLocationChange: false } )
+                    this.m_router.navigate( ['/blog'], { replaceUrl: true, skipLocationChange: false } )
+                  },
+
+                error: (err) => {
+                  console.error('Fehler beim Hinzufügen des Blog-Eintrags:', err );
+
+                  alert( err );
+                }
+              }
+            );
 
     return true;
   }
@@ -151,7 +159,7 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
     {
       console.log( "Confirm yes" );
 
-      this.m_blog_entry_service.deleteBlogEntry( this.blog_entry_copy.m_entry_id );
+      this.m_blog_entry_service_alt.deleteBlogEntry( this.blog_entry_copy.m_entry_id );
 
       fkt_return_value = true;
     }
@@ -226,6 +234,7 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
     console.log( 'jsonServerAdd' );
 
     this.m_blog_jsonserver_service.addBlogEntry( this.blog_entry_copy )
+
     .subscribe( {
                   next:  (res) => { console.log('Eintrag gespeichert ' );                             },
                   error: (err) => { console.error('Fehler beim Hinzufügen des Blog-Eintrags:', err ); }

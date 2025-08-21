@@ -4,6 +4,7 @@ import { Observable                   } from 'rxjs';
 import { BlogEntryService             } from '../../services/blog-entry.service';
 import { BlogEntry                    } from '../../ClsBlogEntry';
 import { BlogUserService              } from '../../services/blog-user.service';
+import { BlogJsonserverService } from '../../services/blog-jsonserver.service';
 
 @Component({
   selector: 'app-blog-entry-list',
@@ -22,6 +23,7 @@ export class BlogEntryListComponent implements OnInit, OnDestroy
     private observable_entry_count ? : Observable<number>;
 
     constructor( private m_blog_entry_service : BlogEntryService,
+                 private m_blog_jsonserver_service : BlogJsonserverService,
                  private m_user_service       : BlogUserService,
                  private m_router             : Router )
     {
@@ -33,7 +35,9 @@ export class BlogEntryListComponent implements OnInit, OnDestroy
 
     ngOnInit()
     {
-      this.m_blog_entry_service.getArrayBlogEntry().subscribe( ( vector_blog_entries ) => this.blog_vektor = vector_blog_entries );
+      this.m_blog_jsonserver_service.getBlogList().subscribe( ( vector_blog_entries ) => this.blog_vektor = vector_blog_entries );
+
+      //this.m_blog_entry_service.getArrayBlogEntry().subscribe( ( vector_blog_entries ) => this.blog_vektor = vector_blog_entries );
 
       this.my_route_start = this.m_router.url;
     }
