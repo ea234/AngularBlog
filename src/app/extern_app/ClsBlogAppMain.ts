@@ -548,7 +548,7 @@ The BBC Micro had multiple display modes, including a Teletext-based Mode 7 that
   }
 
 
-  private getMockUpBlockEntry( nr: number, user_id : number, user_name : string, entry_header : string, entry_text : string  ) : ClsBlogEntry
+  public getMockUpBlockEntry( nr: number, user_id : number, user_name : string, entry_header : string, entry_text : string  ) : ClsBlogEntry
   {
     const date = this.addDateMonate( undefined, nr * (-1), 0 );
 
