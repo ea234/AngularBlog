@@ -129,6 +129,20 @@ export class BlogAppMain
     return undefined;
   }
 
+  public getBlogEntryIndex( blog_entry_index : number ) : BlogEntry | undefined
+  {
+    try
+    {
+      if ( this.m_vector_blog_entries != undefined )
+      {
+        return this.m_vector_blog_entries[ blog_entry_index ] as BlogEntry;
+      }
+    }
+    catch( error )
+    {}
+
+    return undefined;
+  }
 
   private getUniqueID() : number
   {
@@ -518,6 +532,11 @@ Although it was announced towards the end of 1981, production issues initially d
 The BBC Micro's impact on education in the United Kingdom was notable, with most schools in Britain acquiring at least one unit, exposing a generation of pupils to computing fundamentals. Central to this was its built-in BBC BASIC programming language, known for its robust feature set and accessible syntax. As a home system, the BBC also fostered a community of enthusiasts who benefited from its flexible architecture, which supported everything from disk interfaces to speech synthesis. Through these expansions and its broader software library, the BBC Micro had a major impact in the development of the UK's home-grown software industry. Acorn's engineers used the BBC Micro as both a development platform and a reference design to simulate their pioneering ARM architecture, now one of the most widely deployed CPU designs worldwide. This work influenced the rapid evolution of RISC-based processing in mobile devices, embedded systems, and beyond, making the BBC Micro an important stepping stone in computing.
 
 The BBC Micro had multiple display modes, including a Teletext-based Mode 7 that used minimal memory, and came with a full-travel keyboard and ten user-configurable function keys. Hardware interfaces were catered for with standard analogue inputs, a serial and parallel port, and a cassette interface that followed the CUTS (Computer Users' Tape Standard) variation of the Kansas City standard. In total, nine BBC-branded microcomputer models were released, although the term "BBC Micro" generally refers to the first six versions (Model A, B, B+64, B+128, Master 128, and Master Compact). Later BBC models are typically classed as part of Acorn's Archimedes line.`
+   }
+   else if ( nr === 18 ) // used for test - dont change
+   {
+    text_header = `Blog Nr ${ nr }`
+    text_entry  = `Text Nr ${ nr }`
    }
    else
    {
