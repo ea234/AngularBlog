@@ -42,7 +42,7 @@ const appRoutes: Routes = [
   },
 
 
-  { path: 'showblog:blog_entry_id', component: BlogDetailLongComponent },
+  { path: 'showblog/:blog_entry_id', component: BlogDetailLongComponent },
   { path: 'about',                  component: AboutComponent          },
   { path: 'login',                  component: LogInComponent          },
   { path: 'logout',                 component: LogOutComponent         },
@@ -55,3 +55,4 @@ const appRoutes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+// http://localhost:4200/showblog/1299792625892
