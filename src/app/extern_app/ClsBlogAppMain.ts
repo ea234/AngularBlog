@@ -184,6 +184,31 @@ export class BlogAppMain
   }
 
 
+  public updateBlogEntry( blog_entry_to_save : ClsBlogEntry ) : boolean
+  {
+    let knz_result : boolean = false;
+
+    if ( blog_entry_to_save.m_entry_id !== "" )
+    {
+      if ( this.hasBlogEntryId( blog_entry_to_save.m_entry_id ) )
+      {
+        let existing_blog_entry : ClsBlogEntry;
+
+        existing_blog_entry = <ClsBlogEntry> this.getBlogEntry( blog_entry_to_save.m_entry_id );
+
+        if ( existing_blog_entry !== undefined )
+        {
+          existing_blog_entry.m_entry_header = blog_entry_to_save.m_entry_header;
+          existing_blog_entry.m_entry_text   = blog_entry_to_save.m_entry_text;
+
+          knz_result = true;
+        }
+      }
+    }
+
+    return knz_result;
+  }
+
   public deleteBlogEntry( blog_entry_id_to_delete : string ) : boolean
   {
     if ( blog_entry_id_to_delete !== "" )
@@ -569,6 +594,29 @@ The BBC Micro had multiple display modes, including a Teletext-based Mode 7 that
     blog_entry.m_entry_date_number = Number( date_format_long );
 
     blog_entry.m_entry_date_string = date_format_string;
+
+    return blog_entry;
+  }
+
+
+
+  public getEmptyBlockEntry() : ClsBlogEntry
+  {
+    let blog_entry = new ClsBlogEntry();
+
+    blog_entry.m_user_id           = -2;
+
+    blog_entry.m_user_name         = "";
+
+    blog_entry.m_entry_header      = "";
+
+    blog_entry.m_entry_id          = "-2";
+
+    blog_entry.m_entry_text        = "";
+
+    blog_entry.m_entry_date_number = 0;
+
+    blog_entry.m_entry_date_string = "";
 
     return blog_entry;
   }

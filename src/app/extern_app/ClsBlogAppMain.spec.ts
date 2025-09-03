@@ -130,4 +130,28 @@ describe('BlogAppMain', () => {
 
   });
 
+
+  it('should be an empty Instance of ClsBlockEntry ', () => {
+
+    let cls_blog_entry  = appx.getEmptyBlockEntry();
+
+    expect( cls_blog_entry ).toBeTruthy();
+
+    expect( cls_blog_entry ).toBeInstanceOf( ClsBlogEntry );
+
+    expect( cls_blog_entry!.m_user_id ).toBe( -2 );
+
+    expect( cls_blog_entry!.m_entry_id ).toBe( "-2" );
+
+    expect( cls_blog_entry!.m_entry_date_number ).toBe( 0 );
+
+    let entry_id_str : string = "" + cls_blog_entry!.m_entry_id;
+
+    expect( appx.hasBlogEntryId( entry_id_str ) ).toBeFalse();
+  });
+
+
+
+
+
 });

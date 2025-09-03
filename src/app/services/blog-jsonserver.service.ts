@@ -1,7 +1,8 @@
 import { Injectable              } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable              } from 'rxjs';
+import { Observable, of          } from 'rxjs';
 import { ClsBlogEntry, BlogEntry } from '../ClsBlogEntry';
+import { ClsBlogBackend          } from './ClsBlogBackend';
 
 const http_options = {
   headers: new HttpHeaders(
@@ -14,7 +15,7 @@ const http_options = {
 @Injectable({
   providedIn: 'root'
 })
-export class BlogJsonserverService
+export class BlogJsonserverService implements ClsBlogBackend
 {
   private api_url : string = 'http://localhost:5000/blog';
 
@@ -39,7 +40,7 @@ export class BlogJsonserverService
 
   deleteBlogEntry( blog_entry : BlogEntry ) : Observable<BlogEntry>
   {
-    blog_entry.id = blog_entry.m_entry_id;
+    blog_entry.id = blog_entry.m_entry_id;this.m_http_client.get<BlogEntry[]>( this.api_url );
 
     const url = `${ this.api_url }/${ blog_entry.m_entry_id }`;
 
@@ -81,8 +82,13 @@ export class BlogJsonserverService
     return "" + unique_id;
   }
 
-  saveBlogEntry( blog_entry : BlogEntry) : Observable<BlogEntry>
+  saveBlogEntry( blog_entry : BlogEntry ) : Observable<BlogEntry>
   {
+    if ( blog_entry.m_entry_id === "-2" )
+    {
+      return of( blog_entry );
+    }
+
     if ( blog_entry.m_entry_id === "-1" )
     {
       blog_entry.m_entry_id = this.getNewBlogId();
