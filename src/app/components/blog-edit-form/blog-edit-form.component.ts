@@ -159,7 +159,7 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
     {
       console.log( "Confirm yes" );
 
-      this.m_blog_entry_service_alt.deleteBlogEntry( this.blog_entry_copy.m_entry_id );
+      this.m_blog_entry_service_alt.deleteBlogEntry( this.blog_entry_copy );
 
       fkt_return_value = true;
     }

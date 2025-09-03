@@ -22,12 +22,11 @@ export class BlogEntryListComponent implements OnInit, OnDestroy
 
     private observable_entry_count ? : Observable<number>;
 
-    constructor( private m_blog_entry_service : BlogEntryService,
-                 private m_blog_jsonserver_service : BlogJsonserverService,
+    constructor( private m_blog_jsonserver_service : BlogJsonserverService,
                  private m_user_service       : BlogUserService,
                  private m_router             : Router )
     {
-      this.observable_entry_count = this.m_blog_entry_service.getEntryCount();
+      this.observable_entry_count = this.m_blog_jsonserver_service.getEntryCount();
 
       this.observable_entry_count.subscribe( value => { this.entry_count = value } )
     }

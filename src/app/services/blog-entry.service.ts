@@ -53,10 +53,12 @@ export class BlogEntryService implements ClsBlogBackend
     return this.cls_blog_app.hasBlogEntryId( blog_entry_id );
   }
 
+
   private getUniqueID() : number
   {
     return Math.floor( Math.random() * Date.now() )
   }
+
 
   private getNewBlogId () : string
   {
@@ -66,6 +68,7 @@ export class BlogEntryService implements ClsBlogBackend
 
     return "" + unique_id;
   }
+
 
   public saveBlogEntry( blog_entry : BlogEntry ) : Observable<BlogEntry>
   {
@@ -92,12 +95,14 @@ export class BlogEntryService implements ClsBlogBackend
     return of( blog_entry );
   }
 
+
   deleteBlogEntry( blog_entry : BlogEntry ) : Observable<BlogEntry>
   {
     this.cls_blog_app.deleteBlogEntry( blog_entry.m_entry_id );
 
     return of( blog_entry );
   }
+
 
   addBlogEntry( blog_entry: BlogEntry ): Observable<BlogEntry>
   {

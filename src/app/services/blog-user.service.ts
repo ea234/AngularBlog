@@ -8,6 +8,7 @@ export class BlogUserService
 {
   m_blog_user : ClsBlogUser = new ClsBlogUser();
 
+
   constructor()
   {
     this.m_blog_user.m_is_logged_in = false;
@@ -48,8 +49,8 @@ export class BlogUserService
   }
 
 
-  userLogOut() : boolean {
-
+  userLogOut() : boolean
+  {
     this.m_blog_user.m_is_logged_in = false;
     this.m_blog_user.m_user_id = 0;
     this.m_blog_user.m_user_name = "Guest";
@@ -58,13 +59,12 @@ export class BlogUserService
   }
 
 
-  public userLogIn() : boolean {
-
+  public userLogIn() : boolean
+  {
     this.m_blog_user.m_is_logged_in = true;
     this.m_blog_user.m_user_id = 1;
     this.m_blog_user.m_user_name = "UserName";
 
     return true;
   }
-
 }

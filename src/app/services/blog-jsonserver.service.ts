@@ -30,6 +30,12 @@ export class BlogJsonserverService implements ClsBlogBackend
   }
 
 
+  public getEntryCount() : Observable<number>
+  {
+    return of( -3 );
+  }
+
+
   getBlogEntry( entry_id : string ) : Observable<BlogEntry>
   {
     const url = `${ this.api_url }/${ entry_id }`;
