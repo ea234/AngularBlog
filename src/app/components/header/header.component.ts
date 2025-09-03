@@ -22,4 +22,14 @@ export class HeaderComponent
   {
     return this.m_user_service.isUserNotLoggedIn();
   }
+
+  public getUserName() : string
+  {
+    return this.m_user_service.getUserName();
+  }
+
+  public getUserService() : BlogUserService /* Evil-Hack for test */
+  {
+    return this.m_user_service;
+  }
 }
