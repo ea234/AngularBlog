@@ -17,7 +17,7 @@ describe('BlogAppMain', () =>
   });
 
 
-  it('should be 1 Mockup Block Entry', () =>
+  it('should be 1 Mockup Blog Entry', () =>
   {
     appx.addMockUpBlogEntry();
 
@@ -25,7 +25,7 @@ describe('BlogAppMain', () =>
   });
 
 
-  it('should be the startup count Mockup Block Entries', () =>
+  it('should be the startup count Mockup Blog Entries', () =>
   {
     appx.generateMockUpBlogEntries();
 
@@ -35,7 +35,7 @@ describe('BlogAppMain', () =>
   });
 
 
-  it('should be 1 Mockup Block Entry more', () =>
+  it('should be 1 Mockup Blog Entry more', () =>
   {
     appx.generateMockUpBlogEntries();
 
@@ -65,7 +65,7 @@ describe('BlogAppMain', () =>
   });
 
 
-  it('should be Instance of ClsBlockEntry and the right one', () =>
+  it('should be Instance of ClsBlogEntry and the right one', () =>
   {
     appx.generateMockUpBlogEntries();
 
@@ -95,7 +95,7 @@ describe('BlogAppMain', () =>
     let test_entry_header : string = "test_entry_header";
     let test_entry_text   : string = "test_entry_text";
 
-    let test_blog_entry : ClsBlogEntry = appx.getMockUpBlockEntry( test_nr, test_user_id, test_user_name, test_entry_header, test_entry_text );
+    let test_blog_entry : ClsBlogEntry = appx.getMockUpBlogEntry( test_nr, test_user_id, test_user_name, test_entry_header, test_entry_text );
 
     appx.generateMockUpBlogEntries();
 
@@ -123,9 +123,9 @@ describe('BlogAppMain', () =>
   });
 
 
-  it('should be an empty Instance of ClsBlockEntry ', () => {
+  it('should be an empty Instance of ClsBlogEntry ', () => {
 
-    let cls_blog_entry = appx.getEmptyBlockEntry();
+    let cls_blog_entry = appx.getEmptyBlogEntry();
 
     expect( cls_blog_entry ).toBeTruthy();
 

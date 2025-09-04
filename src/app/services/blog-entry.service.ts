@@ -41,7 +41,7 @@ export class BlogEntryService implements ClsBlogBackend
 
     if ( ergebnis_obj == undefined )
     {
-      ergebnis_obj = this.cls_blog_app.getEmptyBlockEntry();
+      ergebnis_obj = this.cls_blog_app.getEmptyBlogEntry();
     }
 
     return  of( ergebnis_obj );
