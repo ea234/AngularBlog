@@ -1,11 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { HeaderComponent } from './header.component';
-import { BlogUserService } from '../../services/blog-user.service';
+import { By                        } from '@angular/platform-browser';
+import { HeaderComponent           } from './header.component';
+import { BlogUserService           } from '../../services/blog-user.service';
 
-
-class MockBlogUserService {
-
+class MockBlogUserService
+{
   m_is_logged_in : boolean = false;
   m_user_name    : string = "MockUser";
 
@@ -33,7 +32,7 @@ class MockBlogUserService {
 }
 
 
-describe('HeaderComponent', () =>
+describe( 'HeaderComponent', () =>
 {
   let mock_user_service : MockBlogUserService = new MockBlogUserService();
 
@@ -62,19 +61,19 @@ describe('HeaderComponent', () =>
   });
 
 
-  it('should create', () =>
+  it( 'should create', () =>
   {
     expect( component ).toBeTruthy();
   });
 
 
-  it('should be "MockUser"', () =>
+  it( 'should be "MockUser"', () =>
   {
     expect( component.getUserName() ).toBe( "MockUser" );
   });
 
 
-  it('should display LogIn link when user is not logged in', () =>
+  it( 'should display LogIn link when user is not logged in', () =>
   {
     console.log( "Test Header 1" );
 
@@ -88,7 +87,7 @@ describe('HeaderComponent', () =>
   });
 
 
-  it('should display LogOut link when user is logged in', () =>
+  it( 'should display LogOut link when user is logged in', () =>
   {
     mock_user_service.userLogIn();
 
