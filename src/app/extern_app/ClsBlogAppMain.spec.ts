@@ -1,60 +1,55 @@
 import { BlogAppMain } from "./ClsBlogAppMain";
 import { ClsBlogEntry } from "../ClsBlogEntry";
 
-describe('BlogAppMain', () => {
-
+describe('BlogAppMain', () =>
+{
   let appx : BlogAppMain;
 
-  beforeEach(async () => {
-
+  beforeEach(async () =>
+  {
     appx = new BlogAppMain();
-
   });
 
 
-  it('should be 0 at start', () => {
-
+  it('should be 0 at start', () =>
+  {
     expect( appx.getArrayLength() ).toBe( 0 );
-
   });
 
 
-  it('should be 1 Mockup Block Entry', () => {
-
+  it('should be 1 Mockup Block Entry', () =>
+  {
     appx.addMockUpBlogEntry();
 
     expect( appx.getArrayLength() ).toBe( 1 );
-
   });
 
 
-  it('should be 20 Mockup Block Entries', () => {
-
+  it('should be the startup count Mockup Block Entries', () =>
+  {
     appx.generateMockUpBlogEntries();
 
     let array_length = appx.getArrayLength();
 
-    expect( appx.getArrayLength() ).toBe( 20 );
-
+    expect( appx.getArrayLength() ).toBe( appx.getMockUpStartCount() );
   });
 
 
-  it('should be 21 Mockup Block Entries', () => {
-
+  it('should be 1 Mockup Block Entry more', () =>
+  {
     appx.generateMockUpBlogEntries();
 
     appx.addMockUpBlogEntry();
 
-    expect( appx.getArrayLength() ).toBe( 21 );
-
+    expect( appx.getArrayLength() ).toBe( appx.getMockUpStartCount() + 1 );
   });
 
 
-  it('should be one less', () => {
-
+  it('should be one less', () =>
+  {
     appx.generateMockUpBlogEntries();
 
-    expect( appx.getArrayLength() ).toBe( 20 );
+    expect( appx.getArrayLength() ).toBe( appx.getMockUpStartCount() );
 
     let cls_blog_entry  = appx.getBlogEntryIndex( 18 );
 
@@ -66,16 +61,15 @@ describe('BlogAppMain', () => {
 
     appx.deleteBlogEntry( entry_id_str );
 
-    expect( appx.getArrayLength() ).toBe( 19 );
-
+    expect( appx.getArrayLength() ).toBe( appx.getMockUpStartCount() - 1 );
   });
 
 
-  it('should be Instance of ClsBlockEntry and the right one', () => {
-
+  it('should be Instance of ClsBlockEntry and the right one', () =>
+  {
     appx.generateMockUpBlogEntries();
 
-    expect( appx.getArrayLength() ).toBe( 20 );
+    expect( appx.getArrayLength() ).toBe( appx.getMockUpStartCount() );
 
     let cls_blog_entry  = appx.getBlogEntryIndex( 18 );
 
@@ -90,12 +84,11 @@ describe('BlogAppMain', () => {
     let entry_id_str : string = "" + cls_blog_entry!.m_entry_id;
 
     expect( appx.hasBlogEntryId( entry_id_str ) ).toBeTrue();
-
   });
 
 
-  it('should be able to store new BlogEntries', () => {
-
+  it('should be able to store new BlogEntries', () =>
+  {
     let test_nr           : number = 40;
     let test_user_id      : number = 234;
     let test_user_name    : string = "test_user_id";
@@ -106,11 +99,11 @@ describe('BlogAppMain', () => {
 
     appx.generateMockUpBlogEntries();
 
-    expect( appx.getArrayLength() ).toBe( 20 );
+    expect( appx.getArrayLength() ).toBe( appx.getMockUpStartCount() );
 
     appx.addBlogEntry( test_blog_entry );
 
-    expect( appx.getArrayLength() ).toBe( 21 );
+    expect( appx.getArrayLength() ).toBe( appx.getMockUpStartCount() + 1 );
 
     expect( appx.hasBlogEntryId( test_blog_entry.m_entry_id ) ).toBeTrue();
 
@@ -118,7 +111,7 @@ describe('BlogAppMain', () => {
 
     expect( index_blog_entry ).toBeGreaterThan( 0 );
 
-    let cls_blog_entry  = appx.getBlogEntryIndex( index_blog_entry );
+    let cls_blog_entry = appx.getBlogEntryIndex( index_blog_entry );
 
     expect( cls_blog_entry ).toBeTruthy();
 
@@ -127,13 +120,12 @@ describe('BlogAppMain', () => {
     expect( cls_blog_entry ).toBeTruthy();
 
     expect( cls_blog_entry!.m_entry_id ).toBe( test_blog_entry.m_entry_id  );
-
   });
 
 
   it('should be an empty Instance of ClsBlockEntry ', () => {
 
-    let cls_blog_entry  = appx.getEmptyBlockEntry();
+    let cls_blog_entry = appx.getEmptyBlockEntry();
 
     expect( cls_blog_entry ).toBeTruthy();
 
@@ -149,9 +141,5 @@ describe('BlogAppMain', () => {
 
     expect( appx.hasBlogEntryId( entry_id_str ) ).toBeFalse();
   });
-
-
-
-
 
 });

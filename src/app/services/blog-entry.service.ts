@@ -150,5 +150,26 @@ export class BlogEntryService implements ClsBlogBackend
     return of( blog_entry );
   }
 
+  resetMockUpBlogEntries() : void
+  {
+    this.cls_blog_app.clear();
+
+    this.cls_blog_app.generateMockUpBlogEntries();
+  }
+
+  clearMockUpBlogEntries() : void
+  {
+    this.cls_blog_app.clear();
+  }
+
+  deleteFirstMockUpBlogEntry() : void
+  {
+    this.cls_blog_app.deleteFirstMockUpBlogEntry();
+  }
+
+  getMockUpBlogEntryCount() : number
+  {
+    return this.cls_blog_app.getArrayLength();
+  }
 
 }

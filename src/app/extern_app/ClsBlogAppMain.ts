@@ -80,7 +80,6 @@ export class BlogAppMain
   }
 
 
-
   /**
    * @return  die Anzahl der im Vektor gespeicherten Elemente
    */
@@ -223,6 +222,15 @@ export class BlogAppMain
 
     return true;
   }
+
+  deleteFirstMockUpBlogEntry() : void
+  {
+    if ( ( this.m_vector_blog_entries !== undefined ) && ( this.m_vector_blog_entries.length > 0 ) )
+    {
+      this.m_vector_blog_entries.splice( 0, 1);
+    }
+  }
+
 
 
   public hasBlogEntryId( blog_entry_id : string ) : boolean
@@ -628,19 +636,25 @@ The BBC Micro had multiple display modes, including a Teletext-based Mode 7 that
 
     let blog_entry =  this.getMockBlogEntryInstance( array_length , 1, "Admin Workflow" );
 
-    console.log(`Element Nummer ${ array_length } ${ blog_entry.m_entry_header }`);
+    //console.log(`Element Nummer ${ array_length } ${ blog_entry.m_entry_header }`);
 
     this.addBlogEntry( blog_entry );
   }
 
 
+  public getMockUpStartCount() : number
+  {
+    return 25;
+  }
+
+
   public generateMockUpBlogEntries()
   {
-    for (let blog_id_nr = 0; blog_id_nr < 20; blog_id_nr++)
+    for (let blog_id_nr = 0; blog_id_nr < this.getMockUpStartCount(); blog_id_nr++)
     {
       let blog_entry =  this.getMockBlogEntryInstance( blog_id_nr, blog_id_nr % 2 === 0 ? 1 : 2, "Admin Workflow" );
 
-      console.log( `Element Nummer ${ blog_id_nr }  ${ blog_entry.m_user_id }  ${ blog_entry.m_entry_header }` );
+      //console.log( `Element Nummer ${ blog_id_nr }  ${ blog_entry.m_user_id }  ${ blog_entry.m_entry_header }` );
 
       this.addBlogEntry( blog_entry );
     }
