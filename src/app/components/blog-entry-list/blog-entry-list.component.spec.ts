@@ -8,6 +8,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 describe('BlogEntryListComponent', () =>
 {
   let component: BlogEntryListComponent;
+
   let fixture: ComponentFixture<BlogEntryListComponent>;
 
   let mock_blog_service : BlogEntryService = new BlogEntryService();
@@ -84,7 +85,7 @@ describe('BlogEntryListComponent', () =>
 
       const elements = fixture.nativeElement.querySelectorAll('app-blog-detail-short');
 
-      console.log( "Test BlogEntryListComponent reduzierung " + elements.length );
+      //console.log( "Test BlogEntryListComponent reduzierung " + elements.length );
 
       expect( elements.length ).toBe( mock_up_entries );
     }
