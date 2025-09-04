@@ -572,11 +572,11 @@ The BBC Micro had multiple display modes, including a Teletext-based Mode 7 that
     text_entry  = `Text Nr ${ nr }`
    }
 
-    return this.getMockUpBlockEntry( nr, user_id, user_name, text_header, text_entry );
+    return this.getMockUpBlogEntry( nr, user_id, user_name, text_header, text_entry );
   }
 
 
-  public getMockUpBlockEntry( nr: number, user_id : number, user_name : string, entry_header : string, entry_text : string  ) : ClsBlogEntry
+  public getMockUpBlogEntry( nr: number, user_id : number, user_name : string, entry_header : string, entry_text : string  ) : ClsBlogEntry
   {
     const date = this.addDateMonate( undefined, nr * (-1), 0 );
 
@@ -608,7 +608,7 @@ The BBC Micro had multiple display modes, including a Teletext-based Mode 7 that
 
 
 
-  public getEmptyBlockEntry() : ClsBlogEntry
+  public getEmptyBlogEntry() : ClsBlogEntry
   {
     let blog_entry = new ClsBlogEntry();
 
@@ -628,6 +628,8 @@ The BBC Micro had multiple display modes, including a Teletext-based Mode 7 that
 
     return blog_entry;
   }
+
+
 
 
   public addMockUpBlogEntry()

@@ -2,12 +2,13 @@ import { Component, Input, OnInit     } from '@angular/core';
 import { NgForm                       } from '@angular/forms';
 import { ActivatedRoute, Router       } from '@angular/router';
 
-import { ClsBlogEntry                 } from '../../ClsBlogEntry';
+import { BlogEntry, ClsBlogEntry                 } from '../../ClsBlogEntry';
 import { BlogEntryService             } from '../../services/blog-entry.service';
 import { BlogUserService              } from '../../services/blog-user.service';
 import { CanComponentDeactivate       } from '../../guards/confirmation/confirmation.guard';
 import { getDateString, getDateNumber } from '../../FkDate';
 import { BlogJsonserverService        } from '../../services/blog-jsonserver.service';
+import { BlogAppMain } from '../../extern_app/ClsBlogAppMain';
 
 @Component({
   selector    : 'app-blog-edit-form',
@@ -274,4 +275,40 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
     return false;
   }
+
+  jsonServerInit()
+  {
+    let mock_blog_service : BlogAppMain = new BlogAppMain();
+
+    mock_blog_service.generateMockUpBlogEntries();
+
+    let mock_up_entriy_count : number = mock_blog_service.getArrayLength();
+    let mock_up_entriy_index : number = 0;
+
+    while ( mock_up_entriy_index < mock_up_entriy_count )
+    {
+      let mock_up_blog_entry  = mock_blog_service.getBlogEntryIndex( mock_up_entriy_index );
+
+      if ( mock_up_blog_entry )
+      {
+        console.log( "json_init " + mock_up_entriy_index );
+
+      this.m_blog_jsonserver_service.addBlogEntry( mock_up_blog_entry )
+      .subscribe( {
+                    next:  (res) => { console.log('Eintrag gespeichert ' );                             },
+                    error: (err) => { console.error('Fehler beim Hinzufügen des Blog-Eintrags:', err ); }
+                  }
+                );
+      }
+
+      mock_up_entriy_index++;
+    }
+
+    return false;
+  }
+
+
+
+
+
 }

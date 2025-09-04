@@ -7,11 +7,11 @@ import { BlogUserService } from '../../services/blog-user.service';
 class MockBlogUserService {
 
   m_is_logged_in : boolean = false;
-  m_user_name : string = "MockUser";
+  m_user_name    : string = "MockUser";
 
   isUserLoggedIn() : boolean { return this.m_is_logged_in; }
 
-  isUserNotLoggedIn() : boolean { return this.m_is_logged_in; }
+  isUserNotLoggedIn() : boolean { return !this.m_is_logged_in; }
 
   getUserName() : string { return this.m_user_name; }
 
@@ -24,8 +24,7 @@ class MockBlogUserService {
     return true;
   }
 
-
-  public userLogIn() : boolean
+  userLogIn() : boolean
   {
     this.m_is_logged_in = true;
 
@@ -36,7 +35,7 @@ class MockBlogUserService {
 
 describe('HeaderComponent', () =>
 {
-  let mock_user_c : MockBlogUserService = new MockBlogUserService();
+  let mock_user_service : MockBlogUserService = new MockBlogUserService();
 
   let component: HeaderComponent;
 
@@ -46,17 +45,18 @@ describe('HeaderComponent', () =>
 
     await TestBed.configureTestingModule({
 
-      declarations: [HeaderComponent],
+      declarations: [ HeaderComponent ],
 
-      providers: [ { provide: BlogUserService, useClass: MockBlogUserService, useValue: mock_user_c } ]
+      providers: [ { provide: BlogUserService, useClass: MockBlogUserService, useValue: mock_user_service } ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(HeaderComponent);
+    fixture = TestBed.createComponent( HeaderComponent );
 
     component = fixture.componentInstance;
 
-    mock_user_c.setUserName( "MockUser" );
+    mock_user_service.setUserName( "MockUser" );
+    mock_user_service.userLogOut();
 
     fixture.detectChanges();
   });
@@ -74,10 +74,23 @@ describe('HeaderComponent', () =>
   });
 
 
+  it('should display LogIn link when user is not logged in', () =>
+  {
+    console.log( "Test Header 1" );
+
+    expect( component.isUserLoggedIn() ).toBeFalse();
+
+    expect( component.isUserNotLoggedIn() ).toBeTrue();
+
+    const log_in_link = fixture.debugElement.query( By.css( 'a[routerLink="/login"]' ) );
+
+    expect( log_in_link ).toBeTruthy();
+  });
+
 
   it('should display LogOut link when user is logged in', () =>
   {
-    mock_user_c.userLogIn();
+    mock_user_service.userLogIn();
 
     fixture.detectChanges();
 
@@ -87,18 +100,17 @@ describe('HeaderComponent', () =>
 
     expect( log_out_link ).toBeTruthy();
 
-    mock_user_c.userLogOut();
+    mock_user_service.userLogOut();
 
     fixture.detectChanges();
 
-    mock_user_c.setUserName("TestName");
+    mock_user_service.setUserName( "TestName" );
 
     expect( component.getUserName() ).toBe( "TestName" );
 
+    const log_in_link = fixture.debugElement.query( By.css( 'a[routerLink="/login"]' ) );
 
-    //const log_in_link = fixture.debugElement.query( By.css( 'a[routerLink="/login"]' ) );
-
-    //expect( log_in_link ).toBeTruthy();
+    expect( log_in_link ).toBeTruthy();
   });
 
 });

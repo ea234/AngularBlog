@@ -4,6 +4,7 @@ import { BlogEntryService             } from '../../services/blog-entry.service'
 import { BlogUserService              } from '../../services/blog-user.service';
 import { BlogJsonserverService } from '../../services/blog-jsonserver.service';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 describe('BlogEntryListComponent', () =>
 {
@@ -12,22 +13,27 @@ describe('BlogEntryListComponent', () =>
   let fixture: ComponentFixture<BlogEntryListComponent>;
 
   let mock_blog_service : BlogEntryService = new BlogEntryService();
+  let mock_user_service : BlogUserService  = new BlogUserService();
 
   beforeEach(async () =>
   {
     await TestBed.configureTestingModule({
-      declarations: [BlogEntryListComponent],
+      declarations: [ BlogEntryListComponent ],
+
       schemas : [ NO_ERRORS_SCHEMA ],
 
-      providers: [ { provide: BlogUserService },
-                   { provide: BlogJsonserverService, useClass: BlogEntryService, useValue: mock_blog_service }
+      providers: [
+                   { provide: BlogJsonserverService, useClass: BlogEntryService, useValue: mock_blog_service },
+                   { provide: BlogUserService,       useClass: BlogUserService,  useValue: mock_user_service }
                  ]
     })
     .compileComponents();
 
     mock_blog_service.resetMockUpBlogEntries();
 
-    fixture = TestBed.createComponent(BlogEntryListComponent);
+    mock_user_service.userLogOut();
+
+    fixture = TestBed.createComponent( BlogEntryListComponent );
 
     component = fixture.componentInstance;
 
@@ -37,7 +43,7 @@ describe('BlogEntryListComponent', () =>
 
   it('should create', () =>
   {
-    expect(component).toBeTruthy();
+    expect( component ).toBeTruthy();
   });
 
 
@@ -75,7 +81,7 @@ describe('BlogEntryListComponent', () =>
   {
     let mock_up_entries : number = mock_blog_service.getMockUpBlogEntryCount();
 
-    while ( mock_up_entries > 0)
+    while ( mock_up_entries > 0 )
     {
       mock_up_entries--;
 
@@ -91,6 +97,40 @@ describe('BlogEntryListComponent', () =>
     }
   });
 
+
+  it('should display no "add blog entry" button', () =>
+  {
+    const button_y =  fixture.debugElement.query( By.css('#add_blog_entry_button') );
+
+    console.log( "Test BlogEntryListComponent reduzierung " + button_y + " " );
+
+    expect( button_y ).toBeFalsy();
+  });
+
+
+  it('should display the "add blog entry" button', () =>
+  {
+    mock_user_service.userLogIn();
+
+    fixture.detectChanges();
+
+    const button_y =  fixture.debugElement.query( By.css('#add_blog_entry_button') );
+
+    expect( button_y ).toBeTruthy();
+  });
+
+
+  it('user should not be logged in', () =>
+  {
+    expect( component.isUserLoggedIn() ).toBeFalse();
+  });
+
+  it('user should be logged in', () =>
+  {
+    mock_user_service.userLogIn();
+
+    expect( component.isUserLoggedIn() ).toBeTrue();
+  });
 
   /*
   it('should render app-blog-detail-short exactly 0 times (NOT WORKING)', () =>

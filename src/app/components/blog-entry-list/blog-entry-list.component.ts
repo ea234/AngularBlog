@@ -22,6 +22,11 @@ export class BlogEntryListComponent implements OnInit, OnDestroy
 
     private observable_entry_count ? : Observable<number>;
 
+   /*
+    * private m_blog_jsonserver_service : BlogJsonserverService,
+    * private m_blog_jsonserver_service : BlogEntryService,
+    */
+
     constructor( private m_blog_jsonserver_service : BlogJsonserverService,
                  private m_user_service       : BlogUserService,
                  private m_router             : Router )
@@ -35,8 +40,6 @@ export class BlogEntryListComponent implements OnInit, OnDestroy
     ngOnInit()
     {
       this.m_blog_jsonserver_service.getBlogList().subscribe( ( vector_blog_entries ) => this.blog_vektor = vector_blog_entries );
-
-      //this.m_blog_entry_service.getArrayBlogEntry().subscribe( ( vector_blog_entries ) => this.blog_vektor = vector_blog_entries );
 
       this.my_route_start = this.m_router.url;
     }
