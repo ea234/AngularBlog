@@ -47,6 +47,18 @@ export class BlogEntryService implements ClsBlogBackend
     return  of( ergebnis_obj );
   }
 
+  public getBlogEntryIndex( blog_entry_index : number ) : BlogEntry
+  {
+    let ergebnis_obj : any = this.cls_blog_app.getBlogEntryIndex( blog_entry_index ) ;
+
+    if ( ergebnis_obj == undefined )
+    {
+      ergebnis_obj = this.cls_blog_app.getEmptyBlogEntry();
+    }
+
+    return  ergebnis_obj;
+  }
+
 
   public hasBlogEntryId( blog_entry_id : string ) : boolean
   {
