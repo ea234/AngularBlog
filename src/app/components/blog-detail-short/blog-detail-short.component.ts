@@ -3,6 +3,7 @@ import { faEdit          } from '@fortawesome/free-solid-svg-icons';
 
 import { BlogEntry       } from '../../ClsBlogEntry';
 import { BlogUserService } from '../../services/blog-user.service';
+import { BlogUser } from '../../ClsBlogUser';
 
 @Component({
   selector: 'app-blog-detail-short',
@@ -19,6 +20,11 @@ export class BlogDetailShortComponent
   constructor(  private m_user_service : BlogUserService )
   {
     //this.blog_entry = undefined;
+  }
+
+  public getUser() : BlogUser
+  {
+    return this.m_user_service.getBlogUser();
   }
 
   public isUserLoggedIn() : boolean

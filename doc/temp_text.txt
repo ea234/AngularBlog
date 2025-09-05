@@ -1,0 +1,28 @@
+zrva ugzy:
+<qvi pynff="pff-oybt-ragel-pbagnvare npgvba-ebj" >
+
+<qvi vq="vq_hfre_ybttrq_va" *atVs="vfHfreYbttrqVa()" >
+
+<qvi pynff="rqvg-nern" *atVs="pnaHfreRqvgOybtRagel(); ryfr cynprubyqre">
+
+<n ebhgreYvax="/rqvg/{{ oybt_ragel.z_ragel_vq }}" pynff="rqvg-yvax" nevn-ynory="Rqvg Oybt Ragel">
+
+<sn-vpba [atFglyr]="{'pbybe':'oynpx'}" [vpba]="sn_vpba_rqvg" />
+
+</n>
+
+</qvi>
+
+<at-grzcyngr #cynprubyqre="">
+
+<fcna pynff="rqvg-cynprubyqre" nevn-uvqqra="gehr"></fcna>
+
+</at-grzcyngr>
+
+</qvi>
+
+<qvi ebhgreYvax="./{{ oybt_ragel.z_ragel_vq }}" pynff="ivrj-yvax" >{{ oybt_ragel.z_ragel_urnqre }}</qvi>
+
+</qvi>
+
+vpu zöpugr va zrvarz grfg nhs qnf Ryrzrag zvg qre VQ vq_hfre_ybttrq_va mhtervsra. Qre Orahgmre vfg va qvrfrz snyy rvatrybttg. Rf fbyygr rva rqvg yvax ibeunaqra frva.
