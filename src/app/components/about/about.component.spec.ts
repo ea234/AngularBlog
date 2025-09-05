@@ -32,7 +32,6 @@ describe('AboutComponent', () =>
     const h1_debug_element = fixture.debugElement.query( By.css( 'h1' ) );
 
     expect( h1_debug_element ).toBeTruthy();
-
   });
 
 
@@ -44,7 +43,7 @@ describe('AboutComponent', () =>
 
     const h1_native_element = h1_debug_element.nativeElement as HTMLElement;
 
-    expect( h1_native_element.textContent?.trim()).toBe('About: Angular Blog');
+    expect( h1_native_element.textContent?.trim() ).toBe( 'About: Angular Blog' );
   });
 
 });

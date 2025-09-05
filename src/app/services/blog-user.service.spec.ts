@@ -1,5 +1,4 @@
 import { TestBed         } from '@angular/core/testing';
-
 import { BlogUserService } from './blog-user.service';
 
 describe('BlogUserService', () =>
@@ -14,13 +13,13 @@ describe('BlogUserService', () =>
   });
 
 
-  it('should be created', () =>
+  it( 'should be created', () =>
   {
     expect( service ).toBeTruthy();
   });
 
 
-  it('User should not be logged in', () =>
+  it( 'User should not be logged in', () =>
   {
     expect( service ).toBeTruthy();
 
@@ -30,7 +29,7 @@ describe('BlogUserService', () =>
   });
 
 
-  it('User Name should "Guest" ', () =>
+  it( 'User Name should "Guest" ', () =>
   {
     expect( service ).toBeTruthy();
 
@@ -38,7 +37,7 @@ describe('BlogUserService', () =>
   });
 
 
-  it('User should be logged in', () =>
+  it( 'User should be logged in', () =>
   {
     expect( service ).toBeTruthy();
 
@@ -50,7 +49,7 @@ describe('BlogUserService', () =>
   });
 
 
-  it('User should be logged in and than logged out', () =>
+  it( 'User should be logged in and than logged out', () =>
   {
     expect( service ).toBeTruthy();
 

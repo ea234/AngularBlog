@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { HeaderComponent } from './header.component';
-import { BlogUserService } from '../../services/blog-user.service';
+import { By                        } from '@angular/platform-browser';
+import { HeaderComponent           } from './header.component';
+import { BlogUserService           } from '../../services/blog-user.service';
 
 describe('HeaderComponent', () =>
 {
@@ -30,19 +30,19 @@ describe('HeaderComponent', () =>
   });
 
 
-  it('should create', () =>
+  it( 'should create', () =>
   {
     expect( component ).toBeTruthy();
   });
 
 
-  it('should be "Guest"', () =>
+  it( 'user name should be "Guest"', () =>
   {
     expect( component.getUserName() ).toBe( "Guest" );
   });
 
 
-  it('User should not be logged in', () =>
+  it( 'user should not be logged in', () =>
   {
     expect( component.isUserLoggedIn()    ).toBeFalse();
 
@@ -50,7 +50,7 @@ describe('HeaderComponent', () =>
   });
 
 
-  it('should display Login link when user is not logged in', () =>
+  it( 'should display Login link when user is not logged in', () =>
   {
     const log_in_link = fixture.debugElement.query( By.css( 'a[routerLink="/login"]' ) );
 
@@ -58,12 +58,8 @@ describe('HeaderComponent', () =>
   });
 
 
-  it('should display LogOut', () =>
+  it( 'should display LogOut', () =>
   {
-    //TestBed.overrideProvider( BlogUserService, { useValue: mock_user_c });
-
-    //fixture.detectChanges();
-
     component.getUserService().userLogIn(); // Evil
 
     mock_user_c.userLogIn();
@@ -78,7 +74,7 @@ describe('HeaderComponent', () =>
   });
 
 
-  it('should display LogOut link when user is logged in', () =>
+  it( 'should display LogOut link when user is logged in', () =>
   {
     component.getUserService().userLogIn(); // Evil
 

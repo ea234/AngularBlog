@@ -129,29 +129,4 @@ describe('BlogEntryListComponent', () =>
 
     expect( component.isUserLoggedIn() ).toBeTrue();
   });
-
-  /*
-  it('should render app-blog-detail-short exactly 0 times (NOT WORKING)', () =>
-  {
-    mock_blog_service.clearMockUpBlogEntries();
-
-    fixture.detectChanges();
-
-    const elements = fixture.nativeElement.querySelectorAll('NOT WORKING_app-blog-detail-short');
-
-    console.log( "Test BlogEntryListComponent NOT WORKING " + elements.length );
-
-    expect( elements.length ).toBe( 0 );
-  });
-
-
-  it('entry count should be 21', () =>
-  {
-    mock_blog_service.addEntry();
-
-    fixture.detectChanges();
-
-    expect( component.entry_count ).toBe( 21 );
-  });
-  */
 });

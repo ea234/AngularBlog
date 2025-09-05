@@ -1,13 +1,14 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { ComponentFixture, TestBed    } from '@angular/core/testing';
+import { RouterTestingModule          } from '@angular/router/testing';
 import { NO_ERRORS_SCHEMA             } from '@angular/core';
 import { By                           } from '@angular/platform-browser';
-import { Location } from '@angular/common';
+import { Location                     } from '@angular/common';
 import { BlogEntryService             } from '../../services/blog-entry.service';
 import { BlogUserService              } from '../../services/blog-user.service';
 import { BlogJsonserverService        } from '../../services/blog-jsonserver.service';
-import { BlogDetailShortComponent } from './blog-detail-short.component';
-import { BlogEntry } from '../../ClsBlogEntry';
+import { BlogDetailShortComponent     } from './blog-detail-short.component';
+import { BlogEntry                    } from '../../ClsBlogEntry';
+
 
 describe('BlogDetailShortComponent', () =>
 {
@@ -19,9 +20,9 @@ describe('BlogDetailShortComponent', () =>
 
   let mock_user_service : BlogUserService  = new BlogUserService();
 
-  let mock_blog_entry : BlogEntry = mock_blog_service.getBlogEntryIndex( 9 );
+  let mock_blog_entry   : BlogEntry = mock_blog_service.getBlogEntryIndex( 9 );
 
-  let location : Location;
+  let location          : Location;
 
   beforeEach(async () =>
   {
@@ -35,13 +36,13 @@ describe('BlogDetailShortComponent', () =>
           { path: 'edit/:blog_entry_id', children: []  }
         ]
       ) ],
+
       schemas : [ NO_ERRORS_SCHEMA ],
 
       providers: [
                    { provide: BlogJsonserverService, useClass: BlogEntryService, useValue: mock_blog_service },
                    { provide: BlogUserService,       useClass: BlogUserService,  useValue: mock_user_service }
                  ]
-
     })
     .compileComponents();
 
@@ -58,13 +59,14 @@ describe('BlogDetailShortComponent', () =>
     fixture.detectChanges();
   });
 
-  it('should create', () =>
+
+  it( 'should create', () =>
   {
-    expect(component).toBeTruthy();
+    expect( component ).toBeTruthy();
   });
 
 
-  it('should have view-link to entry id', () =>
+  it( 'should have view-link to blog-entry id', () =>
   {
     const element_view_link = fixture.debugElement.query( By.css( '.view-link' ) );
 
@@ -76,8 +78,6 @@ describe('BlogDetailShortComponent', () =>
 
     const native_element: HTMLElement = element_view_link.nativeElement;
 
-    //console.log( "Test BlogDetailShortComponent native_element ", native_element, element_router_link );
-
     expect( element_router_link ).toContain( './' + mock_blog_entry.m_entry_id );
 
     const element_text = native_element.textContent;
@@ -85,19 +85,70 @@ describe('BlogDetailShortComponent', () =>
     expect( element_text ).toBe( mock_blog_entry.m_entry_header );
    });
 
-  it('should have no edit links', () =>
+
+   it( 'view link should have been clicked', async () =>
+   {
+    const element_view_link = fixture.debugElement.query( By.css( '.view-link' ) );
+
+    const native_element: HTMLElement = element_view_link.nativeElement;
+
+    const element_text = native_element.textContent;
+
+    expect( element_text ).toBe( mock_blog_entry.m_entry_header );
+
+    //console.log( "Test BlogDetailShortComponent native_element.click ", native_element );
+
+    native_element.click();
+
+    await fixture.whenStable();
+
+    //console.log( "Test BlogDetailShortComponent location ", location );
+
+    expect( location.path() ).toEqual( '/' + mock_blog_entry.m_entry_id );
+   });
+
+
+  it( 'should have no edit links when user is logged out', () =>
   {
     expect( component.isUserLoggedIn() ).toBeFalse();
 
     expect( component.canUserEditBlogEntry() ).toBeFalse();
 
-    const editLinkDE = fixture.debugElement.queryAll( By.css( '[routerLink="/edit/'+ mock_blog_entry.m_entry_id + '"]' ) );
+    const element_edit_link = fixture.debugElement.queryAll( By.css( '[routerLink="/edit/'+ mock_blog_entry.m_entry_id + '"]' ) );
 
-    expect(editLinkDE.length).toBe(0);
-   });
+    expect( element_edit_link.length ).toBe( 0 );
+
+    const element_container_edit_link = fixture.debugElement.query( By.css( '#id_div_container_edit_link' ) );
+
+    expect( element_container_edit_link ).toBeFalsy();
+  });
 
 
-  it('should have edit link to blog-entry', async () =>
+  it( 'should have no edit links when user is not the author', async () =>
+  {
+    mock_user_service.userLogIn();  // User-ID changed in LogIn-Function
+
+    mock_user_service.m_blog_user.m_user_id = mock_blog_entry.m_user_id + 1;
+
+    fixture.detectChanges();
+
+    await fixture.whenStable();
+
+    expect( component.isUserLoggedIn() ).toBeTrue();
+
+    expect( component.canUserEditBlogEntry() ).toBeFalse();
+
+    const element_container_edit_link = fixture.debugElement.query( By.css( '#id_div_container_edit_link' ) );
+
+    expect( element_container_edit_link ).toBeTruthy();
+
+    const element_edit_link = element_container_edit_link.query( By.css( 'a.edit-link' ) );
+
+    expect( element_edit_link ).toBeFalsy()
+  });
+
+
+  it( 'should have edit link when user is logged in', async () =>
   {
     mock_user_service.userLogIn();  // User-ID changed in LogIn-Function
 
@@ -111,43 +162,13 @@ describe('BlogDetailShortComponent', () =>
 
     expect( component.canUserEditBlogEntry() ).toBeTrue();
 
+    const element_container_edit_link = fixture.debugElement.query( By.css( '#id_div_container_edit_link' ) );
 
-    //const element_view_link = fixture.debugElement.query( By.id( 'id_user_logged_in' ) );
+    expect( element_container_edit_link ).toBeTruthy();
 
+    const element_edit_link = element_container_edit_link.query( By.css( 'a.edit-link' ) );
 
-    const editLinkDE = fixture.debugElement.queryAll( By.css( '[routerLink="/edit/'+ mock_blog_entry.m_entry_id + '"]' ) );
-
-    expect( editLinkDE.length ).toBe( 1 );
-   });
-
-
-   it( "should have been clicked ", async () =>
-   {
-    const element_view_link = fixture.debugElement.query( By.css( '.view-link' ) );
-
-    expect( element_view_link ).toBeTruthy();
-
-    const element_router_link = element_view_link.properties[ 'routerLink'             ] ||
-                                element_view_link.properties[ 'ng-reflect-router-link' ] ||
-                                element_view_link.attributes[ 'ng-reflect-router-link' ];
-
-    const native_element: HTMLElement = element_view_link.nativeElement;
-
-    expect( element_router_link ).toContain( './' + mock_blog_entry.m_entry_id );
-
-    const element_text = native_element.textContent;
-
-    expect( element_text ).toBe( mock_blog_entry.m_entry_header );
-
-    console.log( "Test BlogDetailShortComponent native_element.click ", native_element );
-
-    native_element.click();
-
-    await fixture.whenStable();
-
-    console.log( "Test BlogDetailShortComponent location ", location );
-
-    expect( location.path() ).toEqual( '/' + mock_blog_entry.m_entry_id );
+    expect( element_edit_link ).toBeTruthy()
    });
 
 /*
@@ -163,11 +184,11 @@ describe('BlogDetailShortComponent', () =>
 
     expect( component.canUserEditBlogEntry() ).toBeTrue();
 
-    const editLinkDE = fixture.debugElement.queryAll( By.css( '[routerLink="/edit/'+ mock_blog_entry.m_entry_id + '"]' ) );
+    const element_edit_link = fixture.debugElement.queryAll( By.css( '[routerLink="/edit/'+ mock_blog_entry.m_entry_id + '"]' ) );
 
-    expect( editLinkDE.length ).toBe( 0 );
+    expect( element_edit_link.length ).toBe( 0 );
 
-    const native_element: HTMLElement = editLinkDE.nativeElement;
+    const native_element: HTMLElement = element_edit_link.nativeElement;
 
 
     native_element.click();
@@ -177,8 +198,6 @@ describe('BlogDetailShortComponent', () =>
     console.log( "Test BlogDetailShortComponent location ", location );
 
     expect( location.path() ).toEqual( '/' + mock_blog_entry.m_entry_id );
-
-
 
   });*/
 
