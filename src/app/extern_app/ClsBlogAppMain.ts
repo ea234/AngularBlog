@@ -650,6 +650,32 @@ The BBC Micro had multiple display modes, including a Teletext-based Mode 7 that
   }
 
 
+  public getMockUpTestEntryIndex(): number
+  {
+    return 11;
+  }
+
+  public getMockUpTestEntryID(): string
+  {
+    let temp_blog_entry  = this.getBlogEntryIndex( this.getMockUpTestEntryIndex() );
+
+    console.log( "debugfind12 ", temp_blog_entry );
+
+    if ( temp_blog_entry ) { return temp_blog_entry.m_entry_id; }
+
+    return "-1";
+  }
+
+  public getMockUpTestBlogEntry(): BlogEntry
+  {
+    let temp_blog_entry  = this.getBlogEntryIndex( this.getMockUpTestEntryIndex() );
+
+    if ( temp_blog_entry ) { return temp_blog_entry as BlogEntry; }
+
+    return this.getEmptyBlogEntry();
+  }
+
+
   public generateMockUpBlogEntries()
   {
     for (let blog_id_nr = 0; blog_id_nr < this.getMockUpStartCount(); blog_id_nr++)

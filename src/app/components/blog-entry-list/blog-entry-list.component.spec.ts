@@ -14,6 +14,7 @@ describe('BlogEntryListComponent', () =>
   let fixture: ComponentFixture<BlogEntryListComponent>;
 
   let mock_blog_service : BlogEntryService = new BlogEntryService();
+
   let mock_user_service : BlogUserService  = new BlogUserService();
 
   beforeEach(async () =>

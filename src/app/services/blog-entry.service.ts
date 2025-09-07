@@ -184,4 +184,15 @@ export class BlogEntryService implements ClsBlogBackend
     return this.cls_blog_app.getArrayLength();
   }
 
+  public getMockUpTestEntryID(): string
+  {
+    return this.cls_blog_app.getMockUpTestEntryID();
+  }
+
+  public getMockUpTestBlogEntry(): BlogEntry
+  {
+    return this.cls_blog_app.getMockUpTestBlogEntry();
+  }
+
+
 }

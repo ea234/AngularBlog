@@ -24,6 +24,8 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
   private m_blog_flag : boolean = false;
 
+  private m_blog_entry_id_string : string = "AAA";
+
   @Input() blog_entry_copy      : ClsBlogEntry = new ClsBlogEntry;
 
   constructor( private m_blog_entry_service_alt : BlogEntryService,
@@ -65,6 +67,8 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
       blog_entry_id_string = this.m_activated_route.snapshot.paramMap.get( 'blog_entry_id' );
     }
 
+    this.m_blog_entry_id_string = "" + blog_entry_id_string;
+
     if (blog_entry_id_string !== null)
     {
       const blog_entry_id_number = Number( blog_entry_id_string );
@@ -76,11 +80,13 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
       if ( ( blog_entry_id_string !== "" ) && ( blog_entry_id_string !== "-1" ))
       {
+        console.log('Existing BlogEntry. Get from Server' );
+
         this.m_blog_jsonserver_service.getBlogEntry( blog_entry_id_string )
         .subscribe( {
                   next:  ( existing_blog_entry ) =>
                     {
-                       console.log('Eintrag gefunden Newu' );
+                      console.log('Found BlogEntry to edit' );
 
                       this.blog_entry_copy.id                  =      existing_blog_entry.m_entry_id; /* Only for Json-Server */
 
@@ -101,9 +107,11 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
                   error: (err) => { console.error('Fehler beim holen des Blog-Eintrags:', err );
 
-                        this.m_show_confirm_dialog = false;
+                      console.log('BlogEntry not found' );
 
-                        this.m_router.navigate( ['/blog'], { replaceUrl: true, skipLocationChange: false })
+                      this.m_show_confirm_dialog = false;
+
+                      this.m_router.navigate( ['/blog'], { replaceUrl: true, skipLocationChange: false })
 
                   }
                 }
@@ -206,6 +214,16 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
   public isEditExistingBlogEntry() : boolean
   {
     return !this.m_blog_is_add_new;
+  }
+
+  public isEditNewBlogEntry() : boolean
+  {
+    return this.m_blog_is_add_new;
+  }
+
+  public getBlogEntryParamID() : string
+  {
+    return this.m_blog_entry_id_string;
   }
 
   //public submitToFirebase( userForm : NgForm ) : boolean
