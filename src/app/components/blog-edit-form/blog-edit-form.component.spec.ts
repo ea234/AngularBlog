@@ -78,38 +78,34 @@ describe('BlogEditFormComponent', () =>
 
   beforeEach(async () => {
 
-    await TestBed.configureTestingModule({
-
-      declarations: [BlogEditFormComponent],
-
-      schemas : [ NO_ERRORS_SCHEMA ],
-
-      imports: [ FormsModule ],
-
-      providers: [
-                   { provide: BlogJsonserverService, useClass: BlogEntryService,    useValue: mock_blog_service },
-                   { provide: BlogUserService,       useClass: BlogUserService,     useValue: mock_user_service },
-                   { provide: ActivatedRoute,        useClass: ActivatedRouteStub,  useValue: mock_route_stub  },
-                   { provide: BlogEntryService,      useClass: BlogEntryService,    useValue: mock_blog_service }
-                 ]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(BlogEditFormComponent);
-
-    mock_blog_service.resetMockUpBlogEntries();
-
-    mock_user_service.userLogIn();
-
-    component = fixture.componentInstance;
-
-    fixture.detectChanges();
   });
 
-  it('should create', () =>
+
+  it('should create with param 1111', async() =>
   {
+    let expected_id : string = "1111";
+
+    await newTestBed( expected_id );
+
+    console.log ( "Paramcheck for new BlogEntry  1 ", component.getBlogEntryParamID() );
 
     expect(component).toBeTruthy();
+
+    expect( component.getBlogEntryParamID()     ).toBe( expected_id );
+  });
+
+
+  it('should create with param 9999', async() =>
+  {
+    let expected_id : string = "9999";
+
+    await newTestBed( expected_id );
+
+    console.log ( "Paramcheck for new BlogEntry  1 ", component.getBlogEntryParamID() );
+
+    expect(component).toBeTruthy();
+
+    expect( component.getBlogEntryParamID()     ).toBe( expected_id );
   });
 
 
