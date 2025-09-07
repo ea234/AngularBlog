@@ -39,6 +39,8 @@ export class BlogEntryService implements ClsBlogBackend
   {
     let ergebnis_obj : any = this.cls_blog_app.getBlogEntry( blog_entry_id ) ;
 
+    console.log( "Test getBlogEntry " + blog_entry_id );
+
     if ( ergebnis_obj == undefined )
     {
       ergebnis_obj = this.cls_blog_app.getEmptyBlogEntry();

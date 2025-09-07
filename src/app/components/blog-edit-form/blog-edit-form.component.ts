@@ -100,6 +100,9 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
                       this.blog_entry_copy.m_entry_header      = "" + existing_blog_entry.m_entry_header;
                       this.blog_entry_copy.m_entry_text        = "" + existing_blog_entry.m_entry_text;
 
+                      console.log('ACTUAL existing_blog_entry ', existing_blog_entry );
+                      console.log('COPY   this.blog_entry_copy', this.blog_entry_copy );
+
                       this.m_blog_is_add_new = false;
 
                       blog_id_not_valid = false;
