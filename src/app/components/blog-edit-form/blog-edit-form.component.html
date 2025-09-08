@@ -6,6 +6,8 @@
 
     <div class="form-group"><label for="blog_id">ID          </label><input type="text" name="blog_id" class="form-control" [(ngModel)]="blog_entry_copy.m_entry_id" ></div>
 
+    <div class="form-group"><label for="blog_id2">ID2        </label><input type="text" name="blog_id2" class="form-control" [(ngModel)]="blog_entry_copy.id" ></div>
+
     <div class="form-group"><label for="blog_user">User      </label><input type="text" name="blog_user" class="form-control" [(ngModel)]="blog_entry_copy.m_user_name"  ></div>
 
     <div class="form-group"><label for="blog_date">Date      </label><input type="text" name="blog_date" class="form-control" [(ngModel)]="blog_entry_copy.m_entry_date_string" ></div>
@@ -55,7 +57,7 @@
 
     <br />
 
-    <button class="btn btn-primary" type="submit" >Submit</button>&nbsp;&nbsp;
+    <button class="btn btn-primary" (click)="doSubmitMyForm( myUserForm )" type="submit" >Submit</button>&nbsp;&nbsp;
 
     <button class="btn btn-primary" (click)="doCancelEdit()" >Cancel</button>&nbsp;&nbsp;&nbsp;&nbsp;
 

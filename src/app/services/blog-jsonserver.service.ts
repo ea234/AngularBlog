@@ -46,7 +46,9 @@ export class BlogJsonserverService implements ClsBlogBackend
 
   deleteBlogEntry( blog_entry : BlogEntry ) : Observable<BlogEntry>
   {
-    blog_entry.id = blog_entry.m_entry_id;this.m_http_client.get<BlogEntry[]>( this.api_url );
+    blog_entry.id = blog_entry.m_entry_id;
+
+    //this.m_http_client.get<BlogEntry[]>( this.api_url );
 
     const url = `${ this.api_url }/${ blog_entry.m_entry_id }`;
 

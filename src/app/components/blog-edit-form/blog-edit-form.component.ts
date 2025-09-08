@@ -28,8 +28,7 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
   @Input() blog_entry_copy      : ClsBlogEntry = new ClsBlogEntry;
 
-  constructor( private m_blog_entry_service_alt : BlogEntryService,
-               private m_blog_jsonserver_service : BlogJsonserverService,
+  constructor( private m_blog_jsonserver_service : BlogJsonserverService,
                private m_user_service          : BlogUserService,
                private m_activated_route       : ActivatedRoute,
                private m_router                : Router )
@@ -50,6 +49,8 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
   ngOnInit()
   {
+    console.log( "ngOnInit edit form" );
+
     let blog_id_not_valid : boolean = true;
 
     const url = this.m_router.url;
@@ -124,9 +125,16 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
   }
 
-
   ngSubmitMyForm( userForm : NgForm ) : boolean
   {
+    return true;
+  }
+
+
+  doSubmitMyForm( userForm : NgForm ) : boolean
+  {
+    console.log(" ngSubmit edit form " );
+
     let my_form = userForm.form.value;
 /*
     if ( userForm.form.dirty == false )
@@ -152,7 +160,7 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
                   },
 
                 error: (err) => {
-                  console.error('Fehler beim Hinzufügen des Blog-Eintrags:', err );
+                  console.error('Fehler beim speichern des Blog-Eintrags:', err );
 
                   alert( err );
                 }
@@ -171,7 +179,14 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
     {
       console.log( "Confirm yes" );
 
-      this.m_blog_entry_service_alt.deleteBlogEntry( this.blog_entry_copy );
+      this.m_blog_jsonserver_service.deleteBlogEntry( this.blog_entry_copy )
+    .subscribe( {
+                  next:  (res) => { console.log('Eintrag geloescht' );                                },
+                  error: (err) => { console.error('Fehler beim Löschen des Blog-Eintrags:', err ); }
+                }
+              );
+
+//      this.m_blog_entry_service_alt.deleteBlogEntry( this.blog_entry_copy );
 
       fkt_return_value = true;
     }
