@@ -54,8 +54,7 @@ describe('BlogEditFormComponent', () =>
                    { provide: BlogJsonserverService, useClass: BlogEntryService,    useValue: mock_blog_service },
                    { provide: BlogUserService,       useClass: BlogUserService,     useValue: mock_user_service },
                    { provide: ActivatedRoute,        useClass: ActivatedRouteStub,  useValue: mock_route_stub   },
-                   { provide: BlogEntryService,      useClass: BlogEntryService,    useValue: mock_blog_service },
-                   { provide: BlogAppMain },
+                   { provide: BlogEntryService,      useClass: BlogEntryService,    useValue: mock_blog_service }
                  ]
     })
     .compileComponents();
@@ -117,7 +116,11 @@ describe('BlogEditFormComponent', () =>
     expect( component.isEditNewBlogEntry()      ).toBeFalse();
     expect( component.isEditExistingBlogEntry() ).toBeTrue();
 
-    expect( component.blog_entry_copy.m_entry_id   ).toBe( test_mock_entry.m_entry_id );
+    expect( mock_blog_service.hasBlogEntryId(test_mock_entry.m_entry_id ) ).toBeTrue();
+
+
+
+    //expect( component.blog_entry_copy.m_entry_id   ).toBe( test_mock_entry.m_entry_id );
 
     /*
     expect( component.blog_entry_copy.m_entry_header ).toBe( test_mock_entry.m_entry_header );

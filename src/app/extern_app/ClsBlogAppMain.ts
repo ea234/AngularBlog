@@ -133,7 +133,7 @@ export class BlogAppMain
 
   private getUniqueID() : number
   {
-    return Math.floor( Math.random() * Date.now() )
+    return this.getArrayLength() + 1; // Math.floor( Math.random() * Date.now() )
   }
 
 
