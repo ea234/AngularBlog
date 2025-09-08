@@ -118,8 +118,6 @@ describe('BlogEditFormComponent', () =>
 
     expect( mock_blog_service.hasBlogEntryId(test_mock_entry.m_entry_id ) ).toBeTrue();
 
-
-
     //expect( component.blog_entry_copy.m_entry_id   ).toBe( test_mock_entry.m_entry_id );
 
     /*

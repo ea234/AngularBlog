@@ -97,7 +97,12 @@ describe('BlogAppMain', () =>
 
     let test_blog_entry : ClsBlogEntry = appx.getMockUpBlogEntry( test_nr, test_user_id, test_user_name, test_entry_header, test_entry_text );
 
+    test_blog_entry.id = "-1";
+    test_blog_entry.m_entry_id = "-1";
+
     appx.generateMockUpBlogEntries();
+
+    expect( appx.getArrayLength() ).toBeGreaterThan( 0 );
 
     expect( appx.getArrayLength() ).toBe( appx.getMockUpStartCount() );
 
@@ -120,6 +125,15 @@ describe('BlogAppMain', () =>
     expect( cls_blog_entry ).toBeTruthy();
 
     expect( cls_blog_entry!.m_entry_id ).toBe( test_blog_entry.m_entry_id  );
+
+    expect( cls_blog_entry!.m_entry_text ).toBe( test_entry_text  );
+
+    expect( cls_blog_entry!.m_entry_header ).toBe( test_entry_header  );
+
+    expect( cls_blog_entry!.m_user_name ).toBe( test_user_name  );
+
+    expect( cls_blog_entry!.m_user_id ).toBe( test_user_id );
+
   });
 
 
