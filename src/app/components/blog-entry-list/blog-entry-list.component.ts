@@ -31,9 +31,6 @@ export class BlogEntryListComponent implements OnInit, OnDestroy
                  private m_user_service       : BlogUserService,
                  private m_router             : Router )
     {
-      this.observable_entry_count = this.m_blog_jsonserver_service.getEntryCount();
-
-      this.observable_entry_count.subscribe( value => { this.entry_count = value } )
     }
 
 
@@ -42,6 +39,12 @@ export class BlogEntryListComponent implements OnInit, OnDestroy
       this.m_blog_jsonserver_service.getBlogList().subscribe( ( vector_blog_entries ) => this.blog_vektor = vector_blog_entries );
 
       this.my_route_start = this.m_router.url;
+
+      this.observable_entry_count = this.m_blog_jsonserver_service.getEntryCount();
+
+      this.observable_entry_count.subscribe( value => { this.entry_count = value } )
+
+
     }
 
 

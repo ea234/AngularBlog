@@ -1,6 +1,6 @@
 import { Injectable              } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of          } from 'rxjs';
+import { map, Observable, of          } from 'rxjs';
 import { ClsBlogEntry, BlogEntry } from '../ClsBlogEntry';
 import { ClsBlogBackend          } from './ClsBlogBackend';
 
@@ -30,9 +30,9 @@ export class BlogJsonserverService implements ClsBlogBackend
   }
 
 
-  public getEntryCount() : Observable<number>
+  public getEntryCount(): Observable<number>
   {
-    return of( -3 );
+    return this.m_http_client.get<BlogEntry[]>( this.api_url ).pipe( map( list => list.length ) );
   }
 
 

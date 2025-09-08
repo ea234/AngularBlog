@@ -116,18 +116,21 @@ describe('BlogEditFormComponent', () =>
     expect( component.isEditNewBlogEntry()      ).toBeFalse();
     expect( component.isEditExistingBlogEntry() ).toBeTrue();
 
-    expect( mock_blog_service.hasBlogEntryId(test_mock_entry.m_entry_id ) ).toBeTrue();
+    expect( mock_blog_service.hasBlogEntryId( test_mock_entry.m_entry_id ) ).toBeTrue();
 
-    //expect( component.blog_entry_copy.m_entry_id   ).toBe( test_mock_entry.m_entry_id );
-
-    /*
     expect( component.blog_entry_copy.m_entry_header ).toBe( test_mock_entry.m_entry_header );
+
+        expect( component.blog_entry_copy.m_entry_header ).toBe( test_mock_entry.m_entry_header );
 
     expect( component.blog_entry_copy.m_entry_text ).toBe( test_mock_entry.m_entry_text );
 
     expect( component.blog_entry_copy.m_user_name ).toBe( test_mock_entry.m_user_name );
 
     expect( component.blog_entry_copy.m_user_id ).toBe( test_mock_entry.m_user_id );
+
+    //expect( component.blog_entry_copy.m_entry_id   ).toBe( test_mock_entry.m_entry_id );
+
+    /*
     */
   });
 

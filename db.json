@@ -239,6 +239,16 @@
       "m_entry_text": "Text Nr 24",
       "m_entry_date_number": 20230904,
       "m_entry_date_string": "04.09.2023"
+    },
+    {
+      "id": "1238501644772",
+      "m_user_id": 1,
+      "m_user_name": "UserName",
+      "m_entry_id": "1238501644772",
+      "m_entry_header": "This is my Test",
+      "m_entry_text": "I told you so",
+      "m_entry_date_number": 20250808,
+      "m_entry_date_string": "08.09.2025"
     }
   ]
 }
