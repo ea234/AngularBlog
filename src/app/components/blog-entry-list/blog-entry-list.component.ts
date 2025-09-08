@@ -43,8 +43,6 @@ export class BlogEntryListComponent implements OnInit, OnDestroy
       this.observable_entry_count = this.m_blog_jsonserver_service.getEntryCount();
 
       this.observable_entry_count.subscribe( value => { this.entry_count = value } )
-
-
     }
 
 
