@@ -1,5 +1,7 @@
+import { Injectable } from "@angular/core";
 import { BlogEntry, ClsBlogEntry } from "../ClsBlogEntry";
 
+@Injectable( { providedIn: 'root' } )
 export class BlogAppMain
 {
   private m_vector_blog_entries? : Array<BlogEntry>;
