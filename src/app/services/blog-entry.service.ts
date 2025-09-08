@@ -196,5 +196,10 @@ export class BlogEntryService implements ClsBlogBackend
     return this.cls_blog_app.getMockUpTestBlogEntry();
   }
 
+  public getTestBlogAppMain(): BlogAppMain // Evil - For test
+  {
+    return this.cls_blog_app;
+  }
+
 
 }

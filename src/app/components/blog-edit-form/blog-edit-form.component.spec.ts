@@ -14,6 +14,7 @@ import { BlogJsonserverService        } from '../../services/blog-jsonserver.ser
 import { BlogEntryService             } from '../../services/blog-entry.service';
 import { BlogEntry                    } from '../../ClsBlogEntry';
 import { BlogEditFormComponent        } from './blog-edit-form.component';
+import { BlogAppMain } from '../../extern_app/ClsBlogAppMain';
 
 class ActivatedRouteStub
 {
@@ -53,7 +54,8 @@ describe('BlogEditFormComponent', () =>
                    { provide: BlogJsonserverService, useClass: BlogEntryService,    useValue: mock_blog_service },
                    { provide: BlogUserService,       useClass: BlogUserService,     useValue: mock_user_service },
                    { provide: ActivatedRoute,        useClass: ActivatedRouteStub,  useValue: mock_route_stub   },
-                   { provide: BlogEntryService,      useClass: BlogEntryService,    useValue: mock_blog_service }
+                   { provide: BlogEntryService,      useClass: BlogEntryService,    useValue: mock_blog_service },
+                   { provide: BlogAppMain },
                  ]
     })
     .compileComponents();
