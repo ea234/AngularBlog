@@ -49,7 +49,7 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
   ngOnInit()
   {
-    //console.log( "ngOnInit edit form" );
+    console.log( "ngOnInit edit form" );
 
     let blog_id_not_valid : boolean = true;
 
@@ -133,55 +133,11 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
     return true; // True fuer das verlassen der Seite
   }
 
-
-  public doCancelEdit() : boolean
-  {
-    let fkt_return_value : boolean = false;
-
-    if ( confirm( `Cancel Edit Blog Entry '${ this.blog_entry_copy.m_entry_header }'` ) )
-    {
-      console.log( "Confirm yes" );
-
-      fkt_return_value = true;
-    }
-    else
-    {
-      console.log( "Confirm no" );
-    }
-
-    return fkt_return_value;
-  }
-
-
-  public deleteBlogEntry() : boolean
-  {
-    let fkt_return_value : boolean = false;
-
-    if ( confirm( `Delete Blog Entry '${ this.blog_entry_copy.m_entry_header }'` ) )
-    {
-      console.log( "Confirm yes" );
-
-      this.m_blog_jsonserver_service.deleteBlogEntry( this.blog_entry_copy )
-      .subscribe( {
-                  next:  (res) => { console.log('Eintrag geloescht' );                             },
-                  error: (err) => { console.error('Fehler beim Löschen des Blog-Eintrags:', err ); }
-                }
-              );
-
-      fkt_return_value = true;
-    }
-    else
-    {
-      console.log( "Confirm no" );
-    }
-
-    return fkt_return_value;
-  }
-
-
   public confirm(): boolean
   {
     console.log('Edit confirm() m_show_confirm_dialog = ' + this.m_show_confirm_dialog );
+
+    this.m_show_confirm_dialog = false;
 
     if ( this.m_show_confirm_dialog )
     {

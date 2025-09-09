@@ -10,6 +10,7 @@ export const confirmationGuard: CanDeactivateFn<CanComponentDeactivate> = (
   currentRoute : ActivatedRouteSnapshot,
   currentState : RouterStateSnapshot,
   nextState : RouterStateSnapshot ) : Observable<boolean> | Promise<boolean> | boolean => {
+    console.log( "confirm guard" );
   return component.confirm();
 };
 
