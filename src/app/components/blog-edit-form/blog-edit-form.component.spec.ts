@@ -117,7 +117,6 @@ describe('BlogEditFormComponent', () =>
 
     expect( component.blog_entry_copy.m_entry_id   ).toBe( test_mock_entry.m_entry_id );
 
-    /*
     expect( component.blog_entry_copy.m_entry_header ).toBe( test_mock_entry.m_entry_header );
 
     expect( component.blog_entry_copy.m_entry_text ).toBe( test_mock_entry.m_entry_text );
@@ -125,7 +124,6 @@ describe('BlogEditFormComponent', () =>
     expect( component.blog_entry_copy.m_user_name ).toBe( test_mock_entry.m_user_name );
 
     expect( component.blog_entry_copy.m_user_id ).toBe( test_mock_entry.m_user_id );
-    */
   });
 
 

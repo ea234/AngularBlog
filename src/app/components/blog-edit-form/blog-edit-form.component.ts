@@ -24,28 +24,26 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
   private m_blog_flag : boolean = false;
 
-  private m_blog_entry_id_string : string = "AAA";
+  private m_blog_entry_id_string : string = 'not valid';
 
-  private m_pressed_button : string = "cancel";
-
+  private m_pressed_button : string = 'cancel';
 
   @Input() blog_entry_copy      : ClsBlogEntry = new ClsBlogEntry;
 
-  constructor( private m_blog_entry_service_alt : BlogEntryService,
-               private m_blog_jsonserver_service : BlogJsonserverService,
-               private m_user_service          : BlogUserService,
-               private m_activated_route       : ActivatedRoute,
-               private m_router                : Router )
+  constructor( private m_blog_jsonserver_service : BlogJsonserverService,
+               private m_user_service            : BlogUserService,
+               private m_activated_route         : ActivatedRoute,
+               private m_router                  : Router )
   {
     this.blog_entry_copy.m_user_id           = this.m_user_service.getUserID();
     this.blog_entry_copy.m_user_name         = this.m_user_service.getUserName();
 
-    this.blog_entry_copy.m_entry_id          = "-1";
+    this.blog_entry_copy.m_entry_id          = '-1';
     this.blog_entry_copy.m_entry_date_string = getDateString();
     this.blog_entry_copy.m_entry_date_number = getDateNumber();
 
-    this.blog_entry_copy.m_entry_header      = "";
-    this.blog_entry_copy.m_entry_text        = "";
+    this.blog_entry_copy.m_entry_header      = '';
+    this.blog_entry_copy.m_entry_text        = '';
 
     this.m_blog_is_add_new = true;
   }
@@ -53,11 +51,9 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
   ngOnInit()
   {
-    let blog_id_not_valid : boolean = true;
+    const url_string : string = this.m_router.url;
 
-    const url = this.m_router.url;
-
-    const url_contains_add_new_blog = url.includes('addnew');
+    const url_contains_add_new_blog : boolean = url_string.includes( 'addnew' );
 
     let blog_entry_id_string = this.m_activated_route.snapshot.paramMap.get( 'blog_entry_id' );
 
@@ -72,18 +68,11 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
     this.m_blog_entry_id_string = "" + blog_entry_id_string;
 
-    if (blog_entry_id_string !== null)
+    if ( blog_entry_id_string !== null )
     {
-      const blog_entry_id_number = Number( blog_entry_id_string );
-
-      if ( Number.isInteger( blog_entry_id_number )  && ( blog_entry_id_number === -1 ) )
+      if ( ( blog_entry_id_string !== "" ) && ( blog_entry_id_string !== '-1' ))
       {
-        blog_id_not_valid = false; // new Blog Entry with ID -1
-      }
-
-      if ( ( blog_entry_id_string !== "" ) && ( blog_entry_id_string !== "-1" ))
-      {
-        console.log('Existing BlogEntry. Get from Server' );
+        console.log( 'Existing BlogEntry' + blog_entry_id_string + '. Get from Server' );
 
         this.m_blog_jsonserver_service.getBlogEntry( blog_entry_id_string )
         .subscribe( {
@@ -103,22 +92,19 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
                       this.blog_entry_copy.m_entry_header      = "" + existing_blog_entry.m_entry_header;
                       this.blog_entry_copy.m_entry_text        = "" + existing_blog_entry.m_entry_text;
 
-                      console.log('ACTUAL existing_blog_entry ', existing_blog_entry );
-                      console.log('COPY   this.blog_entry_copy', this.blog_entry_copy );
+                      //console.log('ACTUAL existing_blog_entry ', existing_blog_entry );
+                      //console.log('COPY   this.blog_entry_copy', this.blog_entry_copy );
 
                       this.m_blog_is_add_new = false;
-
-                      blog_id_not_valid = false;
                     },
 
-                  error: (err) => { console.error('Fehler beim holen des Blog-Eintrags:', err );
+                  error: (err) => { console.error( 'Fehler beim holen des Blog-Eintrags:', err );
 
                       console.log('BlogEntry not found' );
 
                       this.m_show_confirm_dialog = false;
 
                       this.m_router.navigate( ['/blog'], { replaceUrl: true, skipLocationChange: false })
-
                   }
                 }
               );
@@ -127,43 +113,50 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
   }
 
+
   public setPressedButton( param_pressed_button : string ) : void
   {
     this.m_pressed_button = param_pressed_button;
   }
 
+
   ngSubmitMyForm( userForm : NgForm ) : boolean
   {
     let my_form = userForm.form.value;
 
-
-    if ( this.m_pressed_button === "save" )
+    if ( this.m_pressed_button === 'save' )
     {
-      console.log( "editform save" );
+      console.log( 'editform save' );
 
-      this.m_blog_jsonserver_service.saveBlogEntry( this.blog_entry_copy )
+      if ( userForm.form.errors !== undefined )
+      {
+        return false;
+      }
+      else
+      {
+        this.m_blog_jsonserver_service.saveBlogEntry( this.blog_entry_copy )
 
-      .subscribe( {
-                next:  (res) =>
-                  {
-                    console.log( 'EditForm Blog Entry Saved' );
+        .subscribe( {
+                next:  ( result ) =>
+                {
+                  console.log( 'EditForm Blog Entry Saved' );
 
-                    this.m_show_confirm_dialog = false;
+                  this.m_show_confirm_dialog = false;
 
-                    this.m_router.navigate( ['/blog'], { replaceUrl: true, skipLocationChange: false } )
-                  },
+                  this.m_router.navigate( ['/blog'], { replaceUrl: true, skipLocationChange: false } )
+                },
 
-                error: (err) =>
-                  {
-                    console.error( 'EditForm Blog Entry Save Error ', err );
-                  }
+                error: ( err ) =>
+                {
+                  console.error( 'EditForm Blog Entry Save Error ', err );
+                }
               }
             );
+      }
     }
-    else if ( this.m_pressed_button === "delete" )
+    else if ( this.m_pressed_button === 'delete' )
     {
       console.log( "editform delete" );
-
 
       if ( confirm( `Delete Blog Entry '${ this.blog_entry_copy.m_entry_header }'` ) )
       {
@@ -171,37 +164,44 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
         this.m_blog_jsonserver_service.deleteBlogEntry( this.blog_entry_copy )
         .subscribe( {
-                    next:  (res) =>
-                      {
-                    console.log('EditForm Blog Entry Deleted' );
+                    next:  ( result ) =>
+                    {
+                      console.log( 'EditForm Blog Entry Deleted' );
 
-                    this.m_show_confirm_dialog = false;
+                      this.m_show_confirm_dialog = false;
 
-                    this.m_router.navigate( ['/blog'], { replaceUrl: true, skipLocationChange: false } )
-                        },
+                      this.m_router.navigate( ['/blog'], { replaceUrl: true, skipLocationChange: false } )
+                    },
+
                     error: (err) =>
                     {
-                    console.error( 'EditForm Blog Entry Delete Error ', err );
+                      console.error( 'EditForm Blog Entry Delete Error ', err );
                     }
                   }
                 );
       }
       else
       {
-        console.log( "Confirm no" );
+        console.log( 'EditForm Confirm No' );
       }
-
-
-
-
     }
-    else if ( this.m_pressed_button === "cancel" )
+    else if ( this.m_pressed_button === 'cancel' )
     {
-      console.log( "editform cancel" );
+      console.log( 'EditForm Cancel' );
 
-      if ( confirm( `Cancel Edit Blog Entry '${ this.blog_entry_copy.m_entry_header }'` ) )
+      if ( userForm.form.dirty == false )
       {
-        console.log('EditForm Blog Entry Cancel Yes' );
+        console.log( 'EditForm Blog Entry Cancel No Changes' );
+
+        this.m_show_confirm_dialog = false;
+
+        this.m_router.navigate( ['/blog'], { replaceUrl: true, skipLocationChange: false } )
+
+        return true; // no changes -> leave Form
+      }
+      else if ( confirm( `Cancel Edit Blog Entry '${ this.blog_entry_copy.m_entry_header }'` ) )
+      {
+        console.log( 'EditForm Blog Entry Cancel Yes' );
 
         this.m_show_confirm_dialog = false;
 
@@ -209,28 +209,19 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
       }
       else
       {
-        console.log('EditForm Blog Entry Cancel No' );
+        console.log( 'EditForm Blog Entry Cancel No' );
       }
     }
-/*
-    if ( userForm.form.dirty == false )
-    {
-      return true; // no changes -> leave Form
-    }
 
-    if ( userForm.form.errors !== undefined )
-    {
-      return true; // no changes -> leave Form
-    }
-*/
     return true;
   }
 
-  public confirm(): boolean
+
+  public confirm() : boolean
   {
     if ( this.m_show_confirm_dialog )
     {
-      return confirm( "Leave Page?" );
+      return confirm( 'Leave Page?' );
     }
 
     return true;
@@ -242,16 +233,21 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
     return !this.m_blog_is_add_new;
   }
 
+
   public isEditNewBlogEntry() : boolean
   {
     return this.m_blog_is_add_new;
   }
+
 
   public getBlogEntryParamID() : string
   {
     return this.m_blog_entry_id_string;
   }
 
+  /*
+   * Unused Old Test Functions
+   */
 
   jsonServerAdd()
   {
@@ -260,8 +256,8 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
     this.m_blog_jsonserver_service.addBlogEntry( this.blog_entry_copy )
 
     .subscribe( {
-                  next:  (res) => { console.log('Eintrag gespeichert ' );                             },
-                  error: (err) => { console.error('Fehler beim Hinzufügen des Blog-Eintrags:', err ); }
+                  next:  (res) => { console.log( 'Eintrag gespeichert ' );                             },
+                  error: (err) => { console.error( 'Fehler beim Hinzufügen des Blog-Eintrags:', err ); }
                 }
               );
 
@@ -275,8 +271,8 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
     this.m_blog_jsonserver_service.updateBlogEntry( this.blog_entry_copy )
     .subscribe( {
-                  next:  (res) => { console.log('Eintrag geaendert ' );                               },
-                  error: (err) => { console.error('Fehler beim Hinzufügen des Blog-Eintrags:', err ); }
+                  next:  (res) => { console.log( 'Eintrag geaendert ' );                               },
+                  error: (err) => { console.error( 'Fehler beim Hinzufügen des Blog-Eintrags:', err ); }
                 }
               );
 
@@ -290,8 +286,8 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
     this.m_blog_jsonserver_service.deleteBlogEntry( this.blog_entry_copy )
     .subscribe( {
-                  next:  (res) => { console.log('Eintrag geloescht' );                                },
-                  error: (err) => { console.error('Fehler beim Hinzufügen des Blog-Eintrags:', err ); }
+                  next:  (res) => { console.log( 'Eintrag geloescht' );                                },
+                  error: (err) => { console.error( 'Fehler beim Hinzufügen des Blog-Eintrags:', err ); }
                 }
               );
 
@@ -319,8 +315,8 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
       this.m_blog_jsonserver_service.addBlogEntry( mock_up_blog_entry )
       .subscribe( {
-                    next:  (res) => { console.log('Eintrag gespeichert ' );                             },
-                    error: (err) => { console.error('Fehler beim Hinzufügen des Blog-Eintrags:', err ); }
+                    next:  (res) => { console.log( 'Eintrag gespeichert ' );                             },
+                    error: (err) => { console.error( 'Fehler beim Hinzufügen des Blog-Eintrags:', err ); }
                   }
                 );
       }
