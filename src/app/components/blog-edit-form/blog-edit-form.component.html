@@ -4,6 +4,12 @@
 
   <form #myUserForm="ngForm" (ngSubmit)="ngSubmitMyForm( myUserForm )">
 
+    <div class="form-group"><label for="blog_id">ID          </label><input type="text" name="blog_id" class="form-control" [(ngModel)]="blog_entry_copy.m_entry_id" ></div>
+
+    <div class="form-group"><label for="blog_user">User      </label><input type="text" name="blog_user" class="form-control" [(ngModel)]="blog_entry_copy.m_user_name"  ></div>
+
+    <div class="form-group"><label for="blog_date">Date      </label><input type="text" name="blog_date" class="form-control" [(ngModel)]="blog_entry_copy.m_entry_date_string" ></div>
+
     <div class="form-group"><label for="blog_header">Header</label>
 
       <input #myVarBlogHeader="ngModel"
@@ -50,6 +56,15 @@
     <br />
 
     <button class="btn btn-primary" type="submit" >Submit</button>&nbsp;&nbsp;
+
+    <button class="btn btn-primary" (click)="doCancelEdit()" >Cancel</button>&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <button class="btn btn-danger"  (click)="deleteBlogEntry()"  *ngIf="this.isEditExistingBlogEntry()" >Delete</button>&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <button class="btn btn-primary" (click)="jsonServerAdd()"    >JsonServer ADD</button>&nbsp;&nbsp;
+    <button class="btn btn-primary" (click)="jsonServerUpdate()" >JsonServer UPDATE</button>&nbsp;&nbsp;
+    <button class="btn btn-primary" (click)="jsonServerDelete()" >JsonServer DELETE</button>&nbsp;&nbsp;
+    <button class="btn btn-primary" (click)="jsonServerInit()"   >JsonServer Init</button>&nbsp;&nbsp;
 
   </form>
 
