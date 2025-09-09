@@ -1,6 +1,16 @@
 {
   "blog": [
     {
+      "id": "799701704230",
+      "m_user_id": 1,
+      "m_user_name": "Admin Workflow",
+      "m_entry_id": "799701704230",
+      "m_entry_header": "History of personal computers",
+      "m_entry_text": "The history of the personal computer as a mass-market consumer electronic device began with the microcomputer revolution of the 1970s. A personal computer is one intended for interactive individual use, as opposed to a mainframe computer where the end user's requests are filtered through operating staff, or a time-sharing system in which one large processor is shared by many individuals. After the development of the microprocessor, individual personal computers were low enough in cost that they eventually became affordable consumer goods. Early personal computers – generally called microcomputers – were sold often in electronic kit form and in limited numbers, and were of interest mostly to hobbyists and technicians.\n\n    The history of the personal computer as mass-market consumer electronic devices effectively began in 1977 with the introduction of microcomputers, although some mainframe and minicomputers had been applied as single-user systems much earlier. A personal computer is one intended for interactive individual use, as opposed to a mainframe computer where the end user's requests are filtered through operating staff, or a time sharing system in which one large processor is shared by many individuals. After the development of the microprocessor, individual personal computers were low enough in cost that they eventually became affordable consumer goods. Early personal computers – generally called microcomputers – were sold often in electronic kit form and in limited numbers, and were of interest mostly to hobbyists and technicians.\n\n    ",
+      "m_entry_date_number": 20250904,
+      "m_entry_date_string": "04.09.2025"
+    },
+    {
       "id": "285051383108",
       "m_user_id": 2,
       "m_user_name": "Admin Workflow",
@@ -9,6 +19,16 @@
       "m_entry_text": "The ZX Spectrum (UK: /zɛd ɛks/) is an 8-bit home computer developed and marketed by Sinclair Research. The Spectrum played a pivotal role in the history of personal computers and video games, especially in the United Kingdom. It was one of the all-time bestselling British computers with over five million units sold. It was released in the UK on 23 April 1982, the United States in 1983, and Europe in 1984.\n\nThe machine was designed by the English entrepreneur and inventor Sir Clive Sinclair and his small team in Cambridge, and was manufactured in Dundee, Scotland by Timex Corporation.[5] It was made to be small, simple, and most importantly inexpensive, with as few components as possible. The addendum \"Spectrum\" was chosen to highlight the machine's colour display, which differed from the black-and-white display of its predecessor, the ZX81. Rick Dickinson designed its distinctive case, rainbow motif, and rubber keyboard. Video output is transmitted to a television set rather than a dedicated monitor, while application software is loaded and saved onto compact audio cassettes.\n\nThe ZX Spectrum was initially distributed by mail order, but after severe backlogs it was sold through High Street chains in the United Kingdom. It was released in the US as the Timex Sinclair 2068 in 1983, and in some parts of Europe as the Timex Computer 2048. There are seven models overall, ranging from the entry level with 16 KB RAM released in 1982 to the ZX Spectrum +3 with 128 KB RAM and built-in floppy disk drive in 1987. The machine primarily competed with the Commodore 64, BBC Micro, Dragon 32, and the Amstrad CPC range. Over 24,000 software products were released for the ZX Spectrum.[1]\n\nIts introduction led to a boom in companies producing software and hardware, the effects of which are still seen. It was among the first home computers aimed at a mainstream UK audience, with some crediting it for launching the British information technology industry. The Spectrum was Britain's top-selling computer until the Amstrad PCW surpassed it in the 1990s.[6][7][8] It was discontinued in 1992. ",
       "m_entry_date_number": 20250804,
       "m_entry_date_string": "04.08.2025"
+    },
+    {
+      "id": "882621712005",
+      "m_user_id": 1,
+      "m_user_name": "Admin Workflow",
+      "m_entry_id": "882621712005",
+      "m_entry_header": "Apple II (original)",
+      "m_entry_text": "The Apple II (stylized as apple ][) is a personal computer released by Apple Inc. in June 1977. It was one of the first successful mass-produced microcomputer products and is widely regarded as one of the most important personal computers of all time due to its role in popularizing home computing and influencing later software development.[3][4][5][6][7]\n\nThe Apple II was designed primarily by Steve Wozniak. The system is based around the 8-bit MOS Technology 6502 microprocessor. Jerry Manock designed the foam-molded plastic case,[8] Rod Holt developed the switching power supply,[9] while Steve Jobs was not involved in the design of the computer.[10] It was introduced by Jobs and Wozniak at the 1977 West Coast Computer Faire, and marks Apple's first launch of a computer aimed at a consumer market—branded toward American households rather than businessmen or computer hobbyists.[11]\nThe three computers that Byte magazine referred to as the \"1977 Trinity\" of home computing: Commodore PET 2001, Apple II, and TRS-80 Model I\n\nByte magazine referred to the Apple II, Commodore PET 2001, and TRS-80 as the \"1977 Trinity\".[12] As the Apple II had the defining feature of being able to display color graphics, the Apple logo was redesigned to have a spectrum of colors.[13][14]\n\nThe Apple II was the first in a series of computers collectively referred to by the Apple II name. It was followed by the Apple II+, Apple IIe, Apple IIc, Apple IIc Plus, and the 16-bit Apple IIGS—all of which remained compatible. Production of the last available model, the Apple IIe, ceased in November 1993.",
+      "m_entry_date_number": 20250704,
+      "m_entry_date_string": "04.07.2025"
     },
     {
       "id": "911568090905",
@@ -21,6 +41,16 @@
       "m_entry_date_string": "04.06.2025"
     },
     {
+      "id": "412472323584",
+      "m_user_id": 1,
+      "m_user_name": "Admin Workflow",
+      "m_entry_id": "412472323584",
+      "m_entry_header": "Commodore PET",
+      "m_entry_text": "The Commodore PET is a line of personal computers produced starting in 1977 by Commodore International.[3] A single all-in-one case combines a MOS Technology 6502 microprocessor, Commodore BASIC in read-only memory, keyboard, monochrome monitor, and, in early models, a cassette deck.\n\nDevelopment of the system began in 1976, and it was demonstrated and sold as the first personal computer for the masses at the January 1977 Consumer Electronics Show.[1] The name \"PET\" was suggested by Andre Souson after he saw the Pet Rock in Los Gatos, and stated they were going to make the \"pet computer\".[5] It was backronymed to Personal Electronic Transactor. In a 1995 retrospective, Byte magazine—and subsequently many others—referred to the PET, Apple II and TRS-80 collectively as the \"1977 trinity\" of pioneering personal computers. [6]\n\nFollowing the initial PET 2001, the design was updated through a series of models with more memory, better keyboard, larger screen, and other modifications. The systems were a top seller in the Canadian and United States education markets, as well as for business use in Europe.\n\nThe PET line was discontinued in 1982 after approximately 219,000 machines were sold. ",
+      "m_entry_date_number": 20250504,
+      "m_entry_date_string": "04.05.2025"
+    },
+    {
       "id": "191489570700",
       "m_user_id": 2,
       "m_user_name": "Admin Workflow",
@@ -29,6 +59,16 @@
       "m_entry_text": "The Commodore 64, also known as the C64, is an 8-bit home computer introduced in January 1982 by Commodore International (first shown at the Consumer Electronics Show, January 7–10, 1982, in Las Vegas).[4] It has been listed in the Guinness World Records as the best-selling desktop computer model of all time,[5] with independent estimates placing the number sold between 12.5 and 17 million units.[2] Volume production started in early 1982, marketing in August for US$595 (equivalent to $1,940 in 2024).[6] Preceded by the VIC-20 and Commodore PET, the C64 took its name from its 64 kilobytes (65,536 bytes) of RAM. With support for multicolor sprites and a custom chip for waveform generation, the C64 could create superior visuals and audio compared to systems without such custom hardware.\n\n\n\nThe C64 dominated the low-end computer market (except in the UK, France and Japan, lasting only about six months in Japan[7]) for most of the later years of the 1980s.[8] For a substantial period (1983–1986), the C64 had between 30% and 40% share of the US market and two million units sold per year,[9] outselling IBM PC compatibles, the Apple II, and Atari 8-bit computers. Sam Tramiel, a later Atari president and the son of Commodore's founder, said in a 1989 interview, \"When I was at Commodore we were building 400,000 C64s a month for a couple of years.\"[10] In the UK market, the C64 faced competition from the BBC Micro, the ZX Spectrum, and later the Amstrad CPC 464,[11] but the C64 was still the second-most-popular computer in the UK after the ZX Spectrum.[12] The Commodore 64 failed to make any impact in Japan, as their market was dominated by Japanese computers, such as the NEC PC-8801, Sharp X1, Fujitsu FM-7 and MSX,[13] and in France, where the ZX Spectrum, Thomson MO5 and TO7, and Amstrad CPC 464 dominated the market.[14]\n\nPart of the Commodore 64's success was its sale in regular retail stores instead of only electronics or computer hobbyist specialty stores. Commodore produced many of its parts in-house to control costs, including custom integrated circuit chips from MOS Technology. In the United States, it has been compared to the Ford Model T automobile for its role in bringing a new technology to middle-class households via creative and affordable mass-production.[15] Approximately 10,000 commercial software titles have been made for the Commodore 64, including development tools, office productivity applications, and video games.[16] C64 emulators allow anyone with a modern computer, or a compatible video game console, to run these programs today. The C64 is also credited with popularizing the computer demoscene and is still used today by some computer hobbyists.[17] In 2011, 17 years after it was taken off the market, research showed that brand recognition for the model was still at 87%.",
       "m_entry_date_number": 20250404,
       "m_entry_date_string": "04.04.2025"
+    },
+    {
+      "id": "1418131382636",
+      "m_user_id": 1,
+      "m_user_name": "Admin Workflow",
+      "m_entry_id": "1418131382636",
+      "m_entry_header": "TRS-80",
+      "m_entry_text": "The TRS-80 Micro Computer System (TRS-80, later renamed the Model I to distinguish it from successors) is a desktop microcomputer developed by American company Tandy Corporation and sold through their Radio Shack stores. Launched in 1977, it is one of the earliest mass-produced and mass-marketed retail home computers.[4] The name is an abbreviation of Tandy Radio Shack, Z80 [microprocessor], referring to its Zilog Z80 8-bit microprocessor.[5]\n\nThe TRS-80 has a full-stroke QWERTY keyboard, 4 KB dynamic random-access memory (DRAM) standard memory, small size and desk area, floating-point Level I BASIC language interpreter in read-only memory (ROM), 64-character-per-line video monitor, and had a starting price of US$600[1] (equivalent to US$3,100 in 2024). A cassette tape drive for program storage was included in the original package. While the software environment was stable, the cassette load/save process combined with keyboard bounce issues and a troublesome Expansion Interface contributed to the Model I's reputation as not well-suited for serious use. Initially (until 1981), it lacked support for lowercase characters which may have hampered business adoption. An extensive line of upgrades and add-on hardware peripherals for the TRS-80 was developed and marketed by Tandy/Radio Shack. The basic system can be expanded with up to 48 KB of RAM (in 16 KB increments), and up to four floppy disk drives and/or hard disk drives. Tandy/Radio Shack provided full-service support including upgrade, repair, and training services in their thousands of stores worldwide.\n\nBy 1979, the TRS-80 had the largest selection of software in the microcomputer market.[6] Until 1982, the TRS-80 was the bestselling PC line, outselling the Apple II by a factor of five according to one analysis.[5] The broadly compatible TRS-80 Model III was released in the middle of 1980. The Model I was discontinued shortly thereafter, primarily due to stricter Federal Communications Commission (FCC) regulations on radio-frequency interference to nearby electronic devices.[7][8] In April 1983, the Model III was succeeded by the compatible TRS-80 Model 4. Following the original Model I and its compatible descendants, the TRS-80 name became a generic brand used on other unrelated computer lines sold by Tandy, including the TRS-80 Model II, TRS-80 Model 2000, TRS-80 Model 100, TRS-80 Color Computer, and TRS-80 Pocket Computer. ",
+      "m_entry_date_number": 20250304,
+      "m_entry_date_string": "04.03.2025"
     },
     {
       "id": "886548307134",
@@ -41,6 +81,16 @@
       "m_entry_date_string": "04.02.2025"
     },
     {
+      "id": "112168176794",
+      "m_user_id": 1,
+      "m_user_name": "Admin Workflow",
+      "m_entry_id": "112168176794",
+      "m_entry_header": "BBC Micro",
+      "m_entry_text": "The BBC Microcomputer System, or BBC Micro, is a family of microcomputers developed and manufactured by Acorn Computers in the early 1980s as part of the BBC's Computer Literacy Project. Launched in December 1981, it was showcased across several educational BBC television programmes, such as The Computer Programme (1982), Making the Most of the Micro and Computers in Control (both 1983), and Micro Live (1985). Created in response to the BBC's call for bids for a microcomputer to complement its broadcasts and printed material, Acorn secured the contract with its rapidly prototyped \"Proton\" system, which was subsequently renamed the BBC Micro.\n\nAlthough it was announced towards the end of 1981, production issues initially delayed the fulfilment of many orders, causing deliveries to spill over into 1982. Nicknamed the \"Beeb\", it soon became a fixture in British schools, advancing the BBC's goal of improving computer literacy. Renowned for its strong build quality and extensive connectivity, including ports for peripherals, support for Econet networking, and the option of second processors via the Tube interface, the BBC Micro was offered in two main variants: the 16 KB Model A (initially priced at £299) and the more popular 32 KB Model B (priced at £399). Although it was costlier than many other home computers of the era, it sold over 1.5 million units, boosted by the BBC's brand recognition and the machine's adaptability.\n\nThe BBC Micro's impact on education in the United Kingdom was notable, with most schools in Britain acquiring at least one unit, exposing a generation of pupils to computing fundamentals. Central to this was its built-in BBC BASIC programming language, known for its robust feature set and accessible syntax. As a home system, the BBC also fostered a community of enthusiasts who benefited from its flexible architecture, which supported everything from disk interfaces to speech synthesis. Through these expansions and its broader software library, the BBC Micro had a major impact in the development of the UK's home-grown software industry. Acorn's engineers used the BBC Micro as both a development platform and a reference design to simulate their pioneering ARM architecture, now one of the most widely deployed CPU designs worldwide. This work influenced the rapid evolution of RISC-based processing in mobile devices, embedded systems, and beyond, making the BBC Micro an important stepping stone in computing.\n\nThe BBC Micro had multiple display modes, including a Teletext-based Mode 7 that used minimal memory, and came with a full-travel keyboard and ten user-configurable function keys. Hardware interfaces were catered for with standard analogue inputs, a serial and parallel port, and a cassette interface that followed the CUTS (Computer Users' Tape Standard) variation of the Kansas City standard. In total, nine BBC-branded microcomputer models were released, although the term \"BBC Micro\" generally refers to the first six versions (Model A, B, B+64, B+128, Master 128, and Master Compact). Later BBC models are typically classed as part of Acorn's Archimedes line.",
+      "m_entry_date_number": 20250104,
+      "m_entry_date_string": "04.01.2025"
+    },
+    {
       "id": "592737473828",
       "m_user_id": 2,
       "m_user_name": "Admin Workflow",
@@ -51,6 +101,16 @@
       "m_entry_date_string": "04.12.2024"
     },
     {
+      "id": "1659431191533",
+      "m_user_id": 1,
+      "m_user_name": "Admin Workflow",
+      "m_entry_id": "1659431191533",
+      "m_entry_header": "Blog Nr 10",
+      "m_entry_text": "Text Nr 10",
+      "m_entry_date_number": 20241104,
+      "m_entry_date_string": "04.11.2024"
+    },
+    {
       "id": "1471305362344",
       "m_user_id": 2,
       "m_user_name": "Admin Workflow",
@@ -59,6 +119,16 @@
       "m_entry_text": "Text Nr 11",
       "m_entry_date_number": 20241004,
       "m_entry_date_string": "04.10.2024"
+    },
+    {
+      "id": "1562701984000",
+      "m_user_id": 1,
+      "m_user_name": "Admin Workflow",
+      "m_entry_id": "1562701984000",
+      "m_entry_header": "Blog Nr 12",
+      "m_entry_text": "Text Nr 12",
+      "m_entry_date_number": 20240904,
+      "m_entry_date_string": "04.09.2024"
     },
     {
       "id": "1289952167647",
@@ -75,7 +145,7 @@
       "m_user_id": 1,
       "m_user_name": "Admin Workflow",
       "m_entry_id": "1740169502502",
-      "m_entry_header": "geaddddddder",
+      "m_entry_header": "Blog Nr 14",
       "m_entry_text": "Text Nr 14",
       "m_entry_date_number": 20240704,
       "m_entry_date_string": "04.07.2024"
@@ -95,7 +165,7 @@
       "m_user_id": 1,
       "m_user_name": "Admin Workflow",
       "m_entry_id": "678150015287",
-      "m_entry_header": "Blog Nr 16ddddddddddd",
+      "m_entry_header": "Blog Nr 16",
       "m_entry_text": "Text Nr 16",
       "m_entry_date_number": 20240504,
       "m_entry_date_string": "04.05.2024"
@@ -135,7 +205,7 @@
       "m_user_id": 1,
       "m_user_name": "Admin Workflow",
       "m_entry_id": "1630258923066",
-      "m_entry_header": "Blog Nr 20d",
+      "m_entry_header": "Blog Nr 20",
       "m_entry_text": "Text Nr 20",
       "m_entry_date_number": 20240104,
       "m_entry_date_string": "04.01.2024"

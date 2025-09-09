@@ -29,13 +29,6 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
   private m_pressed_button : string = "cancel";
 
 
-  public setPressedButton( param_pressed_button : string ) : void
-  {
-    this.m_pressed_button = param_pressed_button;
-  }
-
-
-
   @Input() blog_entry_copy      : ClsBlogEntry = new ClsBlogEntry;
 
   constructor( private m_blog_entry_service_alt : BlogEntryService,
@@ -134,43 +127,90 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
   }
 
+  public setPressedButton( param_pressed_button : string ) : void
+  {
+    this.m_pressed_button = param_pressed_button;
+  }
 
   ngSubmitMyForm( userForm : NgForm ) : boolean
   {
     let my_form = userForm.form.value;
 
 
-        if ( this.m_pressed_button === "save" )
+    if ( this.m_pressed_button === "save" )
     {
       console.log( "editform save" );
-    }
-   else if ( this.m_pressed_button === "no_action" )
-    {
+
       this.m_blog_jsonserver_service.saveBlogEntry( this.blog_entry_copy )
 
       .subscribe( {
-                next:  (res) => { console.log('Eintrag gespeichert ' );
+                next:  (res) =>
+                  {
+                    console.log( 'EditForm Blog Entry Saved' );
 
                     this.m_show_confirm_dialog = false;
 
                     this.m_router.navigate( ['/blog'], { replaceUrl: true, skipLocationChange: false } )
                   },
 
-                error: (err) => {
-                  console.error('Fehler beim HinzufÃ¼gen des Blog-Eintrags:', err );
-
-                  alert( err );
-                }
+                error: (err) =>
+                  {
+                    console.error( 'EditForm Blog Entry Save Error ', err );
+                  }
               }
             );
     }
     else if ( this.m_pressed_button === "delete" )
     {
       console.log( "editform delete" );
+
+
+      if ( confirm( `Delete Blog Entry '${ this.blog_entry_copy.m_entry_header }'` ) )
+      {
+        console.log( "Confirm yes" );
+
+        this.m_blog_jsonserver_service.deleteBlogEntry( this.blog_entry_copy )
+        .subscribe( {
+                    next:  (res) =>
+                      {
+                    console.log('EditForm Blog Entry Deleted' );
+
+                    this.m_show_confirm_dialog = false;
+
+                    this.m_router.navigate( ['/blog'], { replaceUrl: true, skipLocationChange: false } )
+                        },
+                    error: (err) =>
+                    {
+                    console.error( 'EditForm Blog Entry Delete Error ', err );
+                    }
+                  }
+                );
+      }
+      else
+      {
+        console.log( "Confirm no" );
+      }
+
+
+
+
     }
     else if ( this.m_pressed_button === "cancel" )
     {
       console.log( "editform cancel" );
+
+      if ( confirm( `Cancel Edit Blog Entry '${ this.blog_entry_copy.m_entry_header }'` ) )
+      {
+        console.log('EditForm Blog Entry Cancel Yes' );
+
+        this.m_show_confirm_dialog = false;
+
+        this.m_router.navigate( ['/blog'], { replaceUrl: true, skipLocationChange: false } )
+      }
+      else
+      {
+        console.log('EditForm Blog Entry Cancel No' );
+      }
     }
 /*
     if ( userForm.form.dirty == false )
@@ -183,69 +223,8 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
       return true; // no changes -> leave Form
     }
 */
-    //console.log( 'ngSubmitMyForm my_form ' , my_form );
-
-    this.m_blog_jsonserver_service.saveBlogEntry( this.blog_entry_copy )
-
-    .subscribe( {
-                next:  (res) => { console.log('Eintrag gespeichert ' );
-
-                    this.m_show_confirm_dialog = false;
-
-                    this.m_router.navigate( ['/blog'], { replaceUrl: true, skipLocationChange: false } )
-                  },
-
-                error: (err) => {
-                  console.error('Fehler beim Hinzufügen des Blog-Eintrags:', err );
-
-                  alert( err );
-                }
-              }
-            );
-
     return true;
   }
-
-
-  public deleteBlogEntry() : boolean
-  {
-    let fkt_return_value : boolean = false;
-
-    if ( confirm( `Delete Blog Entry '${ this.blog_entry_copy.m_entry_header }'` ) )
-    {
-      console.log( "Confirm yes" );
-
-      this.m_blog_entry_service_alt.deleteBlogEntry( this.blog_entry_copy );
-
-      fkt_return_value = true;
-    }
-    else
-    {
-      console.log( "Confirm no" );
-    }
-
-    return fkt_return_value;
-  }
-
-
-  public doCancelEdit() : boolean
-  {
-    let fkt_return_value : boolean = false;
-
-    if ( confirm( `Cancel Edit Blog Entry '${ this.blog_entry_copy.m_entry_header }'` ) )
-    {
-      console.log( "Confirm yes" );
-
-      fkt_return_value = true;
-    }
-    else
-    {
-      console.log( "Confirm no" );
-    }
-
-    return fkt_return_value;
-  }
-
 
   public confirm(): boolean
   {
@@ -271,27 +250,6 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
   public getBlogEntryParamID() : string
   {
     return this.m_blog_entry_id_string;
-  }
-
-  //public submitToFirebase( userForm : NgForm ) : boolean
-  public submitToFirebase() : boolean
-  {
-    console.log( 'submitToFirebase my_form ' );
-
-    //let my_form = userForm.form.value;
-
-    //console.log( 'ngSubmitMyForm my_form ' , my_form );
-
-    //console.log( 'ngSubmitMyForm blog_date   =>', my_form.blog_date   );
-    //console.log( 'ngSubmitMyForm blog_header =>', my_form.blog_header );
-    //console.log( 'ngSubmitMyForm blog_id     =>', my_form.blog_id     );
-    //console.log( 'ngSubmitMyForm blog_user   =>', my_form.blog_user   );
-
-    //this.m_blog_firebase_service.createNewData( this.blog_entry_copy );
-
-    this.m_show_confirm_dialog = false;
-
-    return false;
   }
 
 
@@ -341,6 +299,7 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
     return false;
   }
 
+
   jsonServerInit()
   {
     let mock_blog_service : BlogAppMain = new BlogAppMain();
@@ -371,9 +330,4 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
     return false;
   }
-
-
-
-
-
 }
