@@ -51,16 +51,6 @@
       "m_entry_date_string": "04.12.2024"
     },
     {
-      "id": "1659431191533",
-      "m_user_id": 1,
-      "m_user_name": "Admin Workflow",
-      "m_entry_id": "1659431191533",
-      "m_entry_header": "Blog Nr 10",
-      "m_entry_text": "Text Nr 10",
-      "m_entry_date_number": 20241104,
-      "m_entry_date_string": "04.11.2024"
-    },
-    {
       "id": "1471305362344",
       "m_user_id": 2,
       "m_user_name": "Admin Workflow",
@@ -69,16 +59,6 @@
       "m_entry_text": "Text Nr 11",
       "m_entry_date_number": 20241004,
       "m_entry_date_string": "04.10.2024"
-    },
-    {
-      "id": "1562701984000",
-      "m_user_id": 1,
-      "m_user_name": "Admin Workflow",
-      "m_entry_id": "1562701984000",
-      "m_entry_header": "Blog Nr 12",
-      "m_entry_text": "Text Nr 12",
-      "m_entry_date_number": 20240904,
-      "m_entry_date_string": "04.09.2024"
     },
     {
       "id": "1289952167647",

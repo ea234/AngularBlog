@@ -49,7 +49,7 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
   ngOnInit()
   {
-    console.log( "ngOnInit edit form" );
+    //console.log( "ngOnInit edit form" );
 
     let blog_id_not_valid : boolean = true;
 
@@ -81,13 +81,13 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
       if ( ( blog_entry_id_string !== "" ) && ( blog_entry_id_string !== "-1" ))
       {
-        console.log('Existing BlogEntry. Get from Server' );
+        //console.log('Existing BlogEntry. Get from Server' );
 
         this.m_blog_jsonserver_service.getBlogEntry( blog_entry_id_string )
         .subscribe( {
                   next:  ( existing_blog_entry ) =>
                     {
-                      console.log('Found BlogEntry to edit' );
+                      //console.log('Found BlogEntry to edit' );
 
                       this.blog_entry_copy.id                  =      existing_blog_entry.m_entry_id; /* Only for Json-Server */
 
@@ -111,91 +111,26 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
                   error: (err) => { console.error('Fehler beim holen des Blog-Eintrags:', err );
 
-                      console.log('BlogEntry not found' );
+                      //console.log('BlogEntry not found' );
 
                       this.m_show_confirm_dialog = false;
 
                       this.m_router.navigate( ['/blog'], { replaceUrl: true, skipLocationChange: false })
-
                   }
                 }
               );
       }
     }
-
   }
+
 
   ngSubmitMyForm( userForm : NgForm ) : boolean
   {
-    return true;
-  }
+    console.log('Edit ngSubmitMyForm() ' );
 
+    this.m_show_confirm_dialog = false;
 
-  doSubmitMyForm( userForm : NgForm ) : boolean
-  {
-    console.log(" ngSubmit edit form " );
-
-    let my_form = userForm.form.value;
-/*
-    if ( userForm.form.dirty == false )
-    {
-      return true; // no changes -> leave Form
-    }
-
-    if ( userForm.form.errors !== undefined )
-    {
-      return true; // no changes -> leave Form
-    }
-*/
-    //console.log( 'ngSubmitMyForm my_form ' , my_form );
-
-    this.m_blog_jsonserver_service.saveBlogEntry( this.blog_entry_copy )
-
-    .subscribe( {
-                next:  (res) => { console.log('Eintrag gespeichert ' );
-
-                    this.m_show_confirm_dialog = false;
-
-                    this.m_router.navigate( ['/blog'], { replaceUrl: true, skipLocationChange: false } )
-                  },
-
-                error: (err) => {
-                  console.error('Fehler beim speichern des Blog-Eintrags:', err );
-
-                  alert( err );
-                }
-              }
-            );
-
-    return true;
-  }
-
-
-  public deleteBlogEntry() : boolean
-  {
-    let fkt_return_value : boolean = false;
-
-    if ( confirm( `Delete Blog Entry '${ this.blog_entry_copy.m_entry_header }'` ) )
-    {
-      console.log( "Confirm yes" );
-
-      this.m_blog_jsonserver_service.deleteBlogEntry( this.blog_entry_copy )
-    .subscribe( {
-                  next:  (res) => { console.log('Eintrag geloescht' );                                },
-                  error: (err) => { console.error('Fehler beim Löschen des Blog-Eintrags:', err ); }
-                }
-              );
-
-//      this.m_blog_entry_service_alt.deleteBlogEntry( this.blog_entry_copy );
-
-      fkt_return_value = true;
-    }
-    else
-    {
-      console.log( "Confirm no" );
-    }
-
-    return fkt_return_value;
+    return true; // True fuer das verlassen der Seite
   }
 
 
@@ -218,8 +153,36 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
   }
 
 
+  public deleteBlogEntry() : boolean
+  {
+    let fkt_return_value : boolean = false;
+
+    if ( confirm( `Delete Blog Entry '${ this.blog_entry_copy.m_entry_header }'` ) )
+    {
+      console.log( "Confirm yes" );
+
+      this.m_blog_jsonserver_service.deleteBlogEntry( this.blog_entry_copy )
+      .subscribe( {
+                  next:  (res) => { console.log('Eintrag geloescht' );                             },
+                  error: (err) => { console.error('Fehler beim Löschen des Blog-Eintrags:', err ); }
+                }
+              );
+
+      fkt_return_value = true;
+    }
+    else
+    {
+      console.log( "Confirm no" );
+    }
+
+    return fkt_return_value;
+  }
+
+
   public confirm(): boolean
   {
+    console.log('Edit confirm() m_show_confirm_dialog = ' + this.m_show_confirm_dialog );
+
     if ( this.m_show_confirm_dialog )
     {
       return confirm( "Leave Page?" );
@@ -227,7 +190,6 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
     return true;
   }
-
 
   public isEditExistingBlogEntry() : boolean
   {
@@ -243,108 +205,4 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
   {
     return this.m_blog_entry_id_string;
   }
-
-  //public submitToFirebase( userForm : NgForm ) : boolean
-  public submitToFirebase() : boolean
-  {
-    console.log( 'submitToFirebase my_form ' );
-
-    //let my_form = userForm.form.value;
-
-    //console.log( 'ngSubmitMyForm my_form ' , my_form );
-
-    //console.log( 'ngSubmitMyForm blog_date   =>', my_form.blog_date   );
-    //console.log( 'ngSubmitMyForm blog_header =>', my_form.blog_header );
-    //console.log( 'ngSubmitMyForm blog_id     =>', my_form.blog_id     );
-    //console.log( 'ngSubmitMyForm blog_user   =>', my_form.blog_user   );
-
-    //this.m_blog_firebase_service.createNewData( this.blog_entry_copy );
-
-    this.m_show_confirm_dialog = false;
-
-    return false;
-  }
-
-
-  jsonServerAdd()
-  {
-    console.log( 'jsonServerAdd' );
-
-    this.m_blog_jsonserver_service.addBlogEntry( this.blog_entry_copy )
-
-    .subscribe( {
-                  next:  (res) => { console.log('Eintrag gespeichert ' );                             },
-                  error: (err) => { console.error('Fehler beim Hinzufügen des Blog-Eintrags:', err ); }
-                }
-              );
-
-    return false;
-  }
-
-
-  jsonServerUpdate()
-  {
-    console.log( 'jsonServerUpdate' );
-
-    this.m_blog_jsonserver_service.updateBlogEntry( this.blog_entry_copy )
-    .subscribe( {
-                  next:  (res) => { console.log('Eintrag geaendert ' );                               },
-                  error: (err) => { console.error('Fehler beim Hinzufügen des Blog-Eintrags:', err ); }
-                }
-              );
-
-    return false;
-  }
-
-
-  jsonServerDelete()
-  {
-    console.log( 'jsonServerDelete' );
-
-    this.m_blog_jsonserver_service.deleteBlogEntry( this.blog_entry_copy )
-    .subscribe( {
-                  next:  (res) => { console.log('Eintrag geloescht' );                                },
-                  error: (err) => { console.error('Fehler beim Hinzufügen des Blog-Eintrags:', err ); }
-                }
-              );
-
-
-    return false;
-  }
-
-  jsonServerInit()
-  {
-    let mock_blog_service : BlogAppMain = new BlogAppMain();
-
-    mock_blog_service.generateMockUpBlogEntries();
-
-    let mock_up_entriy_count : number = mock_blog_service.getArrayLength();
-    let mock_up_entriy_index : number = 0;
-
-    while ( mock_up_entriy_index < mock_up_entriy_count )
-    {
-      let mock_up_blog_entry  = mock_blog_service.getBlogEntryIndex( mock_up_entriy_index );
-
-      if ( mock_up_blog_entry )
-      {
-        console.log( "json_init " + mock_up_entriy_index );
-
-      this.m_blog_jsonserver_service.addBlogEntry( mock_up_blog_entry )
-      .subscribe( {
-                    next:  (res) => { console.log('Eintrag gespeichert ' );                             },
-                    error: (err) => { console.error('Fehler beim Hinzufügen des Blog-Eintrags:', err ); }
-                  }
-                );
-      }
-
-      mock_up_entriy_index++;
-    }
-
-    return false;
-  }
-
-
-
-
-
 }
