@@ -26,6 +26,16 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
   private m_blog_entry_id_string : string = "AAA";
 
+  private m_pressed_button : string = "cancel";
+
+
+  public setPressedButton( param_pressed_button : string ) : void
+  {
+    this.m_pressed_button = param_pressed_button;
+  }
+
+
+
   @Input() blog_entry_copy      : ClsBlogEntry = new ClsBlogEntry;
 
   constructor( private m_blog_entry_service_alt : BlogEntryService,
@@ -128,6 +138,40 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
   ngSubmitMyForm( userForm : NgForm ) : boolean
   {
     let my_form = userForm.form.value;
+
+
+        if ( this.m_pressed_button === "save" )
+    {
+      console.log( "editform save" );
+    }
+   else if ( this.m_pressed_button === "no_action" )
+    {
+      this.m_blog_jsonserver_service.saveBlogEntry( this.blog_entry_copy )
+
+      .subscribe( {
+                next:  (res) => { console.log('Eintrag gespeichert ' );
+
+                    this.m_show_confirm_dialog = false;
+
+                    this.m_router.navigate( ['/blog'], { replaceUrl: true, skipLocationChange: false } )
+                  },
+
+                error: (err) => {
+                  console.error('Fehler beim HinzufÃ¼gen des Blog-Eintrags:', err );
+
+                  alert( err );
+                }
+              }
+            );
+    }
+    else if ( this.m_pressed_button === "delete" )
+    {
+      console.log( "editform delete" );
+    }
+    else if ( this.m_pressed_button === "cancel" )
+    {
+      console.log( "editform cancel" );
+    }
 /*
     if ( userForm.form.dirty == false )
     {
