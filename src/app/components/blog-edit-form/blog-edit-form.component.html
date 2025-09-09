@@ -33,7 +33,8 @@
 
     <div class="form-group"><label for="blog_text">Text      </label>
 
-      <textarea required
+      <textarea #myVarBlogText="ngModel"
+                required
                 minlength="5"
                 maxlength="32000"
                 name="blog_text"
@@ -43,11 +44,11 @@
                 cols="40"
                 placeholder="Blog Text"></textarea>
 
-      <div *ngIf="myVarBlogHeader.touched && myVarBlogHeader.invalid" class="alert alert-danger">
-        <p *ngIf="myVarBlogHeader.errors && myVarBlogHeader.errors['required']" >Text is required</p>
-        <p *ngIf="myVarBlogHeader.errors && myVarBlogHeader.errors['minLength']" >minlength</p>
-        <p *ngIf="myVarBlogHeader.errors && myVarBlogHeader.errors['maxLength']" >maxlength</p>
-        <p *ngIf="myVarBlogHeader.errors" >{{ myVarBlogHeader.errors['minLength'] }}</p>
+      <div *ngIf="myVarBlogText.touched && myVarBlogText.invalid" class="alert alert-danger">
+        <p *ngIf="myVarBlogText.errors && myVarBlogText.errors['required']" >Text is required</p>
+        <p *ngIf="myVarBlogText.errors && myVarBlogText.errors['minLength']" >minlength</p>
+        <p *ngIf="myVarBlogText.errors && myVarBlogText.errors['maxLength']" >maxlength</p>
+        <p *ngIf="myVarBlogText.errors" >{{ myVarBlogText.errors['minLength'] }}</p>
 
       </div>
 

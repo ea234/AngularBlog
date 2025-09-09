@@ -27,7 +27,7 @@ class ActivatedRouteStub
 }
 
 
-describe('BlogEditFormComponent', () =>
+describe( 'BlogEditFormComponent', () =>
 {
   const mock_route_stub = new ActivatedRouteStub();
 
@@ -94,7 +94,7 @@ describe('BlogEditFormComponent', () =>
 
     console.log ( "Paramcheck for new BlogEntry  1 ", component.getBlogEntryParamID() );
 
-    expect(component).toBeTruthy();
+    expect( component ).toBeTruthy();
 
     expect( component.getBlogEntryParamID()     ).toBe( expected_id );
   });
@@ -142,5 +142,32 @@ describe('BlogEditFormComponent', () =>
 
     expect( component.getBlogEntryParamID()     ).toBe( expected_id );
    });
+
+
+  it( 'should save the string for the pressed button', async() =>
+  {
+    let expected_id : string =  "-1";
+
+    await getNewTestbed( expected_id );
+
+    console.log ( "Paramcheck for new BlogEntry ", component.getBlogEntryParamID() );
+
+    await fixture.whenStable();
+
+
+    component.setPressedButton( 'save' );
+
+    expect( component.getPressedButton() ).toBe( 'save' );
+
+
+    component.setPressedButton( 'delete' );
+
+    expect( component.getPressedButton() ).toBe( 'delete' );
+
+
+    component.setPressedButton( 'cancel' );
+
+    expect( component.getPressedButton() ).toBe( 'cancel' );
+  });
 
 });

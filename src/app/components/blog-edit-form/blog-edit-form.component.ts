@@ -120,6 +120,12 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
   }
 
 
+  public getPressedButton() : string
+  {
+    return this.m_pressed_button;
+  }
+
+
   ngSubmitMyForm( userForm : NgForm ) : boolean
   {
     let my_form = userForm.form.value;
