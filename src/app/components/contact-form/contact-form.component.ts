@@ -13,7 +13,6 @@ export class ContactFormComponent
 
   contact_subject : string = "";
 
-
   ngSubmitMyForm( userForm : NgForm ) : boolean
   {
     let my_form = userForm.form.value;

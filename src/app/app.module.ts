@@ -4,7 +4,7 @@ import { HttpClientModule                                       } from '@angular
 import { FormsModule                                            } from '@angular/forms';
 import { NgbModule                                              } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule                                      } from '@fortawesome/angular-fontawesome';
-
+import { ReactiveFormsModule                                    } from '@angular/forms';
 import { AppRoutingModule                                       } from './app-routing.module';
 import { AppComponent                                           } from './app.component';
 import { AboutComponent                                         } from './components/about/about.component';
@@ -42,7 +42,8 @@ import { ContactFormComponent } from './components/contact-form/contact-form.com
     AppRoutingModule,
     NgbModule,
     FontAwesomeModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideClientHydration( withEventReplay() ),
