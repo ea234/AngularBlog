@@ -2,8 +2,7 @@ import { Component, Input, OnInit     } from '@angular/core';
 import { NgForm                       } from '@angular/forms';
 import { ActivatedRoute, Router       } from '@angular/router';
 
-import { BlogEntry, ClsBlogEntry                 } from '../../ClsBlogEntry';
-import { BlogEntryService             } from '../../services/blog-entry.service';
+import { ClsBlogEntry                 } from '../../ClsBlogEntry';
 import { BlogUserService              } from '../../services/blog-user.service';
 import { CanComponentDeactivate       } from '../../guards/confirmation/confirmation.guard';
 import { getDateString, getDateNumber } from '../../FkDate';
@@ -21,8 +20,6 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
   private m_show_confirm_dialog : boolean = true;
 
   private m_blog_is_add_new     : boolean = false;
-
-  private m_blog_flag : boolean = false;
 
   private m_blog_entry_id_string : string = 'not valid';
 
@@ -92,7 +89,7 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
                     {
                       console.log('Found BlogEntry to edit' );
 
-                      this.blog_entry_copy.id                  =      existing_blog_entry.m_entry_id; /* Only for Json-Server */
+                      this.blog_entry_copy.id                  =      existing_blog_entry.m_entry_id;
 
                       this.blog_entry_copy.m_user_id           =      existing_blog_entry.m_user_id;
                       this.blog_entry_copy.m_user_name         = "" + existing_blog_entry.m_user_name;
@@ -131,7 +128,6 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
               );
       }
     }
-
   }
 
 
@@ -246,7 +242,7 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
   }
 
 
-  public confirm() : boolean
+  public confirm() : boolean /* For confirmation guard */
   {
     if ( this.m_show_confirm_dialog )
     {

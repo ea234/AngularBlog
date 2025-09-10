@@ -154,7 +154,6 @@ describe( 'BlogEditFormComponent', () =>
 
     await fixture.whenStable();
 
-
     component.setPressedButton( 'save' );
 
     expect( component.getPressedButton() ).toBe( 'save' );
