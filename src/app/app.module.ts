@@ -18,6 +18,7 @@ import { ButtonComponent                                        } from './compon
 import { HeaderComponent                                        } from './components/header/header.component';
 import { LogInComponent                                         } from './components/log-in/log-in.component';
 import { LogOutComponent                                        } from './components/log-out/log-out.component';
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { LogOutComponent                                        } from './compon
     ButtonComponent,
     LogInComponent,
     LogOutComponent,
-    BlogEditFormComponent
+    BlogEditFormComponent,
+    ContactFormComponent
   ],
   imports: [
     HttpClientModule,

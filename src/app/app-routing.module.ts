@@ -11,6 +11,7 @@ import { LogOutComponent          } from './components/log-out/log-out.component
 
 import { authGuard                } from './guards/auth/auth.guard';
 import { confirmationGuard        } from './guards/confirmation/confirmation.guard';
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
 
 
 const appRoutes: Routes = [
@@ -42,10 +43,12 @@ const appRoutes: Routes = [
   },
 
 
-  { path: 'showblog/:blog_entry_id', component: BlogDetailLongComponent },
-  { path: 'about',                  component: AboutComponent          },
-  { path: 'login',                  component: LogInComponent          },
-  { path: 'logout',                 component: LogOutComponent         },
+  { path: 'showblog/:blog_entry_id', component: BlogDetailLongComponent  },
+  { path: 'about',                   component: AboutComponent           },
+  { path: 'login',                   component: LogInComponent           },
+  { path: 'logout',                  component: LogOutComponent          },
+  { path: 'contact',                 component: ContactFormComponent     },
+
   { path: '**', redirectTo: '/blog', pathMatch: 'full'                 },
   { path: '',                       component: BlogComponent           }
 ];
