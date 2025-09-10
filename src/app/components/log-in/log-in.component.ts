@@ -13,7 +13,6 @@ export class LogInComponent implements OnInit
   {
   }
 
-
   ngOnInit(): void
   {
     this.m_user_service.userLogIn();

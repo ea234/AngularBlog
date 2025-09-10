@@ -7,7 +7,7 @@ import { BlogUserService              } from '../../services/blog-user.service';
 import { CanComponentDeactivate       } from '../../guards/confirmation/confirmation.guard';
 import { getDateString, getDateNumber } from '../../FkDate';
 import { BlogJsonserverService        } from '../../services/blog-jsonserver.service';
-import { BlogAppMain } from '../../extern_app/ClsBlogAppMain';
+import { BlogAppMain                  } from '../../extern_app/ClsBlogAppMain';
 
 @Component({
   selector    : 'app-blog-edit-form',
@@ -50,7 +50,7 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
   {
     if ( this.m_user_service.isUserNotLoggedIn() )
     {
-      console.log('User is not logged in' );
+      console.log( 'BlogEditFormComponent - User is not logged in' );
 
       this.m_show_confirm_dialog = false;
 
@@ -81,13 +81,13 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
     {
       if ( ( blog_entry_id_string !== "" ) && ( blog_entry_id_string !== '-1' ))
       {
-        console.log( 'Existing BlogEntry' + blog_entry_id_string + '. Get from Server' );
+        console.log( 'BlogEditFormComponent - Existing BlogEntry' + blog_entry_id_string + '. Get from Server' );
 
         this.m_blog_jsonserver_service.getBlogEntry( blog_entry_id_string )
         .subscribe( {
                   next:  ( existing_blog_entry ) =>
                     {
-                      console.log('Found BlogEntry to edit' );
+                      console.log('BlogEditFormComponent - Found BlogEntry to edit' );
 
                       this.blog_entry_copy.id                  =      existing_blog_entry.m_entry_id;
 
@@ -108,7 +108,7 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
                       if ( existing_blog_entry.m_user_id !== this.m_user_service.getUserID() )
                       {
-                        console.log('BlogEntry not from current User-ID' );
+                        console.log( 'BlogEditFormComponent - BlogEntry not from current User-ID' );
 
                         this.m_show_confirm_dialog = false;
 
@@ -118,7 +118,7 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
                   error: (err) => { console.error( 'Fehler beim holen des Blog-Eintrags:', err );
 
-                      console.log('BlogEntry not found' );
+                      console.log( 'BlogEditFormComponent - BlogEntry not found' );
 
                       this.m_show_confirm_dialog = false;
 
@@ -149,11 +149,11 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
     if ( this.m_pressed_button === 'save' )
     {
-      console.log( 'editform save' );
+      console.log( 'BlogEditFormComponent - editform save' );
 
       if (  ( userForm.form.errors !== null ) )
       {
-        console.log( 'editform save - Blog Entry has errors' , userForm.form.errors );
+        console.log( 'BlogEditFormComponent - editform save - Blog Entry has errors' , userForm.form.errors );
 
         return false;
       }
@@ -164,7 +164,7 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
         .subscribe( {
                 next:  ( result ) =>
                 {
-                  console.log( 'EditForm Blog Entry Saved' );
+                  console.log( 'BlogEditFormComponent - Blog Entry Saved' );
 
                   this.m_show_confirm_dialog = false;
 
@@ -173,7 +173,7 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
                 error: ( err ) =>
                 {
-                  console.error( 'EditForm Blog Entry Save Error ', err );
+                  console.error( 'BlogEditFormComponent - Blog Entry Save Error ', err );
                 }
               }
             );
@@ -181,17 +181,17 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
     }
     else if ( this.m_pressed_button === 'delete' )
     {
-      console.log( "editform delete" );
+      console.log( "BlogEditFormComponent - delete" );
 
       if ( confirm( `Delete Blog Entry '${ this.blog_entry_copy.m_entry_header }'` ) )
       {
-        console.log( "Confirm yes" );
+        console.log( "BlogEditFormComponent - Confirm yes" );
 
         this.m_blog_jsonserver_service.deleteBlogEntry( this.blog_entry_copy )
         .subscribe( {
                     next:  ( result ) =>
                     {
-                      console.log( 'EditForm Blog Entry Deleted' );
+                      console.log( 'BlogEditFormComponent - Blog Entry Deleted' );
 
                       this.m_show_confirm_dialog = false;
 
@@ -200,23 +200,23 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
                     error: (err) =>
                     {
-                      console.error( 'EditForm Blog Entry Delete Error ', err );
+                      console.error( 'BlogEditFormComponent - Blog Entry Delete Error ', err );
                     }
                   }
                 );
       }
       else
       {
-        console.log( 'EditForm Confirm No' );
+        console.log( 'BlogEditFormComponent - Confirm No' );
       }
     }
     else if ( this.m_pressed_button === 'cancel' )
     {
-      console.log( 'EditForm Cancel' );
+      console.log( 'BlogEditFormComponent - Cancel' );
 
       if ( userForm.form.dirty == false )
       {
-        console.log( 'EditForm Blog Entry Cancel No Changes' );
+        console.log( 'BlogEditFormComponent - Blog Entry Cancel No Changes' );
 
         this.m_show_confirm_dialog = false;
 
@@ -226,7 +226,7 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
       }
       else if ( confirm( `Cancel Edit Blog Entry '${ this.blog_entry_copy.m_entry_header }'` ) )
       {
-        console.log( 'EditForm Blog Entry Cancel Yes' );
+        console.log( 'BlogEditFormComponent - Blog Entry Cancel Yes' );
 
         this.m_show_confirm_dialog = false;
 
@@ -234,7 +234,7 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
       }
       else
       {
-        console.log( 'EditForm Blog Entry Cancel No' );
+        console.log( 'BlogEditFormComponent - Blog Entry Cancel No' );
       }
     }
 

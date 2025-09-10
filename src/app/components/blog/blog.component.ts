@@ -8,5 +8,4 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 })
 export class BlogComponent
 {
-  constructor() {}
 }

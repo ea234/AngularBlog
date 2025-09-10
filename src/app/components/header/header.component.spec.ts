@@ -60,7 +60,7 @@ describe('HeaderComponent', () =>
 
   it( 'should display LogOut', () =>
   {
-    component.getUserService().userLogIn(); // Evil
+    component.getUserService().userLogIn();
 
     mock_user_c.userLogIn();
 

@@ -20,6 +20,6 @@ export class LogOutComponent implements OnInit
     {
       this.m_user_service.userLogOut();
 
-      this.m_router.navigate(['/blog']);
+      this.m_router.navigate( [ '/blog' ] );
     }
 }

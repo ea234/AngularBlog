@@ -17,7 +17,7 @@ describe('BlogEntryListComponent', () =>
 
   let mock_user_service : BlogUserService  = new BlogUserService();
 
-  beforeEach(async () =>
+  beforeEach( async () =>
   {
     await TestBed.configureTestingModule({
       declarations: [ BlogEntryListComponent ],

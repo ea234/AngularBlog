@@ -10,7 +10,7 @@ import { BlogDetailShortComponent     } from './blog-detail-short.component';
 import { BlogEntry                    } from '../../ClsBlogEntry';
 
 
-describe('BlogDetailShortComponent', () =>
+describe( 'BlogDetailShortComponent', () =>
 {
   let component: BlogDetailShortComponent;
 
@@ -24,7 +24,7 @@ describe('BlogDetailShortComponent', () =>
 
   let location          : Location;
 
-  beforeEach(async () =>
+  beforeEach( async () =>
   {
     await TestBed.configureTestingModule({
 
@@ -105,7 +105,7 @@ describe('BlogDetailShortComponent', () =>
     //console.log( "Test BlogDetailShortComponent location ", location );
 
     expect( location.path() ).toEqual( '/' + mock_blog_entry.m_entry_id );
-   });
+  });
 
 
   it( 'should have no edit links when user is logged out', () =>
@@ -150,9 +150,9 @@ describe('BlogDetailShortComponent', () =>
 
   it( 'should have edit link when user is logged in', async () =>
   {
-    mock_user_service.userLogIn();  // User-ID changed in LogIn-Function
+    mock_user_service.userLogIn();
 
-    mock_user_service.m_blog_user.m_user_id = mock_blog_entry.m_user_id;
+    mock_user_service.m_blog_user.m_user_id = mock_blog_entry.m_user_id; // User-ID changed in LogIn-Function
 
     fixture.detectChanges();
 
@@ -169,7 +169,7 @@ describe('BlogDetailShortComponent', () =>
     const element_edit_link = element_container_edit_link.query( By.css( 'a.edit-link' ) );
 
     expect( element_edit_link ).toBeTruthy()
-   });
+  });
 
 /*
   it('edit link should have clicked', () =>
@@ -202,4 +202,4 @@ describe('BlogDetailShortComponent', () =>
   });*/
 
 
-  });
+});

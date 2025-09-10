@@ -1,10 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router                       } from '@angular/router';
 import { Observable                   } from 'rxjs';
-import { BlogEntryService             } from '../../services/blog-entry.service';
 import { BlogEntry                    } from '../../ClsBlogEntry';
 import { BlogUserService              } from '../../services/blog-user.service';
-import { BlogJsonserverService } from '../../services/blog-jsonserver.service';
+import { BlogJsonserverService        } from '../../services/blog-jsonserver.service';
 
 @Component({
   selector: 'app-blog-entry-list',
@@ -28,8 +27,8 @@ export class BlogEntryListComponent implements OnInit, OnDestroy
     */
 
     constructor( private m_blog_jsonserver_service : BlogJsonserverService,
-                 private m_user_service       : BlogUserService,
-                 private m_router             : Router )
+                 private m_user_service            : BlogUserService,
+                 private m_router                  : Router )
     {
     }
 
@@ -52,27 +51,7 @@ export class BlogEntryListComponent implements OnInit, OnDestroy
     }
 
 
-    showViewAddBlogEntry1()
-    {
-      //console.log( `Click showViewAddBlogEntry ${ this.m_router.url }` );
-      //console.log( `this.my_route_start        ${ this.my_route_start }` );
-
-      //let url_new_route_1 = this.m_router.url + "/add";
-      let url_new_route_2 = this.my_route_start + "/add";
-
-      this.m_router.navigate( [ url_new_route_2 ] );
-
-      /*
-       * Not working, when showing a blog detail.
-       *
-       * Click showViewAddBlogEntry /blog/0
-       * this.my_route_start        /blog
-       */
-      //this.m_router.navigate( [ 'add' ] ); // somehow not working
-    }
-
-
-    showViewAddBlogEntry2()
+    showViewAddBlogEntry() : void
     {
       let url_new_route = "/addnew";
 
