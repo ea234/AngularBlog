@@ -51,6 +51,18 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
   ngOnInit()
   {
+    if ( this.m_user_service.isUserNotLoggedIn() )
+    {
+      console.log('User is not logged in' );
+
+      this.m_show_confirm_dialog = false;
+
+      this.m_router.navigate( ['/blog'], { replaceUrl: true, skipLocationChange: false })
+
+      return;
+    }
+
+
     const url_string : string = this.m_router.url;
 
     const url_contains_add_new_blog : boolean = url_string.includes( 'addnew' );
@@ -96,6 +108,15 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
                       //console.log('COPY   this.blog_entry_copy', this.blog_entry_copy );
 
                       this.m_blog_is_add_new = false;
+
+                      if ( existing_blog_entry.m_user_id !== this.m_user_service.getUserID() )
+                      {
+                        console.log('BlogEntry not from current User-ID' );
+
+                        this.m_show_confirm_dialog = false;
+
+                        this.m_router.navigate( ['/blog'], { replaceUrl: true, skipLocationChange: false })
+                      }
                     },
 
                   error: (err) => { console.error( 'Fehler beim holen des Blog-Eintrags:', err );
@@ -134,8 +155,10 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
     {
       console.log( 'editform save' );
 
-      if ( userForm.form.errors !== undefined )
+      if (  ( userForm.form.errors !== null ) )
       {
+        console.log( 'editform save - Blog Entry has errors' , userForm.form.errors );
+
         return false;
       }
       else

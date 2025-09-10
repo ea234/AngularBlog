@@ -1,16 +1,6 @@
 {
   "blog": [
     {
-      "id": "799701704230",
-      "m_user_id": 1,
-      "m_user_name": "Admin Workflow",
-      "m_entry_id": "799701704230",
-      "m_entry_header": "History of personal computers",
-      "m_entry_text": "The history of the personal computer as a mass-market consumer electronic device began with the microcomputer revolution of the 1970s. A personal computer is one intended for interactive individual use, as opposed to a mainframe computer where the end user's requests are filtered through operating staff, or a time-sharing system in which one large processor is shared by many individuals. After the development of the microprocessor, individual personal computers were low enough in cost that they eventually became affordable consumer goods. Early personal computers – generally called microcomputers – were sold often in electronic kit form and in limited numbers, and were of interest mostly to hobbyists and technicians.\n\n    The history of the personal computer as mass-market consumer electronic devices effectively began in 1977 with the introduction of microcomputers, although some mainframe and minicomputers had been applied as single-user systems much earlier. A personal computer is one intended for interactive individual use, as opposed to a mainframe computer where the end user's requests are filtered through operating staff, or a time sharing system in which one large processor is shared by many individuals. After the development of the microprocessor, individual personal computers were low enough in cost that they eventually became affordable consumer goods. Early personal computers – generally called microcomputers – were sold often in electronic kit form and in limited numbers, and were of interest mostly to hobbyists and technicians.\n\n    ",
-      "m_entry_date_number": 20250904,
-      "m_entry_date_string": "04.09.2025"
-    },
-    {
       "id": "285051383108",
       "m_user_id": 2,
       "m_user_name": "Admin Workflow",
@@ -19,16 +9,6 @@
       "m_entry_text": "The ZX Spectrum (UK: /zɛd ɛks/) is an 8-bit home computer developed and marketed by Sinclair Research. The Spectrum played a pivotal role in the history of personal computers and video games, especially in the United Kingdom. It was one of the all-time bestselling British computers with over five million units sold. It was released in the UK on 23 April 1982, the United States in 1983, and Europe in 1984.\n\nThe machine was designed by the English entrepreneur and inventor Sir Clive Sinclair and his small team in Cambridge, and was manufactured in Dundee, Scotland by Timex Corporation.[5] It was made to be small, simple, and most importantly inexpensive, with as few components as possible. The addendum \"Spectrum\" was chosen to highlight the machine's colour display, which differed from the black-and-white display of its predecessor, the ZX81. Rick Dickinson designed its distinctive case, rainbow motif, and rubber keyboard. Video output is transmitted to a television set rather than a dedicated monitor, while application software is loaded and saved onto compact audio cassettes.\n\nThe ZX Spectrum was initially distributed by mail order, but after severe backlogs it was sold through High Street chains in the United Kingdom. It was released in the US as the Timex Sinclair 2068 in 1983, and in some parts of Europe as the Timex Computer 2048. There are seven models overall, ranging from the entry level with 16 KB RAM released in 1982 to the ZX Spectrum +3 with 128 KB RAM and built-in floppy disk drive in 1987. The machine primarily competed with the Commodore 64, BBC Micro, Dragon 32, and the Amstrad CPC range. Over 24,000 software products were released for the ZX Spectrum.[1]\n\nIts introduction led to a boom in companies producing software and hardware, the effects of which are still seen. It was among the first home computers aimed at a mainstream UK audience, with some crediting it for launching the British information technology industry. The Spectrum was Britain's top-selling computer until the Amstrad PCW surpassed it in the 1990s.[6][7][8] It was discontinued in 1992. ",
       "m_entry_date_number": 20250804,
       "m_entry_date_string": "04.08.2025"
-    },
-    {
-      "id": "882621712005",
-      "m_user_id": 1,
-      "m_user_name": "Admin Workflow",
-      "m_entry_id": "882621712005",
-      "m_entry_header": "Apple II (original)",
-      "m_entry_text": "The Apple II (stylized as apple ][) is a personal computer released by Apple Inc. in June 1977. It was one of the first successful mass-produced microcomputer products and is widely regarded as one of the most important personal computers of all time due to its role in popularizing home computing and influencing later software development.[3][4][5][6][7]\n\nThe Apple II was designed primarily by Steve Wozniak. The system is based around the 8-bit MOS Technology 6502 microprocessor. Jerry Manock designed the foam-molded plastic case,[8] Rod Holt developed the switching power supply,[9] while Steve Jobs was not involved in the design of the computer.[10] It was introduced by Jobs and Wozniak at the 1977 West Coast Computer Faire, and marks Apple's first launch of a computer aimed at a consumer market—branded toward American households rather than businessmen or computer hobbyists.[11]\nThe three computers that Byte magazine referred to as the \"1977 Trinity\" of home computing: Commodore PET 2001, Apple II, and TRS-80 Model I\n\nByte magazine referred to the Apple II, Commodore PET 2001, and TRS-80 as the \"1977 Trinity\".[12] As the Apple II had the defining feature of being able to display color graphics, the Apple logo was redesigned to have a spectrum of colors.[13][14]\n\nThe Apple II was the first in a series of computers collectively referred to by the Apple II name. It was followed by the Apple II+, Apple IIe, Apple IIc, Apple IIc Plus, and the 16-bit Apple IIGS—all of which remained compatible. Production of the last available model, the Apple IIe, ceased in November 1993.",
-      "m_entry_date_number": 20250704,
-      "m_entry_date_string": "04.07.2025"
     },
     {
       "id": "911568090905",
@@ -249,6 +229,16 @@
       "m_entry_text": "Text Nr 24",
       "m_entry_date_number": 20230904,
       "m_entry_date_string": "04.09.2023"
+    },
+    {
+      "id": "748524228403",
+      "m_user_id": 0,
+      "m_user_name": "Guest",
+      "m_entry_id": "748524228403",
+      "m_entry_header": "dddddddddd",
+      "m_entry_text": "ddddddddddddd",
+      "m_entry_date_number": 20250810,
+      "m_entry_date_string": "10.09.2025"
     }
   ]
 }

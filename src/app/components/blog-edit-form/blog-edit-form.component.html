@@ -4,11 +4,11 @@
 
   <form #myUserForm="ngForm" (ngSubmit)="ngSubmitMyForm( myUserForm )">
 
-    <div class="form-group"><label for="blog_id">ID          </label><input type="text" name="blog_id" class="form-control" [(ngModel)]="blog_entry_copy.m_entry_id" ></div>
+    <div class="form-group"><label for="blog_id">ID          </label><input readonly type="text" name="blog_id" class="form-control" [(ngModel)]="blog_entry_copy.m_entry_id" ></div>
 
-    <div class="form-group"><label for="blog_user">User      </label><input type="text" name="blog_user" class="form-control" [(ngModel)]="blog_entry_copy.m_user_name"  ></div>
+    <div class="form-group"><label for="blog_user">User      </label><input readonly type="text" name="blog_user" class="form-control" [(ngModel)]="blog_entry_copy.m_user_name"  ></div>
 
-    <div class="form-group"><label for="blog_date">Date      </label><input type="text" name="blog_date" class="form-control" [(ngModel)]="blog_entry_copy.m_entry_date_string" ></div>
+    <div class="form-group"><label for="blog_date">Date      </label><input readonly type="text" name="blog_date" class="form-control" [(ngModel)]="blog_entry_copy.m_entry_date_string" ></div>
 
     <div class="form-group"><label for="blog_header">Header</label>
 
@@ -22,10 +22,10 @@
              placeholder="Header Text">
 
       <div *ngIf="myVarBlogHeader.touched && myVarBlogHeader.invalid" class="alert alert-danger">
-        <p *ngIf="myVarBlogHeader.errors && myVarBlogHeader.errors['required']" >Header is required</p>
-        <p *ngIf="myVarBlogHeader.errors && myVarBlogHeader.errors['minLength']" >minlength</p>
-        <p *ngIf="myVarBlogHeader.errors && myVarBlogHeader.errors['maxLength']" >maxlength</p>
-        <p *ngIf="myVarBlogHeader.errors" >{{ myVarBlogHeader.errors['minLength'] }}</p>
+
+        <p *ngIf="myVarBlogHeader.errors && myVarBlogHeader.errors['required']" >Blog Header is required</p>
+        <p *ngIf="myVarBlogHeader.errors && myVarBlogHeader.errors['minlength']" >Blog Header is to short. Minlength is {{ myVarBlogHeader.errors['minlength'].requiredLength }}</p>
+        <p *ngIf="myVarBlogHeader.errors && myVarBlogHeader.errors['maxlength']" >Blog Header is to long.</p>
 
       </div>
 
@@ -45,18 +45,16 @@
                 placeholder="Blog Text"></textarea>
 
       <div *ngIf="myVarBlogText.touched && myVarBlogText.invalid" class="alert alert-danger">
-        <p *ngIf="myVarBlogText.errors && myVarBlogText.errors['required']" >Text is required</p>
-        <p *ngIf="myVarBlogText.errors && myVarBlogText.errors['minLength']" >minlength</p>
-        <p *ngIf="myVarBlogText.errors && myVarBlogText.errors['maxLength']" >maxlength</p>
-        <p *ngIf="myVarBlogText.errors" >{{ myVarBlogText.errors['minLength'] }}</p>
-
+        <p *ngIf="myVarBlogText.errors && myVarBlogText.errors['required']" >Blog Text is required</p>
+        <p *ngIf="myVarBlogText.errors && myVarBlogText.errors['minlength']" >Blog Text is to short. Minlength is {{ myVarBlogText.errors['minlength'].requiredLength }}</p>
+        <p *ngIf="myVarBlogText.errors && myVarBlogText.errors['maxlength']" >Blog Text is to long.</p>
       </div>
 
     </div>
 
     <br />
 
-    <button class="btn btn-primary" type="submit" (click)="setPressedButton( 'save' )"  >Submit</button>&nbsp;&nbsp;
+    <button class="btn btn-primary" type="submit" (click)="setPressedButton( 'save' )" [disabled]="myUserForm.invalid" >Submit</button>&nbsp;&nbsp;
 
     <button class="btn btn-primary" type="submit" (click)="setPressedButton( 'cancel' )"  >Cancel</button>&nbsp;&nbsp;&nbsp;&nbsp;
 
