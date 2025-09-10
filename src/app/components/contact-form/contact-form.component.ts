@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NgForm                       } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-contact-form',
@@ -9,16 +9,51 @@ import { NgForm                       } from '@angular/forms';
 })
 export class ContactFormComponent
 {
-  contact_text : string = "";
+  contact_show_confirm_message : boolean = false;
 
-  contact_subject : string = "";
+  myUserForm! : FormGroup;
 
-  ngSubmitMyForm( userForm : NgForm ) : boolean
+  ngOnInit(): void
   {
-    let my_form = userForm.form.value;
+    this.myUserForm = new FormGroup(
+      { contact_subject: new FormControl('', [ Validators.required, Validators.minLength(5), Validators.maxLength(150)  ] ),
+        contact_text:    new FormControl('', [ Validators.required, Validators.minLength(5), Validators.maxLength(2000) ] )
+      });
+  }
 
-    console.log( 'ContactFormComponent - ngSubmitMyForm' );
 
-    return true;
+  onSubmit(): void
+  {
+    if ( this.myUserForm )
+    {
+      if ( this.myUserForm.valid )
+      {
+        const formValue = this.myUserForm.value; // Hier weiterverarbeiten, z.B. senden an API console.log('Form submitted', formValue);
+
+        console.log( formValue );
+
+
+        this.contact_show_confirm_message = true;
+      }
+    }
+  }
+
+  get contact_subject() { return this.myUserForm.get('contact_subject'); }
+
+  get contact_text()    { return this.myUserForm.get('contact_text');     }
+
+  showContactForm() : boolean
+  {
+    return !this.contact_show_confirm_message;
+  }
+
+  showConfirmMessage() : boolean
+  {
+    return this.contact_show_confirm_message;
   }
 }
+/*
+        <p *ngIf="myUserForm.get('contact_subject')?.errors?.['required']">Blog Header is required</p>
+        <p *ngIf="myUserForm.get('contact_subject')?.errors?.['minlength']">Blog Header is to short. Minlength is {{ myUserForm.get('contact_subject')?.errors?.['minlength']?.requiredLength }}</p>
+
+*/
