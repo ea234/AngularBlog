@@ -34,9 +34,7 @@
 
           <p *ngIf="contact_email?.errors?.['required']">eMail Adress is required</p>
 
-           <p *ngIf="contact_email?.errors?.['notAEmail']"> {{ contact_email?.errors?.['validateMsg'] }}  </p>
-
-          <p *ngIf="contact_email?.errors?.['minlength']">eMail Adress is to short. Minlength is {{ contact_email?.errors?.['minlength']?.requiredLength }}</p>
+          <p *ngIf="contact_email?.errors?.['notAEmail']"> {{ contact_email?.errors?.['validateMsg'] }}  </p>
 
         </div>
 

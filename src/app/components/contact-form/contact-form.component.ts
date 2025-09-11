@@ -13,16 +13,18 @@ export class ContactFormComponent implements OnInit
 
   myUserForm! : FormGroup;
 
+
   ngOnInit(): void
   {
     this.myUserForm = new FormGroup(
       {
-        contact_name:    new FormControl('', [ Validators.required, Validators.minLength(1),  Validators.maxLength(250)  ] ),
+        contact_name:    new FormControl('', [ Validators.required, Validators.minLength(2),  Validators.maxLength(250)  ] ),
         contact_email:   new FormControl('', [ Validators.required, Validators.maxLength(255), this.customEmailValidator.bind( this ) ] ),
         contact_subject: new FormControl('', [ Validators.required, Validators.minLength(5), Validators.maxLength(150)  ] ),
         contact_text:    new FormControl('', [ Validators.required, Validators.minLength(5), Validators.maxLength(2000) ] )
       });
   }
+
 
   customEmailValidator( control: AbstractControl ) : ValidationErrors | null
   {
@@ -38,7 +40,7 @@ export class ContactFormComponent implements OnInit
   /*
    * https://github.com/ea234/FkEMailValidator
    */
-  private validateEmailAdress( pEingabe : string ): string | null
+  validateEmailAdress( pEingabe : string ): string | null
   {
     if ( pEingabe === undefined ) return 'Eingabe ist "undefined"';
 
@@ -101,7 +103,7 @@ export class ContactFormComponent implements OnInit
         }
         else
         {
-          return 'kein weiteres AT-Zeichen zulassen, sofern schon eins gefunden wurde';
+          return 'kein weiteres AT-Zeichen zulassen, wenn schon eins gefunden wurde';
         }
       }
       else
@@ -116,7 +118,7 @@ export class ContactFormComponent implements OnInit
 
     if ( pos_at_zeichen === -1 ) return 'kein AT-Zeichen gefunden';
 
-    if ( letzter_punkt < pos_at_zeichen ) return 'der letzte Punkt muss nach dem AT-Zeichen liegen ( ... hier eben die negative Form, wenn der letzte Punkt vor dem AT-Zeichen stand ist es ein Fehler )';
+    if ( letzter_punkt < pos_at_zeichen ) return 'der letzte Punkt muss nach dem AT-Zeichen liegen';
 
     if ( ( letzter_punkt + 1 ) === len_pruef_str ) return 'der letzte Punkt darf nicht am Ende liegen';
 
@@ -137,19 +139,18 @@ export class ContactFormComponent implements OnInit
 
         console.log( formValue );
 
-
         this.contact_show_confirm_message = true;
       }
     }
   }
 
-  get contact_name()    { return this.myUserForm.get( 'contact_name'   ); }
+  get contact_name()    : AbstractControl | null { return this.myUserForm.get( 'contact_name'    ); }
 
-  get contact_email()   { return this.myUserForm.get( 'contact_email'  ); }
+  get contact_email()   : AbstractControl | null { return this.myUserForm.get( 'contact_email'   ); }
 
-  get contact_subject() { return this.myUserForm.get( 'contact_subject'); }
+  get contact_subject() : AbstractControl | null { return this.myUserForm.get( 'contact_subject' ); }
 
-  get contact_text()    { return this.myUserForm.get( 'contact_text'   ); }
+  get contact_text()    : AbstractControl | null { return this.myUserForm.get( 'contact_text'    ); }
 
   showContactForm() : boolean
   {
