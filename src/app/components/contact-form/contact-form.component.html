@@ -6,6 +6,43 @@
 
     <div [formGroup]="myUserForm">
 
+
+      <div class="form-group">
+
+        <label for="contact_name">Name</label>
+
+        <input id="contact_name" formControlName="contact_name" type="text" class="form-control" placeholder="Name">
+
+        <div *ngIf="contact_name?.touched && contact_name?.invalid" class="alert alert-danger">
+
+          <p *ngIf="contact_name?.errors?.['required']">Subject is required</p>
+
+          <p *ngIf="contact_name?.errors?.['minlength']">Subject is to short. Minlength is {{ contact_name?.errors?.['minlength']?.requiredLength }}</p>
+
+        </div>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="contact_email">eMail Adress</label>
+
+        <input id="contact_email" formControlName="contact_email" type="text" class="form-control" placeholder="Name">
+
+        <div *ngIf="contact_email?.touched && contact_email?.invalid" class="alert alert-danger">
+
+          <p *ngIf="contact_email?.errors?.['required']">eMail Adress is required</p>
+
+           <p *ngIf="contact_email?.errors?.['notAEmail']"> {{ contact_email?.errors?.['validateMsg'] }}  </p>
+
+          <p *ngIf="contact_email?.errors?.['minlength']">eMail Adress is to short. Minlength is {{ contact_email?.errors?.['minlength']?.requiredLength }}</p>
+
+        </div>
+
+      </div>
+
+
       <div class="form-group">
 
         <label for="contact_subject">Subject</label>
