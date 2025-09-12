@@ -1,13 +1,9 @@
 import { convertToParamMap            } from '@angular/router';
-import { RouterTestingModule          } from '@angular/router/testing';
-import { ReactiveFormsModule          } from '@angular/forms';
 import { NO_ERRORS_SCHEMA             } from '@angular/core';
-import { Location                     } from '@angular/common';
 import { FormsModule                  } from '@angular/forms';
 import { ComponentFixture, TestBed    } from '@angular/core/testing';
-import { By                           } from '@angular/platform-browser';
 import { ActivatedRoute, Router       } from '@angular/router';
-import { Subject,  Observable, of     } from 'rxjs';
+import { Subject                      } from 'rxjs';
 
 import { BlogUserService              } from '../../services/blog-user.service';
 import { BlogJsonserverService        } from '../../services/blog-jsonserver.service';
@@ -78,11 +74,9 @@ describe( 'BlogEditFormComponent', () =>
 
     await getNewTestbed( expected_id );
 
-    console.log ( "Paramcheck for new BlogEntry  1 ", component.getBlogEntryParamID() );
-
     expect( component ).toBeTruthy();
 
-    expect( component.getBlogEntryParamID()     ).toBe( expected_id );
+    expect( component.getBlogEntryParamID() ).toBe( expected_id );
   });
 
 
@@ -92,11 +86,9 @@ describe( 'BlogEditFormComponent', () =>
 
     await getNewTestbed( expected_id );
 
-    console.log ( "Paramcheck for new BlogEntry  1 ", component.getBlogEntryParamID() );
-
     expect( component ).toBeTruthy();
 
-    expect( component.getBlogEntryParamID()     ).toBe( expected_id );
+    expect( component.getBlogEntryParamID() ).toBe( expected_id );
   });
 
 
@@ -106,16 +98,15 @@ describe( 'BlogEditFormComponent', () =>
 
     await getNewTestbed( test_mock_entry.m_entry_id );
 
-    console.log ( "Paramcheck for existing BlogEntry  1 expected_id = " + test_mock_entry.m_entry_id , component.getBlogEntryParamID() );
-
-    console.log('TEST test_mock_entry ', test_mock_entry );
+    console.log( "Paramcheck for existing BlogEntry. expected_id = " + test_mock_entry.m_entry_id , component.getBlogEntryParamID() );
 
     await fixture.whenStable();
 
-    expect( component.isEditNewBlogEntry()      ).toBeFalse();
+    expect( component.isEditNewBlogEntry() ).toBeFalse();
+
     expect( component.isEditExistingBlogEntry() ).toBeTrue();
 
-    expect( component.blog_entry_copy.m_entry_id   ).toBe( test_mock_entry.m_entry_id );
+    expect( component.blog_entry_copy.m_entry_id ).toBe( test_mock_entry.m_entry_id );
 
     expect( component.blog_entry_copy.m_entry_header ).toBe( test_mock_entry.m_entry_header );
 
@@ -133,15 +124,14 @@ describe( 'BlogEditFormComponent', () =>
 
     await getNewTestbed( expected_id );
 
-    console.log ( "Paramcheck for new BlogEntry ", component.getBlogEntryParamID() );
-
     await fixture.whenStable();
 
     expect( component.isEditNewBlogEntry()      ).toBeTrue();
+
     expect( component.isEditExistingBlogEntry() ).toBeFalse();
 
     expect( component.getBlogEntryParamID()     ).toBe( expected_id );
-   });
+  });
 
 
   it( 'should save the string for the pressed button', async() =>
@@ -149,8 +139,6 @@ describe( 'BlogEditFormComponent', () =>
     let expected_id : string =  "-1";
 
     await getNewTestbed( expected_id );
-
-    console.log ( "Paramcheck for new BlogEntry ", component.getBlogEntryParamID() );
 
     await fixture.whenStable();
 

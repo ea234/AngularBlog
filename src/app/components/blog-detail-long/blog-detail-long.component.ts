@@ -23,12 +23,11 @@ export class BlogDetailLongComponent implements OnInit, OnDestroy
 
     this.activated_route.params.subscribe( ( params ) => {
 
-      console.log( "Blog Entry Detail - Activated-Route Subscribe" );
-      console.log( params );
+      console.log( "Blog Entry Detail - Activated-Route Subscribe", params );
 
       let param_blog_entry_id = params[ 'blog_entry_id' ];
 
-      console.log( `Blog Entry Detail - param_blog_entry_id  ${ param_blog_entry_id }`);
+      console.log( `Blog Entry Detail - param_blog_entry_id ${ param_blog_entry_id }`);
 
       this.m_blog_jsonserver_service.getBlogEntry( param_blog_entry_id ).subscribe( (blog_entry_from_service) => {
 

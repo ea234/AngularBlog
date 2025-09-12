@@ -8,7 +8,6 @@
   margin-right : 5 px;
 
   border       : 10px, #30302f;
-
 }
 
 
@@ -35,7 +34,6 @@
    * (or use a <pre> tag that should have this style by default)
    */
   white-space: pre-wrap;
-
 }
 
 
@@ -55,6 +53,7 @@
 {
   padding-left: 1px;
 }
+
 
 .css-blog-footer-author
 {

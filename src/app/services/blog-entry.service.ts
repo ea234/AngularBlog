@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
-import { BlogAppMain } from '../extern_app/ClsBlogAppMain';
+import { Injectable     } from '@angular/core';
+import { BlogAppMain    } from '../extern_app/ClsBlogAppMain';
 import { Observable, of } from 'rxjs';
-import { BlogEntry, ClsBlogEntry } from '../ClsBlogEntry';
-import { ClsBlogBackend          } from './ClsBlogBackend';
+import { BlogEntry      } from '../ClsBlogEntry';
+import { ClsBlogBackend } from './ClsBlogBackend';
+
 
 @Injectable({
   providedIn: 'root'
@@ -39,7 +40,7 @@ export class BlogEntryService implements ClsBlogBackend
   {
     let ergebnis_obj : any = this.cls_blog_app.getBlogEntry( blog_entry_id ) ;
 
-    console.log( "Test getBlogEntry " + blog_entry_id );
+    //console.log( "BlogEntryService getBlogEntry " + blog_entry_id );
 
     if ( ergebnis_obj == undefined )
     {
@@ -200,6 +201,4 @@ export class BlogEntryService implements ClsBlogBackend
   {
     return this.cls_blog_app;
   }
-
-
 }
