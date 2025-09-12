@@ -18,10 +18,10 @@ export class ContactFormComponent implements OnInit
   {
     this.myUserForm = new FormGroup(
       {
-        contact_name:    new FormControl('', [ Validators.required, Validators.minLength(2),  Validators.maxLength(250)  ] ),
-        contact_email:   new FormControl('', [ Validators.required, Validators.maxLength(255), this.customEmailValidator.bind( this ) ] ),
-        contact_subject: new FormControl('', [ Validators.required, Validators.minLength(5), Validators.maxLength(150)  ] ),
-        contact_text:    new FormControl('', [ Validators.required, Validators.minLength(5), Validators.maxLength(2000) ] )
+        contact_name:    new FormControl( '', [ Validators.required, Validators.minLength(2),  Validators.maxLength(250)  ] ),
+        contact_email:   new FormControl( '', [ Validators.required, Validators.maxLength(255), this.customEmailValidator.bind( this ) ] ),
+        contact_subject: new FormControl( '', [ Validators.required, Validators.minLength(5), Validators.maxLength(150)  ] ),
+        contact_text:    new FormControl( '', [ Validators.required, Validators.minLength(5), Validators.maxLength(2000) ] )
       });
   }
 
@@ -37,7 +37,9 @@ export class ContactFormComponent implements OnInit
     return validate_msg ? { notAEmail: true, validateMsg : validate_msg } : null;
   }
 
+
   /*
+   * Look here for the better version of this algorithm.
    * https://github.com/ea234/FkEMailValidator
    */
   validateEmailAdress( pEingabe : string ): string | null

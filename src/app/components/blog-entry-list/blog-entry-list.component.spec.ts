@@ -20,6 +20,7 @@ describe('BlogEntryListComponent', () =>
   beforeEach( async () =>
   {
     await TestBed.configureTestingModule({
+
       declarations: [ BlogEntryListComponent ],
 
       schemas : [ NO_ERRORS_SCHEMA ],

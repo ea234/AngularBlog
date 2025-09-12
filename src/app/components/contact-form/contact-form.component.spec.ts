@@ -33,6 +33,7 @@ describe('ContactFormComponent', () =>
     setFormValue( value );
   };
 
+
   function setFormValue( value?: { contact_name?: string; contact_email?: string; contact_subject?: string; contact_text?: string; })
   {
     if ( value )
@@ -113,19 +114,19 @@ describe('ContactFormComponent', () =>
   {
     await getNewTestbed( { contact_name: 'A' } );
 
-    const ctrl : AbstractControl | null = component.myUserForm.get( 'contact_name' )!;
+    const ctrl_input_1 : AbstractControl | null = component.myUserForm.get( 'contact_name' )!;
 
-    const ctrl2 : AbstractControl | null = component.contact_name;
+    const ctrl_input_2 : AbstractControl | null = component.contact_name;
 
-    let knz_equals = ctrl === ctrl2;
+    let knz_equals = ctrl_input_1 === ctrl_input_2;
 
     expect( knz_equals ).toBeTrue();
 
-    expect( ctrl.errors ) .toBeTruthy();
+    expect( ctrl_input_1.errors ).toBeTruthy();
 
-    expect( ctrl.errors?.[ 'required'  ] ).toBeFalsy();
+    expect( ctrl_input_1.errors?.[ 'required'  ] ).toBeFalsy();
 
-    expect( ctrl.errors?.[ 'minlength' ] ).toBeTruthy();
+    expect( ctrl_input_1.errors?.[ 'minlength' ] ).toBeTruthy();
   });
 
 
@@ -135,11 +136,11 @@ describe('ContactFormComponent', () =>
 
     await getNewTestbed({ contact_name: long_string });
 
-    const ctrl = component.myUserForm.get( 'contact_name' )!;
+    const ctrl_input_1 = component.myUserForm.get( 'contact_name' )!;
 
-    expect( ctrl.errors ).toBeTruthy();
+    expect( ctrl_input_1.errors ).toBeTruthy();
 
-    expect( ctrl.errors?.[ 'maxlength' ] ).toBeTruthy();
+    expect( ctrl_input_1.errors?.[ 'maxlength' ] ).toBeTruthy();
   });
 
 
@@ -147,26 +148,26 @@ describe('ContactFormComponent', () =>
   {
     await getNewTestbed( { contact_email: 'not-an-email' } );
 
-    let ctrl = component.myUserForm.get('contact_email')!;
+    let ctrl_input_1 = component.myUserForm.get( 'contact_email' )!;
 
-    expect( ctrl.errors ).toBeTruthy();
+    expect( ctrl_input_1.errors ).toBeTruthy();
 
-    expect( ctrl.errors?.[ 'notAEmail'   ] ).toBeTruthy();
-    expect( ctrl.errors?.[ 'validateMsg' ] ).toBeTruthy();
+    expect( ctrl_input_1.errors?.[ 'notAEmail'   ] ).toBeTruthy();
+    expect( ctrl_input_1.errors?.[ 'validateMsg' ] ).toBeTruthy();
 
     setFormValue( { contact_email: 'test@example.com' } );
 
-    expect( ctrl.errors ).toBeFalsy();
+    expect( ctrl_input_1.errors ).toBeFalsy();
 
-    expect( ctrl.errors?.[ 'notAEmail'   ] ).toBeFalsy();
-    expect( ctrl.errors?.[ 'validateMsg' ] ).toBeFalsy();
+    expect( ctrl_input_1.errors?.[ 'notAEmail'   ] ).toBeFalsy();
+    expect( ctrl_input_1.errors?.[ 'validateMsg' ] ).toBeFalsy();
 
     setFormValue( { contact_email: '.no.start@with.dot.com' } );
 
-    expect( ctrl.errors ).toBeTruthy();
+    expect( ctrl_input_1.errors ).toBeTruthy();
 
-    expect( ctrl.errors?.[ 'notAEmail'   ] ).toBeTruthy();
-    expect( ctrl.errors?.[ 'validateMsg' ] ).toBeTruthy();
+    expect( ctrl_input_1.errors?.[ 'notAEmail'   ] ).toBeTruthy();
+    expect( ctrl_input_1.errors?.[ 'validateMsg' ] ).toBeTruthy();
   });
 
 
@@ -174,28 +175,27 @@ describe('ContactFormComponent', () =>
   {
     await getNewTestbed( { contact_email: 'test@example.com' } );
 
-    let ctrl = component.myUserForm.get('contact_email')!;
+    let ctrl_input_1 = component.myUserForm.get( 'contact_email' )!;
 
-    expect( ctrl.errors ).toBeFalsy();
+    expect( ctrl_input_1.errors ).toBeFalsy();
 
-    expect( ctrl.errors?.[ 'notAEmail'   ] ).toBeFalsy();
-    expect( ctrl.errors?.[ 'validateMsg' ] ).toBeFalsy();
+    expect( ctrl_input_1.errors?.[ 'notAEmail'   ] ).toBeFalsy();
+    expect( ctrl_input_1.errors?.[ 'validateMsg' ] ).toBeFalsy();
   });
-
 
 
   it( 'should require subject with minLength 5 and maxLength 150', async () =>
   {
     await getNewTestbed( { contact_subject: 'abcd' } );
 
-    const ctrl = component.myUserForm.get( 'contact_subject' )!;
+    const ctrl_input_1 = component.myUserForm.get( 'contact_subject' )!;
 
-    expect( ctrl.errors ) .toBeTruthy();
+    expect( ctrl_input_1.errors ).toBeTruthy();
 
-    expect( ctrl.errors?.[ 'required'  ] ).toBeFalsy();
+    expect( ctrl_input_1.errors?.[ 'required'  ] ).toBeFalsy();
 
-    expect( ctrl.errors?.[ 'minlength' ] ).toBeTruthy();
-    expect( ctrl.errors?.[ 'maxlength' ] ).toBeFalsy();
+    expect( ctrl_input_1.errors?.[ 'minlength' ] ).toBeTruthy();
+    expect( ctrl_input_1.errors?.[ 'maxlength' ] ).toBeFalsy();
 
     /*
      * ----- valid length
@@ -203,9 +203,9 @@ describe('ContactFormComponent', () =>
 
     setFormValue( { contact_subject: 'Test Subject with valid length' } );
 
-    expect( ctrl.errors ).toBeFalsy();
+    expect( ctrl_input_1.errors ).toBeFalsy();
 
-    expect( ctrl.errors?.[ 'minlength' ] ).toBeFalsy();
+    expect( ctrl_input_1.errors?.[ 'minlength' ] ).toBeFalsy();
 
     /*
      * ----- length to long
@@ -215,10 +215,10 @@ describe('ContactFormComponent', () =>
 
     setFormValue( { contact_subject: long_string } );
 
-    expect( ctrl.errors ).toBeTruthy();
+    expect( ctrl_input_1.errors ).toBeTruthy();
 
-    expect( ctrl.errors?.[ 'minlength' ] ).toBeFalsy();
-    expect( ctrl.errors?.[ 'maxlength' ] ).toBeTruthy();
+    expect( ctrl_input_1.errors?.[ 'minlength' ] ).toBeFalsy();
+    expect( ctrl_input_1.errors?.[ 'maxlength' ] ).toBeTruthy();
   });
 
 
@@ -226,14 +226,14 @@ describe('ContactFormComponent', () =>
   {
     await getNewTestbed( { contact_text: 'abcd' } );
 
-    const ctrl = component.myUserForm.get( 'contact_text' )!;
+    const ctrl_input_1 = component.myUserForm.get( 'contact_text' )!;
 
-    expect( ctrl.errors ) .toBeTruthy();
+    expect( ctrl_input_1.errors ).toBeTruthy();
 
-    expect( ctrl.errors?.[ 'required'  ] ).toBeFalsy();
+    expect( ctrl_input_1.errors?.[ 'required'  ] ).toBeFalsy();
 
-    expect( ctrl.errors?.[ 'minlength' ] ).toBeTruthy();
-    expect( ctrl.errors?.[ 'maxlength' ] ).toBeFalsy();
+    expect( ctrl_input_1.errors?.[ 'minlength' ] ).toBeTruthy();
+    expect( ctrl_input_1.errors?.[ 'maxlength' ] ).toBeFalsy();
 
     /*
      * ----- valid length
@@ -241,10 +241,10 @@ describe('ContactFormComponent', () =>
 
     setFormValue( { contact_text: 'Test Subject with valid length' } );
 
-    expect( ctrl.errors ).toBeFalsy();
+    expect( ctrl_input_1.errors ).toBeFalsy();
 
-    expect( ctrl.errors?.[ 'minlength' ] ).toBeFalsy();
-    expect( ctrl.errors?.[ 'maxlength' ] ).toBeFalsy();
+    expect( ctrl_input_1.errors?.[ 'minlength' ] ).toBeFalsy();
+    expect( ctrl_input_1.errors?.[ 'maxlength' ] ).toBeFalsy();
 
     /*
      * ----- length to long
@@ -254,10 +254,10 @@ describe('ContactFormComponent', () =>
 
     setFormValue( { contact_text: long_string } );
 
-    expect( ctrl.errors ).toBeTruthy();
+    expect( ctrl_input_1.errors ).toBeTruthy();
 
-    expect( ctrl.errors?.[ 'minlength' ] ).toBeFalsy();
-    expect( ctrl.errors?.[ 'maxlength' ] ).toBeTruthy();
+    expect( ctrl_input_1.errors?.[ 'minlength' ] ).toBeFalsy();
+    expect( ctrl_input_1.errors?.[ 'maxlength' ] ).toBeTruthy();
   });
 
 
@@ -265,17 +265,17 @@ describe('ContactFormComponent', () =>
   {
     await getNewTestbed( { contact_name: 'Testtext' } );
 
-    const ctrl : AbstractControl | null = component.myUserForm.get( 'contact_name' )!;
+    const ctrl_input_1 : AbstractControl | null = component.myUserForm.get( 'contact_name' )!;
 
-    const ctrl2 : AbstractControl | null = component.contact_name;
+    const ctrl_input_2 : AbstractControl | null = component.contact_name;
 
-    let knz_equals = ctrl === ctrl2;
+    let knz_equals = ctrl_input_1 === ctrl_input_2;
 
     expect( knz_equals ).toBeTrue();
 
-    expect( ctrl ) .toBeTruthy();
+    expect( ctrl_input_1 ).toBeTruthy();
 
-    expect( ctrl2 ) .toBeTruthy();
+    expect( ctrl_input_2 ).toBeTruthy();
   });
 
 
@@ -283,17 +283,17 @@ describe('ContactFormComponent', () =>
   {
     await getNewTestbed( { contact_email: 'test@example.com' } );
 
-    const ctrl : AbstractControl | null = component.myUserForm.get( 'contact_email' )!;
+    const ctrl_input_1 : AbstractControl | null = component.myUserForm.get( 'contact_email' )!;
 
-    const ctrl2 : AbstractControl | null = component.contact_email;
+    const ctrl_input_2 : AbstractControl | null = component.contact_email;
 
-    let knz_equals = ctrl === ctrl2;
+    let knz_equals = ctrl_input_1 === ctrl_input_2;
 
     expect( knz_equals ).toBeTrue();
 
-    expect( ctrl ) .toBeTruthy();
+    expect( ctrl_input_1 ).toBeTruthy();
 
-    expect( ctrl2 ) .toBeTruthy();
+    expect( ctrl_input_2 ).toBeTruthy();
   });
 
 
@@ -301,17 +301,17 @@ describe('ContactFormComponent', () =>
   {
     await getNewTestbed( { contact_subject: 'abcdef' } );
 
-    const ctrl : AbstractControl | null = component.myUserForm.get( 'contact_subject' )!;
+    const ctrl_input_1 : AbstractControl | null = component.myUserForm.get( 'contact_subject' )!;
 
-    const ctrl2 : AbstractControl | null = component.contact_subject;
+    const ctrl_input_2 : AbstractControl | null = component.contact_subject;
 
-    let knz_equals = ctrl === ctrl2;
+    let knz_equals = ctrl_input_1 === ctrl_input_2;
 
     expect( knz_equals ).toBeTrue();
 
-    expect( ctrl ) .toBeTruthy();
+    expect( ctrl_input_1 ).toBeTruthy();
 
-    expect( ctrl2 ) .toBeTruthy();
+    expect( ctrl_input_2 ).toBeTruthy();
   });
 
 
@@ -319,17 +319,17 @@ describe('ContactFormComponent', () =>
   {
     await getNewTestbed( { contact_text: 'Testtext' } );
 
-    const ctrl : AbstractControl | null = component.myUserForm.get( 'contact_text' )!;
+    const ctrl_input_1 : AbstractControl | null = component.myUserForm.get( 'contact_text' )!;
 
-    const ctrl2 : AbstractControl | null = component.contact_text;
+    const ctrl_input_2 : AbstractControl | null = component.contact_text;
 
-    let knz_equals = ctrl === ctrl2;
+    let knz_equals = ctrl_input_1 === ctrl_input_2;
 
     expect( knz_equals ).toBeTrue();
 
-    expect( ctrl ) .toBeTruthy();
+    expect( ctrl_input_1 ).toBeTruthy();
 
-    expect( ctrl2 ) .toBeTruthy();
+    expect( ctrl_input_2 ).toBeTruthy();
   });
 
 

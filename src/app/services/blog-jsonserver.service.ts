@@ -1,7 +1,7 @@
 import { Injectable              } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map, Observable, of          } from 'rxjs';
-import { ClsBlogEntry, BlogEntry } from '../ClsBlogEntry';
+import { map, Observable, of     } from 'rxjs';
+import { BlogEntry               } from '../ClsBlogEntry';
 import { ClsBlogBackend          } from './ClsBlogBackend';
 
 const http_options = {
@@ -11,6 +11,7 @@ const http_options = {
     }
   ),
 };
+
 
 @Injectable({
   providedIn: 'root'
@@ -74,8 +75,6 @@ export class BlogJsonserverService implements ClsBlogBackend
   }
 
 
-
-
   private getUniqueID() : number
   {
     return Math.floor( Math.random() * Date.now() )
@@ -92,7 +91,7 @@ export class BlogJsonserverService implements ClsBlogBackend
 
   saveBlogEntry( blog_entry : BlogEntry ) : Observable<BlogEntry>
   {
-    if ( blog_entry.m_entry_id === "-2" )
+    if ( blog_entry.m_entry_id === "-2" ) // = Empty Blog-Entry = not to be saved
     {
       return of( blog_entry );
     }

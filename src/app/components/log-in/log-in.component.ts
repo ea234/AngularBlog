@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogUserService   } from '../../services/blog-user.service';
+import { BlogUser } from '../../ClsBlogUser';
 
 @Component({
   selector: 'app-log-in',
@@ -16,5 +17,10 @@ export class LogInComponent implements OnInit
   ngOnInit(): void
   {
     this.m_user_service.userLogIn();
+  }
+
+  get blogUser() : BlogUser
+  {
+    return this.m_user_service.getBlogUser();
   }
 }

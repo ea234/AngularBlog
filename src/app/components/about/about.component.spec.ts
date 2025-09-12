@@ -5,6 +5,7 @@ import { AboutComponent            } from './about.component';
 describe( 'AboutComponent', () =>
 {
   let component: AboutComponent;
+
   let fixture: ComponentFixture<AboutComponent>;
 
   beforeEach(async () =>
@@ -14,12 +15,13 @@ describe( 'AboutComponent', () =>
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AboutComponent);
+    fixture = TestBed.createComponent( AboutComponent );
 
     component = fixture.componentInstance;
 
     fixture.detectChanges();
   });
+
 
   it( 'should create', () =>
   {

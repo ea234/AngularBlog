@@ -54,6 +54,34 @@ describe('HeaderComponent', () =>
   {
     const log_in_link = fixture.debugElement.query( By.css( 'a[routerLink="/login"]' ) );
 
+    expect( component.isUserNotLoggedIn() ).toBeTrue();
+
+    expect( component.isUserLoggedIn()    ).toBeFalse();
+
+    expect( log_in_link ).toBeTruthy();
+  });
+
+
+  it( 'should display about link', () =>
+  {
+    const log_in_link = fixture.debugElement.query( By.css( 'a[routerLink="/about"]' ) );
+
+    expect( log_in_link ).toBeTruthy();
+  });
+
+
+  it( 'should display contact link', () =>
+  {
+    const log_in_link = fixture.debugElement.query( By.css( 'a[routerLink="/contact"]' ) );
+
+    expect( log_in_link ).toBeTruthy();
+  });
+
+
+  it( 'should display blog link', () =>
+  {
+    const log_in_link = fixture.debugElement.query( By.css( 'a[routerLink="/blog"]' ) );
+
     expect( log_in_link ).toBeTruthy();
   });
 
@@ -66,23 +94,9 @@ describe('HeaderComponent', () =>
 
     fixture.detectChanges();
 
-    expect( component.isUserLoggedIn() ).toBeTrue();
+    expect( component.isUserLoggedIn()    ).toBeTrue();
 
-    const log_out_link = fixture.debugElement.query( By.css( 'a[routerLink="/logout"]' ) );
-
-    expect( log_out_link ).toBeTruthy();
-  });
-
-
-  it( 'should display LogOut link when user is logged in', () =>
-  {
-    component.getUserService().userLogIn(); // Evil
-
-    mock_user_c.userLogIn();
-
-    fixture.detectChanges();
-
-    expect( component.isUserLoggedIn() ).toBeTrue();
+    expect( component.isUserNotLoggedIn() ).toBeFalse();
 
     const log_out_link = fixture.debugElement.query( By.css( 'a[routerLink="/logout"]' ) );
 
