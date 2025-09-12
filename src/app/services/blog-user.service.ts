@@ -49,11 +49,11 @@ export class BlogUserService
   }
 
 
-  userLogOut() : boolean
+  public userLogOut() : boolean
   {
     this.m_blog_user.m_is_logged_in = false;
     this.m_blog_user.m_user_id = 0;
-    this.m_blog_user.m_user_name = "Guest";
+    this.m_blog_user.m_user_name = "guest";
 
     return true;
   }
@@ -63,8 +63,26 @@ export class BlogUserService
   {
     this.m_blog_user.m_is_logged_in = true;
     this.m_blog_user.m_user_id = 1;
-    this.m_blog_user.m_user_name = "UserName";
+    this.m_blog_user.m_user_name = "admin";
 
     return true;
   }
+
+
+  public userLogInNamed( param_user_name : string ) : boolean
+  {
+    this.m_blog_user.m_is_logged_in = true;
+
+    this.m_blog_user.m_user_id = 2;
+
+    if ( param_user_name === "admin" )
+    {
+      this.m_blog_user.m_user_id = 1;
+    }
+
+    this.m_blog_user.m_user_name = param_user_name;
+
+    return true;
+  }
+
 }

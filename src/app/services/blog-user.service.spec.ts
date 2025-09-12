@@ -49,6 +49,38 @@ describe('BlogUserService', () =>
   });
 
 
+  it( 'User should be logged in with user admin and id 1', () =>
+  {
+    expect( service ).toBeTruthy();
+
+    expect( service.isUserLoggedIn() ).toBeFalse();
+
+    service.userLogInNamed( "admin" );
+
+    expect( service.isUserLoggedIn() ).toBeTrue();
+
+    expect( service.getUserName() ).toBe( "admin" );
+
+    expect( service.getUserID() ).toBe( 1 );
+  });
+
+
+  it( 'User should be logged in with user stpdom and id 2', () =>
+  {
+    expect( service ).toBeTruthy();
+
+    expect( service.isUserLoggedIn() ).toBeFalse();
+
+    service.userLogInNamed( "stpdom" );
+
+    expect( service.isUserLoggedIn() ).toBeTrue();
+
+    expect( service.getUserName() ).toBe( "stpdom" );
+
+    expect( service.getUserID() ).toBe( 2 );
+  });
+
+
   it( 'User should be logged in and than logged out', () =>
   {
     expect( service ).toBeTruthy();
