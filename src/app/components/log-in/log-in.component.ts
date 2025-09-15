@@ -36,8 +36,7 @@ export class LogInComponent implements OnInit
     {
       if ( this.myUserForm.valid )
       {
-        const formValue = this.myUserForm.value; // Hier weiterverarbeiten, z.B. senden an API console.log('Form submitted', formValue);
-
+        const formValue = this.myUserForm.value; 
 
         console.log( "login form ", formValue );
 
