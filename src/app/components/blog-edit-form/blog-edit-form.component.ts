@@ -21,6 +21,8 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
   private m_blog_is_add_new     : boolean = false;
 
+  private m_str_headline : string = "Edit Blog Entry";
+
   private m_blog_entry_id_string : string = 'not valid';
 
   private m_pressed_button : string = 'cancel';
@@ -69,6 +71,8 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
     if ( url_contains_add_new_blog )
     {
       blog_entry_id_string = "-1";
+
+      this.m_str_headline = "Add new Blog Entry";
     }
     else
     {
@@ -105,6 +109,9 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
                       //console.log('COPY   this.blog_entry_copy', this.blog_entry_copy );
 
                       this.m_blog_is_add_new = false;
+
+                      this.m_str_headline = "Edig Blog Entry " + this.blog_entry_copy.id;
+
 
                       if ( existing_blog_entry.m_user_id !== this.m_user_service.getUserID() )
                       {
@@ -351,4 +358,6 @@ export class BlogEditFormComponent implements OnInit, CanComponentDeactivate
 
     return false;
   }
+
+  get str_headline(): string { return this.m_str_headline; }
 }
